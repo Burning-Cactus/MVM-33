@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://nxs86dpsttc1"]
+
+[ext_resource type="Script" uid="uid://c2071w1ac6hm4" path="res://scripts/ui_layer.gd" id="1_w83ab"]
+[ext_resource type="Texture2D" uid="uid://b6cutyq31r6in" path="res://assets/HP_Bar/bg.png" id="2_6syxi"]
+[ext_resource type="Texture2D" uid="uid://cxkptxstu5mm6" path="res://assets/HP_Bar/over.png" id="3_6gmgv"]
+[ext_resource type="Texture2D" uid="uid://bydr1exagh643" path="res://assets/HP_Bar/red.png" id="4_qey6e"]
+
+[sub_resource type="Animation" id="Animation_pxq32"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionBG:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pmv6g"]
+resource_name = "fade_to_black"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionBG:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6syxi"]
+_data = {
+&"RESET": SubResource("Animation_pxq32"),
+&"fade_to_black": SubResource("Animation_pmv6g")
+}
+
+[node name="UILayer" type="CanvasLayer" unique_id=1885633673]
+process_mode = 3
+script = ExtResource("1_w83ab")
+
+[node name="UI" type="Control" parent="." unique_id=413702643]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=631915724]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" unique_id=828557825]
+layout_mode = 2
+
+[node name="HPHBox" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer" unique_id=35429158]
+layout_mode = 2
+
+[node name="Healthbar" type="TextureProgressBar" parent="UI/MarginContainer/VBoxContainer/HPHBox" unique_id=1961393452]
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 2
+value = 70.0
+texture_under = ExtResource("2_6syxi")
+texture_over = ExtResource("3_6gmgv")
+texture_progress = ExtResource("4_qey6e")
+
+[node name="HealthValue" type="Label" parent="UI/MarginContainer/VBoxContainer/HPHBox" unique_id=261822041]
+layout_mode = 2
+
+[node name="SkillsHBox" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer" unique_id=1067356410]
+layout_mode = 2
+
+[node name="BossUI" type="Control" parent="UI" unique_id=557088550]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/BossUI" unique_id=1254219926]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 149.0
+offset_top = 552.0
+offset_right = 966.0
+offset_bottom = 579.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="UI/BossUI/ProgressBar" unique_id=309561331]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -22.0
+offset_right = 217.0
+offset_bottom = 1.0
+text = "ZANZIBART, THE FORGIVER"
+
+[node name="TransitionBG" type="ColorRect" parent="." unique_id=1973013334]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1166265218]
+libraries/ = SubResource("AnimationLibrary_6syxi")
+
+[node name="GameOverBG" type="ColorRect" parent="." unique_id=776218978]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.19, 0.19, 1)
+
+[node name="Label" type="Label" parent="GameOverBG" unique_id=182927008]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = -113.0
+offset_right = 206.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "GAME OVER"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverBG" unique_id=811306921]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = 26.0
+offset_right = 99.5
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContinueButton" type="Button" parent="GameOverBG/HBoxContainer" unique_id=1222615831]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="MainMenuButton" type="Button" parent="GameOverBG/HBoxContainer" unique_id=1535948706]
+layout_mode = 2
+text = "MAIN MENU"
+
+[connection signal="pressed" from="GameOverBG/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="GameOverBG/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

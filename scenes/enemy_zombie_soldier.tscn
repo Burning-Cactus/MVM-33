@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ectrtomafr4f"]
+
+[ext_resource type="PackedScene" uid="uid://cdjignw7bcl7s" path="res://scenes/enemy_base.tscn" id="1_x4dqs"]
+[ext_resource type="Script" uid="uid://bmyles2f1jogp" path="res://scenes/enemy_zombie_soldier.gd" id="2_tgf7r"]
+
+[node name="EnemyBase" unique_id=445466315 instance=ExtResource("1_x4dqs")]
+script = ExtResource("2_tgf7r")

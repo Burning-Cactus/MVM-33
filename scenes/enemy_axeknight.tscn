@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dm520nsk42ggp"]
+
+[ext_resource type="PackedScene" uid="uid://cdjignw7bcl7s" path="res://scenes/enemy_base.tscn" id="1_mmv4c"]
+[ext_resource type="Script" uid="uid://c05g5yd5lv1bo" path="res://scripts/enemy_axeknight.gd" id="2_brff6"]
+
+[node name="EnemyBase" unique_id=445466315 groups=["Enemy"] instance=ExtResource("1_mmv4c")]
+script = ExtResource("2_brff6")
+
+[node name="Marker3D" type="Marker3D" parent="Visuals" parent_id_path=PackedInt32Array(1417463964) index="2" unique_id=929034092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23796707, 0.63457894)

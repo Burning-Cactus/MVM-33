@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c8s26dimqkkiu"]
+
+[ext_resource type="Script" uid="uid://dx4pue32ot423" path="res://rooms/exit.gd" id="1_a5fg5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcp8b"]
+size = Vector3(2, 2, 2)
+
+[node name="ExitRight" type="Area3D" unique_id=99155977 groups=["Exit"]]
+script = ExtResource("1_a5fg5")
+target_room_path = "uid://s4ym70ymniwg"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1141971743]
+shape = SubResource("BoxShape3D_mcp8b")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1696229257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7320557, -1.78509)

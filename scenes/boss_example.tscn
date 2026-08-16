@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bhp1rtfj3cc4h"]
+
+[ext_resource type="Script" uid="uid://cuy3se3gkiyvm" path="res://scripts/boss_example.gd" id="1_vkcii"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wx3bq"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4wp8r"]
+size = Vector3(3, 3, 3)
+
+[node name="BossExample" type="CharacterBody3D" unique_id=1756450259 groups=["Enemy"]]
+script = ExtResource("1_vkcii")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2007799101]
+shape = SubResource("BoxShape3D_wx3bq")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=1650378777]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=2037673079]
+root_node = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals" unique_id=261997245]
+mesh = SubResource("BoxMesh_4wp8r")

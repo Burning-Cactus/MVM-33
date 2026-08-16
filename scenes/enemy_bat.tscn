@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cosghocqltqcj"]
+
+[ext_resource type="PackedScene" uid="uid://cdjignw7bcl7s" path="res://scenes/enemy_base.tscn" id="1_8f2c3"]
+[ext_resource type="Script" uid="uid://ck8g51g70l4vi" path="res://scripts/enemy_bat.gd" id="2_8h7tc"]
+
+[node name="EnemyBase" unique_id=445466315 instance=ExtResource("1_8f2c3")]
+script = ExtResource("2_8h7tc")
+fly_chase_speed = 4.5

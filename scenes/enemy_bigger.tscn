@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bqnggxehpocqc"]
+
+[ext_resource type="PackedScene" uid="uid://cdjignw7bcl7s" path="res://scenes/enemy_base.tscn" id="1_vepsm"]
+[ext_resource type="Script" uid="uid://dr7nesqc8yecw" path="res://scripts/enemy_bigger.gd" id="2_dg8xg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vepsm"]
+radius = 1.0
+height = 4.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dg8xg"]
+radius = 1.0
+height = 4.0
+
+[node name="EnemyBase" unique_id=445466315 instance=ExtResource("1_vepsm")]
+script = ExtResource("2_dg8xg")
+chase_speed = 2.2
+has_knockback = false
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=1648093087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_vepsm")
+
+[node name="MeshInstance3D" parent="Visuals" parent_id_path=PackedInt32Array(1417463964) index="0" unique_id=518375524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_dg8xg")
+
+[node name="FloorCheck" parent="." index="3" unique_id=1821149033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1656814)

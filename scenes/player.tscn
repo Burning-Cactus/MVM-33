@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://48tg7aenk4s1"]
+
+[ext_resource type="Script" uid="uid://d2twe0ejk3qtu" path="res://scripts/player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i3pqv"]
+top_radius = 0.0
+bottom_radius = 0.3
+height = 1.0
+radial_segments = 8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+
+[sub_resource type="Animation" id="Animation_4flbx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/Weapon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/AttackArea:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_onrkg"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/Weapon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/AttackArea:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3pqv"]
+_data = {
+&"RESET": SubResource("Animation_4flbx"),
+&"attack": SubResource("Animation_onrkg")
+}
+
+[node name="Player" type="CharacterBody3D" unique_id=1575609299 groups=["Player"]]
+script = ExtResource("1_4flbx")
+
+[node name="Model" type="MeshInstance3D" parent="." unique_id=1500403010]
+mesh = SubResource("CapsuleMesh_sh265")
+
+[node name="AttackArea" type="Area3D" parent="Model" unique_id=1466970068]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/AttackArea" unique_id=1800963340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0476427)
+shape = SubResource("BoxShape3D_onrkg")
+
+[node name="Weapon" type="MeshInstance3D" parent="Model" unique_id=2096723238]
+transform = Transform3D(1, 0, 0, 0, 0.0058293766, 0.999983, 0, -0.999983, 0.0058293766, 0, -0.007824898, -1.0459421)
+visible = false
+mesh = SubResource("CylinderMesh_i3pqv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2006155022]
+shape = SubResource("CapsuleShape3D_4flbx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2037548390]
+libraries/ = SubResource("AnimationLibrary_i3pqv")
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=1803525029]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=839198073]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.0040283, 0.7928543, -0.102962494)
+
+[connection signal="body_entered" from="Model/AttackArea" to="." method="_on_attack_area_body_entered"]

@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://50uk1yq4m16d"]
+
+[ext_resource type="Script" uid="uid://b2dwv6t11dl5f" path="res://rooms/room.gd" id="1_mcp8b"]
+[ext_resource type="PackedScene" uid="uid://c8s26dimqkkiu" path="res://rooms/exit.tscn" id="2_vvdcg"]
+[ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_oa8wf"]
+[ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="4_853v1"]
+[ext_resource type="PackedScene" uid="uid://dt6ex25duegu1" path="res://scenes/enemy_zombie.tscn" id="5_c68s2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mcp8b"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vvdcg"]
+sky_material = SubResource("ProceduralSkyMaterial_mcp8b")
+
+[sub_resource type="Environment" id="Environment_oa8wf"]
+background_mode = 2
+sky = SubResource("Sky_vvdcg")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vvdcg"]
+size = Vector3(2, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oa8wf"]
+size = Vector3(2, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_853v1"]
+size = Vector3(2, 1, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c68s2"]
+size = Vector3(2, 1, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iv03q"]
+size = Vector3(10, 10, 10)
+
+[node name="Room0" type="Node3D" unique_id=1838590884 groups=["Room"]]
+script = ExtResource("1_mcp8b")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1186788305]
+environment = SubResource("Environment_oa8wf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2048209451]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Foreground" type="Node3D" parent="." unique_id=325487631]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground" unique_id=1314693624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63193786, 0)
+mesh = SubResource("BoxMesh_vvdcg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/MeshInstance3D" unique_id=162276123]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/MeshInstance3D/StaticBody3D" unique_id=946102262]
+shape = SubResource("BoxShape3D_oa8wf")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Foreground" unique_id=1940383954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5179, 0)
+mesh = SubResource("BoxMesh_853v1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/MeshInstance3D5" unique_id=282512413]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/MeshInstance3D5/StaticBody3D" unique_id=1839918962]
+shape = SubResource("BoxShape3D_c68s2")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Foreground" unique_id=1567268322]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4.764552, 5.515218)
+mesh = SubResource("BoxMesh_853v1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/MeshInstance3D6" unique_id=123293410]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/MeshInstance3D6/StaticBody3D" unique_id=93777789]
+shape = SubResource("BoxShape3D_c68s2")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Foreground" unique_id=1149673854]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 9.615926, -5.491712)
+mesh = SubResource("BoxMesh_853v1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/MeshInstance3D7" unique_id=117166016]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/MeshInstance3D7/StaticBody3D" unique_id=537998074]
+shape = SubResource("BoxShape3D_c68s2")
+
+[node name="Exits" type="Node3D" parent="." unique_id=1154867120]
+
+[node name="ExitRight" parent="Exits" unique_id=99155977 instance=ExtResource("2_vvdcg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, -6)
+door_id = "Door_AB"
+
+[node name="Player" parent="." unique_id=1575609299 instance=ExtResource("3_oa8wf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9361154, 0)
+
+[node name="DiscoveryAreas" type="Node3D" parent="." unique_id=1306511901]
+
+[node name="DiscoveryArea" type="Area3D" parent="DiscoveryAreas" unique_id=135204448]
+script = ExtResource("4_853v1")
+border_right = "Door"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryAreas/DiscoveryArea" unique_id=1727683875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.881907, 0.02624607)
+shape = SubResource("BoxShape3D_iv03q")
+
+[node name="EnemyZombie" parent="." unique_id=445466315 instance=ExtResource("5_c68s2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9565272, 4.2678313)
+
+[connection signal="body_entered" from="DiscoveryAreas/DiscoveryArea" to="DiscoveryAreas/DiscoveryArea" method="_on_body_entered"]

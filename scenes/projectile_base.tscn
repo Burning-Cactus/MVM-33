@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bmnfiqvwl81ih"]
+
+[ext_resource type="Script" uid="uid://deoe22gjj7bte" path="res://scripts/projectile_base.gd" id="1_5bkip"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gkcjj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5bkip"]
+radial_segments = 16
+rings = 8
+
+[node name="ProjectileBase" type="Area3D" unique_id=1061233360]
+script = ExtResource("1_5bkip")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=190351307]
+shape = SubResource("SphereShape3D_gkcjj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2064887537]
+mesh = SubResource("SphereMesh_5bkip")
