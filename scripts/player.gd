@@ -18,6 +18,8 @@ var attack_damage:int = 7
 var double_jump_unlocked = false
 var slide_unlocked = false
 
+var has_double_jumped := false
+
 var input_disabled:bool = false
 
 const SPEED = 5.0
@@ -33,9 +35,14 @@ func _physics_process(delta: float) -> void:
 	if input_disabled and is_on_floor():
 		velocity.z = 0
 	if not input_disabled:
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
-			
+		if Input.is_action_just_pressed("jump"):
+			if is_on_floor():
+				velocity.y = JUMP_VELOCITY
+			elif double_jump_unlocked && !has_double_jumped:
+				has_double_jumped = true
+				velocity.y = JUMP_VELOCITY
+		elif is_on_floor():
+			has_double_jumped = false
 		if Input.is_action_just_pressed("attack"):
 			animation_player.play("attack")
 			handle_attack()
