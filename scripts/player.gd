@@ -41,7 +41,6 @@ func _ready() -> void:
 	attack_area.monitoring = false
 
 func _physics_process(delta: float) -> void:
-	print(position)
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	else:
@@ -79,8 +78,6 @@ func _physics_process(delta: float) -> void:
 
 	if entity_ref != null and entity_ref.position != entity_position:
 		entity_ref.position = entity_ref.position.move_toward(entity_position, PICKUP_SPEED * delta)
-		if entity_ref.position == entity_position:
-			input_disabled = false
 
 	velocity.x = 0
 	global_position.x = 0
@@ -224,7 +221,6 @@ func _pickup_entity() -> void:
 	entity_ref.add_collision_exception_with(self)
 	
 	entity_ref.reparent(model, true)
-	input_disabled = true
 	
 	var entity_size = entity_ref.get_size()
 	var player_size = get_size()
@@ -264,11 +260,11 @@ func _throw_entity() -> void:
 	entity_ref.remove_collision_exception_with(self)
 	
 	var throw_velocity = Vector3(0.0, 0.25, 0.25)
+	
 	if model.rotation_degrees.y == 0.0:
 		throw_velocity.z *= -1
-		entity_ref.velocity = throw_velocity *entity_ref.kick_force
-	else:
-		entity_ref.velocity = throw_velocity * entity_ref.kick_force
+		
+	entity_ref.velocity = velocity + (throw_velocity * entity_ref.kick_force)
 	
 	entity_ref = null
 	
