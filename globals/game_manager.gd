@@ -30,16 +30,19 @@ func discover_room(coords: Vector2i, room_data: Dictionary):
 func update_health(amount: int):
 	player_data["health"] = clampi(player_data["health"] + amount, 0, player_data["max_health"])
 	player_health_changed.emit(player_data["health"], player_data["max_health"])
-	
 	if player_data["health"] <= 0:
 		handle_player_death()
+
+func update_max_health(amount: int):
+	player_data["max_health"] += amount
+	player_data["health"] += amount
+	player_health_changed.emit(player_data["health"], player_data["max_health"])
 
 func unlock_ability(ability_name: String):
 	if not player_data["unlocked_abilities"].has(ability_name):
 		player_data["unlocked_abilities"].append(ability_name)
 		abilities_updated.emit(player_data["unlocked_abilities"])
-	
-	
+
 func save_game(room_path: String):
 	last_save_room_path = room_path
 	defeated_enemies.clear()

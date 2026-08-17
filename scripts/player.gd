@@ -15,8 +15,8 @@ var is_invincible: bool = false
 var health:int  = 100
 var attack_damage:int = 7
 
-var double_jump_unlocked = false
-var slide_unlocked = false
+var double_jump_unlocked := false
+var slide_unlocked := false
 
 var has_double_jumped := false
 
@@ -27,6 +27,11 @@ const JUMP_VELOCITY = 4.5
 
 func _ready() -> void:
 	health = GameManager.player_data["health"]
+	for ability in GameManager.player_data["unlocked_abilities"]:
+		if ability == "double_jump":
+			double_jump_unlocked = true
+		elif ability == "slide":
+			slide_unlocked = true
 	attack_area.monitoring = false
 
 func _physics_process(delta: float) -> void:
@@ -64,7 +69,14 @@ func _physics_process(delta: float) -> void:
 	
 	check_contact_damage()
 	
-	
+
+func unlock_ability(ability_name: String) -> void:
+	if ability_name == "double_jump":
+			double_jump_unlocked = true
+	elif ability_name == "slide":
+			slide_unlocked = true
+	GameManager.unlock_ability(ability_name)
+
 func check_contact_damage():
 	if is_invincible:
 		return	
