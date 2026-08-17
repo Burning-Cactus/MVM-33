@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://csyvxl4mgwqhi"]
+
+[ext_resource type="Script" uid="uid://dsgeol7jo3b7l" path="res://scripts/upgrade.gd" id="1_xsw34"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pj1qo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pj1qo"]
+
+[node name="Upgrade" type="Area3D" unique_id=522767488]
+collision_layer = 0
+script = ExtResource("1_xsw34")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1101097987]
+shape = SubResource("SphereShape3D_pj1qo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=131937280]
+mesh = SubResource("SphereMesh_pj1qo")

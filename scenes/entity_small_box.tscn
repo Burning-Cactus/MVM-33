@@ -22,9 +22,9 @@ shape = SubResource("BoxShape3D_5a2or")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1763919373]
 mesh = SubResource("BoxMesh_5a2or")
 
-[node name="Area3DInteract" type="Area3D" parent="." unique_id=906510517]
-collision_layer = 2
+[node name="InteractArea" type="Area3D" parent="." unique_id=906510517]
+collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DInteract" unique_id=1659870228]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=1659870228]
 shape = SubResource("BoxShape3D_7s81i")
