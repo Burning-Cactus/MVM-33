@@ -12,6 +12,9 @@ bottom_radius = 0.3
 height = 1.0
 radial_segments = 8
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
+size = Vector3(1, 1, 0.5)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
 [sub_resource type="Animation" id="Animation_4flbx"]
@@ -93,6 +96,14 @@ transform = Transform3D(1, 0, 0, 0, 0.0058293766, 0.999983, 0, -0.999983, 0.0058
 visible = false
 mesh = SubResource("CylinderMesh_i3pqv")
 
+[node name="InteractArea" type="Area3D" parent="Model" unique_id=32101662]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/InteractArea" unique_id=1358758455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_5a2or")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2006155022]
 shape = SubResource("CapsuleShape3D_4flbx")
 
@@ -105,3 +116,5 @@ libraries/ = SubResource("AnimationLibrary_i3pqv")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.0040283, 0.7928543, -0.102962494)
 
 [connection signal="body_entered" from="Model/AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="area_entered" from="Model/InteractArea" to="." method="_on_area_3d_interact_area_entered"]
+[connection signal="area_exited" from="Model/InteractArea" to="." method="_on_area_3d_interact_area_exited"]

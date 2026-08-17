@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dlri8ena2jr27"]
+
+[ext_resource type="Script" uid="uid://b2dwv6t11dl5f" path="res://rooms/room.gd" id="1_pf871"]
+[ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_nphml"]
+[ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="4_0i3dq"]
+[ext_resource type="PackedScene" uid="uid://bja3qkvwewil5" path="res://scenes/entity_small_box.tscn" id="4_4roqr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pf871"]
+sky_top_color = Color(0.8627451, 0.45490196, 0.54901963, 1)
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_bottom_color = Color(0.2, 0.39215687, 0.13333334, 1)
+ground_horizon_color = Color(0.6526098, 0.7084956, 0.33917916, 1)
+
+[sub_resource type="Sky" id="Sky_vvdcg"]
+sky_material = SubResource("ProceduralSkyMaterial_pf871")
+
+[sub_resource type="Environment" id="Environment_4roqr"]
+background_mode = 2
+sky = SubResource("Sky_vvdcg")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_fchnm"]
+size = Vector3(2, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ivqde"]
+size = Vector3(2, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61xuo"]
+size = Vector3(10, 10, 10)
+
+[node name="RoomBoxTest1" type="Node3D" unique_id=1900101943 groups=["Room"]]
+script = ExtResource("1_pf871")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2053102619]
+environment = SubResource("Environment_4roqr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1260187051]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.48235294, 1, 1, 1)
+shadow_enabled = true
+
+[node name="Foreground" type="Node3D" parent="." unique_id=1801071519]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Foreground" unique_id=1954477115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_fchnm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Foreground/MeshInstance3D" unique_id=266707127]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foreground/MeshInstance3D/StaticBody3D" unique_id=1664318441]
+shape = SubResource("BoxShape3D_ivqde")
+
+[node name="Exits" type="Node3D" parent="." unique_id=1666591865]
+
+[node name="Player" parent="." unique_id=1575609299 instance=ExtResource("3_nphml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9361154, 0)
+
+[node name="EntitySmallBox" parent="." unique_id=1843787825 instance=ExtResource("4_4roqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3)
+
+[node name="DiscoveryAreas" type="Node3D" parent="." unique_id=1991221447]
+
+[node name="DiscoveryArea" type="Area3D" parent="DiscoveryAreas" unique_id=1207523146]
+script = ExtResource("4_0i3dq")
+border_right = "Door"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryAreas/DiscoveryArea" unique_id=555130694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.881907, 0.02624607)
+shape = SubResource("BoxShape3D_61xuo")
+
+[connection signal="body_entered" from="DiscoveryAreas/DiscoveryArea" to="DiscoveryAreas/DiscoveryArea" method="_on_body_entered"]
