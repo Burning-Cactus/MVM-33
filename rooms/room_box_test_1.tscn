@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_nphml"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="4_0i3dq"]
 [ext_resource type="PackedScene" uid="uid://bja3qkvwewil5" path="res://scenes/entity_small_box.tscn" id="4_4roqr"]
+[ext_resource type="PackedScene" uid="uid://c82wlbhl33ewb" path="res://scenes/switches/pressure_switch.tscn" id="4_nphml"]
+[ext_resource type="PackedScene" uid="uid://c562xup0k7cob" path="res://scenes/door/gate_door.tscn" id="5_nphml"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pf871"]
 sky_top_color = Color(0.8627451, 0.45490196, 0.54901963, 1)
@@ -58,6 +60,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9361154, 0)
 
 [node name="EntitySmallBox" parent="." unique_id=1843787825 instance=ExtResource("4_4roqr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3)
+
+[node name="PressureSwitch" parent="." unique_id=135816738 instance=ExtResource("4_nphml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.7002392)
+switch_id = &"door_a"
+global = true
+
+[node name="GateDoor" parent="." unique_id=1631464605 instance=ExtResource("5_nphml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.255599)
+switch_id = &"door_a"
+global = true
 
 [node name="DiscoveryAreas" type="Node3D" parent="." unique_id=1991221447]
 

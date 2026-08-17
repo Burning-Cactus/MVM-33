@@ -4,6 +4,7 @@ signal player_health_changed(current_health, max_health)
 signal abilities_updated(unlocked_list)
 signal map_updated 
 signal game_saved
+signal switch_toggled(switch_id: StringName, is_on: bool)
 
 const CELL_SIZE = Vector2(32, 24) 
 const SAVE_FILE_PATH = "user://savegame.dat" # Secure local file path
@@ -14,6 +15,8 @@ var defeated_enemies: Array = []
 var permanent_flags: Array = [] #like bosses and upgrades and shit, so they don´t respawn
 var current_room_coords: Vector2i = Vector2i(0, 0)
 var last_save_room_path: String = "" 
+
+var switches: Dictionary[StringName, bool] = {}
 
 var player_data: Dictionary = {
 	"health": 100,
@@ -53,7 +56,8 @@ func save_game(room_path: String):
 			"last_save_room_path": last_save_room_path,
 			"player_data": player_data,
 			"explored_rooms": explored_rooms,
-			"permanent_flags": permanent_flags
+			"permanent_flags": permanent_flags,
+			"switches": switches,
 		}
 		
 		var json_string = JSON.stringify(save_dict)
@@ -87,6 +91,8 @@ func load_game() -> bool:
 				explored_rooms[coords] = save_data["explored_rooms"][str_key]
 				
 			target_door_id = "SAVE_POINT"
+			switches = save_data["switches"]
+			
 			get_tree().call_deferred("change_scene_to_file", last_save_room_path)
 			return true
 			
@@ -133,8 +139,14 @@ func register_player(player_node: CharacterBody3D):
 			
 	print("Warning: No matching door found for ID: ", target_door_id)
 	
-	
-	
+
+func toggle_switch(switch_id: StringName, is_on: bool):
+	if switches.has(switch_id) and switches[switch_id] == is_on:
+		return
+		
+	switches[switch_id] = is_on
+	switch_toggled.emit(switch_id, is_on)
+
 '''
 slop response regarding save/load functionality on itch.io, will need to test later
 1. How Godot Handles user:// 

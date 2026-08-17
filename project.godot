@@ -99,6 +99,7 @@ throw={
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Interact"
+3d_physics/layer_4="Entity"
 
 [physics]
 

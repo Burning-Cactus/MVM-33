@@ -10,6 +10,7 @@
 size = Vector3(1.2, 1.2, 1.2)
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1368598063 groups=["Entity"]]
+collision_layer = 9
 script = ExtResource("1_ati0t")
 can_kick = true
 can_push = true

@@ -79,6 +79,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=1575609299 groups=["Player"]]
+collision_layer = 3
 script = ExtResource("1_4flbx")
 
 [node name="Model" type="MeshInstance3D" parent="." unique_id=1500403010]

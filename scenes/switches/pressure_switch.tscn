@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c82wlbhl33ewb"]
+
+[ext_resource type="Script" uid="uid://bbm2yxyyw237i" path="res://scripts/switches/pressure_switch.gd" id="1_6yn02"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
+size = Vector3(1.5, 0.2, 1.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7s81i"]
+top_radius = 0.75
+bottom_radius = 0.75
+height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
+size = Vector3(1.5, 0.22, 1.5)
+
+[node name="PressureSwitch" type="StaticBody3D" unique_id=1229743564]
+script = ExtResource("1_6yn02")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=614672197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_5a2or")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1871446065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("CylinderMesh_7s81i")
+
+[node name="TriggerArea" type="Area3D" parent="." unique_id=1980350747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=1412094541]
+shape = SubResource("BoxShape3D_7s81i")
