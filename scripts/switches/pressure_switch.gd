@@ -7,7 +7,7 @@ class_name PressureSwitch
 @onready var trigger_area: Area3D = $TriggerArea
 
 var _start_y: float
-var _entities: Dictionary = {}
+var _entities: Array[Node3D] = []
 
 func _ready() -> void:
 	super._ready()
@@ -27,11 +27,14 @@ func _physics_process(delta: float) -> void:
 	
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player or body is Entity:
-		_entities[body.get_instance_id()] = body
+		if not _entities.has(body):
+			_entities.append(body)
 		toggle_on()
 	
 func _on_body_exited(body: Node3D) -> void:
 	if body is Player or body is Entity:
-		_entities.erase(body.get_instance_id())
+		if _entities.has(body):
+			_entities.erase(body)
+			
 		if _entities.size() == 0:
 			toggle_off()

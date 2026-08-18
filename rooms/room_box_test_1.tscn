@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c562xup0k7cob" path="res://scenes/door/gate_door.tscn" id="5_nphml"]
 [ext_resource type="PackedScene" uid="uid://c4jcpcm53svty" path="res://scenes/switches/wall_lever_switch.tscn" id="6_0i3dq"]
 [ext_resource type="PackedScene" uid="uid://b4bgx1mtuw0wc" path="res://scenes/switches/floor_lever_switch.tscn" id="7_fchnm"]
+[ext_resource type="PackedScene" uid="uid://chouojtrsyrvv" path="res://scenes/platform/small_collapsible_platform.tscn" id="8_ivqde"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pf871"]
 sky_top_color = Color(0.8627451, 0.45490196, 0.54901963, 1)
@@ -78,6 +79,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.9331174)
 
 [node name="FloorLeverSwitch" parent="." unique_id=1345631147 instance=ExtResource("7_fchnm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.3831363)
+
+[node name="SmallCollapsablePlatform" parent="." unique_id=122289592 instance=ExtResource("8_ivqde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2495034, -3.750421)
+
+[node name="SmallCollapsablePlatform2" parent="." unique_id=56075730 instance=ExtResource("8_ivqde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5474665, -6.2986584)
 
 [node name="DiscoveryAreas" type="Node3D" parent="." unique_id=1991221447]
 

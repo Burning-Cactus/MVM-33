@@ -24,12 +24,12 @@ var input_disabled:bool = false
 
 const PICKUP_SPEED: float = 2
 const PICKUP_OFFSET: Vector3 = Vector3(0, 0, 0.2)
-var _entities: Dictionary = {}
+var _entities: Array[Node3D] = []
 var entity_ref: Entity = null
 var _entity_position: Vector3 = Vector3.ZERO
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 5.0
 
 func _ready() -> void:
 	health = GameManager.player_data["health"]
@@ -180,15 +180,17 @@ func _push_entity() -> void:
 func _on_area_3d_interact_area_entered(area: Area3D) -> void:
 	var parent = area.get_parent()
 	if parent is Entity and parent != entity_ref:
-		_entities[parent.get_instance_id()] = parent
+		if not _entities.has(parent):
+			_entities.append(parent)
 	
 func _on_area_3d_interact_area_exited(area: Area3D) -> void:
 	var parent = area.get_parent()
 	if parent is Entity and parent != entity_ref:
-		_entities.erase(parent.get_instance_id())
+		if _entities.has(parent):
+			_entities.erase(parent)
 	
 func _kick__entities() -> void:
-	for entity in _entities.values():
+	for entity in _entities:
 		if not entity.can_kick:
 			continue
 	
@@ -198,24 +200,21 @@ func _kick__entities() -> void:
 			entity.velocity.z += entity.kick_force
 
 func _pickup_entity() -> void:
-	if _entities.is_empty():
+	if _entities.is_empty() or entity_ref != null:
 		return
-	
-	var entity_key = null
-	
-	for key in _entities.keys():
-		if not _entities[key].can_pickup:
+		
+	for entity in _entities:
+		if not entity.can_pickup:
 			continue
 	
-		entity_key = key
+		entity_ref = entity
 		break
 
-	if entity_key == null:
+	if entity_ref == null:
 		return
 	
-	entity_ref = _entities[entity_key]
 	entity_ref.disabled = true
-	_entities.erase(entity_key)
+	_entities.erase(entity_ref)
 	
 	add_collision_exception_with(entity_ref)
 	entity_ref.add_collision_exception_with(self)
@@ -240,7 +239,7 @@ func _drop_entity() -> void:
 		return
 	
 	entity_ref.reparent(get_tree().get_first_node_in_group(&"Room"), true)
-	_entities[entity_ref.get_instance_id()] = entity_ref
+	_entities.append(entity_ref)
 	entity_ref.disabled = false
 	
 	remove_collision_exception_with(entity_ref)
@@ -253,7 +252,7 @@ func _throw_entity() -> void:
 		return
 	
 	entity_ref.reparent(get_tree().get_first_node_in_group(&"Room"), true)
-	_entities[entity_ref.get_instance_id()] = entity_ref
+	_entities.append(entity_ref)
 	entity_ref.disabled = false
 	
 	remove_collision_exception_with(entity_ref)

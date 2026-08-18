@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://chouojtrsyrvv"]
+
+[ext_resource type="Script" uid="uid://dangcgnq540n5" path="res://scenes/platform/small_collapsible_platform.gd" id="1_aftp0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
+size = Vector3(2, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5a2or"]
+size = Vector3(2, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
+size = Vector3(2, 0.22, 0.98)
+
+[node name="SmallCollapsiblePlatform" type="StaticBody3D" unique_id=122289592]
+script = ExtResource("1_aftp0")
+collapse_delay = 1.0
+restore_delay = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=456576863]
+shape = SubResource("BoxShape3D_5a2or")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1789649713]
+mesh = SubResource("BoxMesh_5a2or")
+
+[node name="TriggerArea" type="Area3D" parent="." unique_id=1929677956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=868673510]
+shape = SubResource("BoxShape3D_7s81i")

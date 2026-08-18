@@ -36,7 +36,6 @@ func _on_body_exited(body: Node3D) -> void:
 		close_door()
 		
 func _on_switch_toggled(switch_id_: StringName, is_on: bool) -> void:
-	print(switch_id)
 	if switch_id_ == switch_id:
 		if is_on:
 			open_door()
