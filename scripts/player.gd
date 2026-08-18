@@ -24,9 +24,9 @@ var input_disabled:bool = false
 
 const PICKUP_SPEED: float = 2
 const PICKUP_OFFSET: Vector3 = Vector3(0, 0, 0.2)
-var entities: Dictionary = {}
+var _entities: Dictionary = {}
 var entity_ref: Entity = null
-var entity_position: Vector3 = Vector3.ZERO
+var _entity_position: Vector3 = Vector3.ZERO
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 			handle_attack()
 
 		if Input.is_action_just_pressed("kick") and is_on_floor():
-			_kick_entities()
+			_kick__entities()
 
 		var input_dir := Input.get_vector("right", "left", "up", "down")
 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -76,8 +76,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.z = move_toward(velocity.x, 0, SPEED)
 
-	if entity_ref != null and entity_ref.position != entity_position:
-		entity_ref.position = entity_ref.position.move_toward(entity_position, PICKUP_SPEED * delta)
+	if entity_ref != null and entity_ref.position != _entity_position:
+		entity_ref.position = entity_ref.position.move_toward(_entity_position, PICKUP_SPEED * delta)
 
 	velocity.x = 0
 	global_position.x = 0
@@ -180,15 +180,15 @@ func _push_entity() -> void:
 func _on_area_3d_interact_area_entered(area: Area3D) -> void:
 	var parent = area.get_parent()
 	if parent is Entity and parent != entity_ref:
-		entities[parent.get_instance_id()] = parent
+		_entities[parent.get_instance_id()] = parent
 	
 func _on_area_3d_interact_area_exited(area: Area3D) -> void:
 	var parent = area.get_parent()
 	if parent is Entity and parent != entity_ref:
-		entities.erase(parent.get_instance_id())
+		_entities.erase(parent.get_instance_id())
 	
-func _kick_entities() -> void:
-	for entity in entities.values():
+func _kick__entities() -> void:
+	for entity in _entities.values():
 		if not entity.can_kick:
 			continue
 	
@@ -198,13 +198,13 @@ func _kick_entities() -> void:
 			entity.velocity.z += entity.kick_force
 
 func _pickup_entity() -> void:
-	if entities.is_empty():
+	if _entities.is_empty():
 		return
 	
 	var entity_key = null
 	
-	for key in entities.keys():
-		if not entities[key].can_pickup:
+	for key in _entities.keys():
+		if not _entities[key].can_pickup:
 			continue
 	
 		entity_key = key
@@ -213,9 +213,9 @@ func _pickup_entity() -> void:
 	if entity_key == null:
 		return
 	
-	entity_ref = entities[entity_key]
+	entity_ref = _entities[entity_key]
 	entity_ref.disabled = true
-	entities.erase(entity_key)
+	_entities.erase(entity_key)
 	
 	add_collision_exception_with(entity_ref)
 	entity_ref.add_collision_exception_with(self)
@@ -225,22 +225,22 @@ func _pickup_entity() -> void:
 	var entity_size = entity_ref.get_size()
 	var player_size = get_size()
 	
-	entity_position = Vector3(
+	_entity_position = Vector3(
 		0,
 		0,
 		(player_size.z / 2) + (entity_size.z / 2),
 	)
 	
-	entity_position += PICKUP_OFFSET
+	_entity_position += PICKUP_OFFSET
 	
-	entity_position.z *= -1
+	_entity_position.z *= -1
 	
 func _drop_entity() -> void:
 	if entity_ref == null:
 		return
 	
 	entity_ref.reparent(get_tree().get_first_node_in_group(&"Room"), true)
-	entities[entity_ref.get_instance_id()] = entity_ref
+	_entities[entity_ref.get_instance_id()] = entity_ref
 	entity_ref.disabled = false
 	
 	remove_collision_exception_with(entity_ref)
@@ -249,11 +249,11 @@ func _drop_entity() -> void:
 	entity_ref = null
 	
 func _throw_entity() -> void:
-	if entity_ref == null or not entity_ref.can_throw or entity_ref.position != entity_position:
+	if entity_ref == null or not entity_ref.can_throw or entity_ref.position != _entity_position:
 		return
 	
 	entity_ref.reparent(get_tree().get_first_node_in_group(&"Room"), true)
-	entities[entity_ref.get_instance_id()] = entity_ref
+	_entities[entity_ref.get_instance_id()] = entity_ref
 	entity_ref.disabled = false
 	
 	remove_collision_exception_with(entity_ref)

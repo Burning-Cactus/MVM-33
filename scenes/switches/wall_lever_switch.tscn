@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c4jcpcm53svty"]
+
+[ext_resource type="Script" uid="uid://ddn1pgna42iv4" path="res://scripts/switches/lever_switch.gd" id="1_tugex"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
+size = Vector3(0.2, 0.5, 0.35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5a2or"]
+size = Vector3(0.2, 0.5, 0.35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7s81i"]
+size = Vector3(0.5, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
+size = Vector3(1, 1.5, 1.5)
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=5601952]
+script = ExtResource("1_tugex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=832130791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0.75, 0)
+shape = SubResource("BoxShape3D_5a2or")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=532519714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0.75, 0)
+mesh = SubResource("BoxMesh_5a2or")
+
+[node name="Lever" type="Node3D" parent="." unique_id=1862844759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0.75, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lever" unique_id=591007411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+mesh = SubResource("BoxMesh_7s81i")
+
+[node name="TriggerArea" type="Area3D" parent="." unique_id=175316869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=1504745595]
+shape = SubResource("BoxShape3D_7s81i")

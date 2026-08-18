@@ -6,13 +6,13 @@ class_name PressureSwitch
 
 @onready var trigger_area: Area3D = $TriggerArea
 
-var start_y: float
-var entities: Dictionary = {}
+var _start_y: float
+var _entities: Dictionary = {}
 
 func _ready() -> void:
 	super._ready()
 	
-	start_y = position.y
+	_start_y = position.y
 	if is_on:
 		position.y -= depression_amount
 		
@@ -20,18 +20,18 @@ func _ready() -> void:
 	trigger_area.body_exited.connect(_on_body_exited)
 	
 func _physics_process(delta: float) -> void:
-	if is_on and not is_equal_approx(position.y, start_y - depression_amount):
-		position.y = move_toward(position.y, start_y - depression_amount, depression_rate * delta)
-	elif not is_on and not is_equal_approx(position.y, start_y):
-		position.y = move_toward(position.y, start_y, depression_rate * delta)
+	if is_on and not is_equal_approx(position.y, _start_y - depression_amount):
+		position.y = move_toward(position.y, _start_y - depression_amount, depression_rate * delta)
+	elif not is_on and not is_equal_approx(position.y, _start_y):
+		position.y = move_toward(position.y, _start_y, depression_rate * delta)
 	
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player or body is Entity:
-		entities[body.get_instance_id()] = body
+		_entities[body.get_instance_id()] = body
 		toggle_on()
 	
 func _on_body_exited(body: Node3D) -> void:
 	if body is Player or body is Entity:
-		entities.erase(body.get_instance_id())
-		if entities.size() == 0:
+		_entities.erase(body.get_instance_id())
+		if _entities.size() == 0:
 			toggle_off()

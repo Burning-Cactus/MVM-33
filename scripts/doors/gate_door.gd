@@ -6,12 +6,12 @@ class_name GateDoor
 
 @onready var trigger_area: Area3D = $TriggerArea
 
-var start_y: float
+var _start_y: float
 
 func _ready() -> void:
 	super._ready()
 	
-	start_y = position.y
+	_start_y = position.y
 	if is_open:
 		position.y -= raise_amount
 	
@@ -22,10 +22,10 @@ func _ready() -> void:
 		GameManager.switch_toggled.connect(_on_switch_toggled)
 	
 func _physics_process(delta: float) -> void:
-	if is_open and not is_equal_approx(position.y, start_y + raise_amount):
-		position.y = move_toward(position.y, start_y + raise_amount, raise_rate * delta)
-	elif not is_open and not is_equal_approx(position.y, start_y):
-		position.y = move_toward(position.y, start_y, raise_rate * delta)
+	if is_open and not is_equal_approx(position.y, _start_y + raise_amount):
+		position.y = move_toward(position.y, _start_y + raise_amount, raise_rate * delta)
+	elif not is_open and not is_equal_approx(position.y, _start_y):
+		position.y = move_toward(position.y, _start_y, raise_rate * delta)
 	
 func _on_body_entered(body: Node3D) -> void:
 	if switch_id == &"" and body is Player:
