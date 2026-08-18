@@ -18,9 +18,6 @@ func _ready() -> void:
 	trigger_area.body_entered.connect(_on_body_entered)
 	trigger_area.body_exited.connect(_on_body_exited)
 	
-	if switch_id and global:
-		GameManager.switch_toggled.connect(_on_switch_toggled)
-	
 func _physics_process(delta: float) -> void:
 	if is_open and not is_equal_approx(position.y, _start_y + raise_amount):
 		position.y = move_toward(position.y, _start_y + raise_amount, raise_rate * delta)
@@ -34,10 +31,3 @@ func _on_body_entered(body: Node3D) -> void:
 func _on_body_exited(body: Node3D) -> void:
 	if switch_id == &"" and body is Player:
 		close_door()
-		
-func _on_switch_toggled(switch_id_: StringName, is_on: bool) -> void:
-	if switch_id_ == switch_id:
-		if is_on:
-			open_door()
-		else:
-			close_door()

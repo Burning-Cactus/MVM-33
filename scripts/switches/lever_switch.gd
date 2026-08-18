@@ -17,6 +17,9 @@ func _ready() -> void:
 		
 	if switch_id and global:
 		is_on = GameManager.switches.get(switch_id, false)
+		
+		# Should two switches point to the same id, ensure they are synced
+		GameManager.switch_toggled.connect(_on_switch_toggled)
 	
 	if is_on:
 		lever.rotation_degrees = _start_angle + lever_angle 
@@ -53,3 +56,7 @@ func _on_body_entered(body: Node3D) -> void:
 func _on_body_exited(body: Node3D) -> void:
 	if body is Player:
 		_player = null
+
+func _on_switch_toggled(switch_id_: StringName, is_on_: bool) -> void:
+	if switch_id_ == switch_id:
+		is_on = is_on_

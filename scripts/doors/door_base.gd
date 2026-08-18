@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends AnimatableBody3D
 class_name Door
 
 @export var switch_id: StringName = &""

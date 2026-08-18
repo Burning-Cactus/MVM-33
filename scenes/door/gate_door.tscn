@@ -11,7 +11,7 @@ size = Vector3(2, 3, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
 size = Vector3(1, 1, 2)
 
-[node name="GateDoor" type="StaticBody3D" unique_id=1419991455]
+[node name="GateDoor" type="AnimatableBody3D" unique_id=94063217]
 script = ExtResource("1_i3agq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=338136695]
