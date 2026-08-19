@@ -43,8 +43,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	else:
-		_push_entity()
 
 	if input_disabled and is_on_floor():
 		velocity.z = 0
@@ -84,6 +82,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	check_contact_damage()
+	
+	_push_rigid_body()
 
 	# This needs to be after move_and_slide() to prevent wierd collision issues
 	if not input_disabled:
@@ -152,31 +152,80 @@ func _on_attack_area_body_entered(body: Node3D) -> void:
 	if body.has_method("take_damage") and body != self:
 		body.take_damage(attack_damage,global_position.z)
 
-func _push_entity() -> void:
+func _push_rigid_body() -> void:
+	var ropes: Array[RopeBase] = []
+	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 
-		if not collider is Entity or not collider.can_push:
-			continue
+		if collider is Entity:
+			_push_entity(collision, collider)
+		elif collider is RigidBody3D:
+			var parent: Node = collider.get_parent()
+			if parent is RopeBase and not ropes.has(parent):
+				ropes.append(parent)
+				_push_rope(collision, collider)
 
-		var push_dir = -collision.get_normal()
+func _push_entity(
+	collision: KinematicCollision3D,
+	body: Entity,
+) -> void:
+	if not is_on_floor():
+		return
+		
+	if not body is Entity or not body.can_push:
+		return
 
-		# Limit y direction so jumping on box doesn't push it
-		if push_dir.y > 0.4 or push_dir.y < -0.4:
-			continue
+	var push_dir = -collision.get_normal()
 
-		# Only want left and right
-		push_dir.y = 0.0
-		push_dir.x = 0.0
+	# Limit y direction so jumping on box doesn't push it
+	if push_dir.y > 0.4 or push_dir.y < -0.4:
+		return
 
-		push_dir = push_dir.normalized()
+	# Only want left and right
+	push_dir.y = 0.0
+	push_dir.x = 0.0
 
-		if push_dir.length_squared() < 0.01:
-			continue
+	push_dir = push_dir.normalized()
 
-		collider.velocity += push_dir * collider.push_force
+	if push_dir.length_squared() < 0.01:
+		return
 
+	body.velocity += push_dir * body.push_force
+	
+func _push_rope(
+	collision: KinematicCollision3D,
+	body: RigidBody3D,
+) -> void:
+	# TODO: This still needs tweaking
+	var push_direction := -collision.get_normal()
+
+	push_direction.x = 0.0
+
+	if push_direction.length_squared() < 0.001:
+		return
+	
+	if push_direction.z >= 0.0 and push_direction.z < 0.7:
+		push_direction.z = 0.7
+	elif push_direction.z < 0.0 and push_direction.z > -0.7   :
+		push_direction.z = -0.7
+	
+	push_direction = push_direction.normalized()
+
+	var push_speed := velocity.dot(push_direction)
+
+	if push_speed <= 0.0:
+		push_speed = 0.5 
+
+	var push_force: float = push_speed * body.get_parent().push_force
+
+	push_force = maxf(0.5 * push_force, push_force)
+
+	body.apply_central_impulse(
+		push_direction * push_force
+	)
+	
 func _on_area_3d_interact_area_entered(area: Area3D) -> void:
 	var parent = area.get_parent()
 	if parent is Entity and parent != entity_ref:
