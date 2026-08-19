@@ -1,5 +1,5 @@
 extends StaticBody3D
-class_name CollapsiblePlatformBase
+class_name PlatformCollapsibleBase
 
 @export var collapse_delay: float = 1.5
 @export var restore_delay: float = 0.0

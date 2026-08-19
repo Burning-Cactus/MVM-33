@@ -37,6 +37,8 @@ func generate_chain() -> void:
 		segment.angular_damp = angular_damp
 		segment.gravity_scale = gravity_scale
 		segment.axis_lock_linear_x = true
+		segment.axis_lock_angular_y = true
+		segment.axis_lock_angular_z = true
 		segment.continuous_cd = true
 		segment.can_sleep = false
 

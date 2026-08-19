@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://b2dwv6t11dl5f" path="res://rooms/room.gd" id="1_pf871"]
 [ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_nphml"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="4_0i3dq"]
-[ext_resource type="PackedScene" uid="uid://bja3qkvwewil5" path="res://scenes/entity_small_box.tscn" id="4_4roqr"]
-[ext_resource type="PackedScene" uid="uid://c82wlbhl33ewb" path="res://scenes/switches/pressure_switch.tscn" id="4_nphml"]
-[ext_resource type="PackedScene" uid="uid://c562xup0k7cob" path="res://scenes/doors/gate_door.tscn" id="5_nphml"]
-[ext_resource type="PackedScene" uid="uid://c4jcpcm53svty" path="res://scenes/switches/wall_lever_switch.tscn" id="6_0i3dq"]
-[ext_resource type="PackedScene" uid="uid://b4bgx1mtuw0wc" path="res://scenes/switches/floor_lever_switch.tscn" id="7_fchnm"]
-[ext_resource type="PackedScene" uid="uid://dhjsjllwdbsce" path="res://scenes/platform/elevating_platform.tscn" id="8_61xuo"]
-[ext_resource type="PackedScene" uid="uid://chouojtrsyrvv" path="res://scenes/platform/small_collapsible_platform.tscn" id="8_ivqde"]
+[ext_resource type="PackedScene" uid="uid://bja3qkvwewil5" path="res://scenes/entities/entity_small_box.tscn" id="4_4roqr"]
+[ext_resource type="PackedScene" uid="uid://c82wlbhl33ewb" path="res://scenes/switches/switch_pressure.tscn" id="4_nphml"]
+[ext_resource type="PackedScene" uid="uid://c562xup0k7cob" path="res://scenes/doors/door_gate.tscn" id="5_nphml"]
+[ext_resource type="PackedScene" uid="uid://c4jcpcm53svty" path="res://scenes/switches/switch_wall_lever.tscn" id="6_0i3dq"]
+[ext_resource type="PackedScene" uid="uid://b4bgx1mtuw0wc" path="res://scenes/switches/switch_floor_lever.tscn" id="7_fchnm"]
+[ext_resource type="PackedScene" uid="uid://dhjsjllwdbsce" path="res://scenes/platform/platform_elevating.tscn" id="8_61xuo"]
+[ext_resource type="PackedScene" uid="uid://chouojtrsyrvv" path="res://scenes/platform/platform_small_collapsible.tscn" id="8_ivqde"]
 [ext_resource type="PackedScene" uid="uid://b3pcnqgvj6d5v" path="res://scenes/climbers/rope.tscn" id="10_sgt7c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pf871"]
@@ -66,35 +66,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9361154, -1.9462705)
 [node name="EntitySmallBox" parent="." unique_id=1843787825 instance=ExtResource("4_4roqr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.6473353)
 
-[node name="PressureSwitch" parent="." unique_id=135816738 instance=ExtResource("4_nphml")]
+[node name="SwitchPressure" parent="." unique_id=135816738 instance=ExtResource("4_nphml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.7002392)
 switch_id = &"door_a"
 global = true
 
-[node name="GateDoor" parent="." unique_id=1631464605 instance=ExtResource("5_nphml")]
+[node name="DoorGate" parent="." unique_id=1631464605 instance=ExtResource("5_nphml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.255599)
 switch_id = &"door_a"
 global = true
 
-[node name="WallLeverSwitch" parent="." unique_id=2010190428 instance=ExtResource("6_0i3dq")]
+[node name="SwitchWallLever" parent="." unique_id=2010190428 instance=ExtResource("6_0i3dq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.73558)
 switch_id = &"elevator_a"
 global = true
 
-[node name="SmallCollapsablePlatform" parent="." unique_id=122289592 instance=ExtResource("8_ivqde")]
+[node name="PlatformSmallCollapsable" parent="." unique_id=122289592 instance=ExtResource("8_ivqde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2495034, -3.750421)
 
-[node name="SmallCollapsablePlatform2" parent="." unique_id=56075730 instance=ExtResource("8_ivqde")]
+[node name="PlatformSmallCollapsable2" parent="." unique_id=56075730 instance=ExtResource("8_ivqde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5474665, -6.2986584)
 
-[node name="ElevatingPlatform" parent="." unique_id=730736805 instance=ExtResource("8_61xuo")]
+[node name="PlatformElevating" parent="." unique_id=730736805 instance=ExtResource("8_61xuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
 switch_id = &"elevator_a"
 global = true
 raised_position = Vector3(0, 8, -11)
 lowered_position = Vector3(0, 0, -11)
 
-[node name="FloorLeverSwitch" parent="ElevatingPlatform" unique_id=1345631147 instance=ExtResource("7_fchnm")]
+[node name="SwitchFloorLever" parent="PlatformElevating" unique_id=1345631147 instance=ExtResource("7_fchnm")]
 switch_id = &"elevator_a"
 global = true
 

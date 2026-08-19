@@ -1,4 +1,4 @@
-extends CollapsiblePlatformBase
+extends PlatformCollapsibleBase
 
 func collapse() -> void:
 	super.collapse()

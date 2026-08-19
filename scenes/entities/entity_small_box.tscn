@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bja3qkvwewil5"]
 
-[ext_resource type="Script" uid="uid://c3uv36x465tgq" path="res://scripts/entity_base.gd" id="1_ati0t"]
+[ext_resource type="Script" uid="uid://c3uv36x465tgq" path="res://scripts/entities/entity_base.gd" id="1_ati0t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
 
@@ -9,8 +9,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
 size = Vector3(1.2, 1.2, 1.2)
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1368598063 groups=["Entity"]]
+[node name="EntitySmallBox" type="RigidBody3D" unique_id=1231853490]
 collision_layer = 9
+mass = 10.0
 script = ExtResource("1_ati0t")
 can_kick = true
 can_push = true
@@ -24,7 +25,7 @@ shape = SubResource("BoxShape3D_5a2or")
 mesh = SubResource("BoxMesh_5a2or")
 
 [node name="InteractArea" type="Area3D" parent="." unique_id=906510517]
-collision_layer = 4
+collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=1659870228]

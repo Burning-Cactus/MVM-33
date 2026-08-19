@@ -17,6 +17,8 @@ size = Vector3(1, 1, 0.5)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
+
 [sub_resource type="Animation" id="Animation_4flbx"]
 length = 0.001
 tracks/0/type = "value"
@@ -99,7 +101,7 @@ mesh = SubResource("CylinderMesh_i3pqv")
 
 [node name="InteractArea" type="Area3D" parent="Model" unique_id=32101662]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/InteractArea" unique_id=1358758455]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
@@ -107,6 +109,10 @@ shape = SubResource("BoxShape3D_5a2or")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2006155022]
 shape = SubResource("CapsuleShape3D_4flbx")
+
+[node name="EntityCollisionShape3D" type="CollisionShape3D" parent="." unique_id=127111701]
+shape = SubResource("BoxShape3D_7s81i")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2037548390]
 libraries/ = SubResource("AnimationLibrary_i3pqv")

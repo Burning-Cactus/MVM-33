@@ -8,6 +8,7 @@ class_name Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var model: MeshInstance3D = $Model
 @onready var attack_area: Area3D = $Model/AttackArea
+@onready var entity_collision: CollisionShape3D = $EntityCollisionShape3D
 
 @onready var damage_timer: Timer = $DamageTimer
 var is_invincible: bool = false
@@ -60,22 +61,32 @@ func _physics_process(delta: float) -> void:
 			handle_attack()
 
 		if Input.is_action_just_pressed("kick") and is_on_floor():
-			_kick__entities()
+			_kick_entities()
 
 		var input_dir := Input.get_vector("right", "left", "up", "down")
 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
 			if direction.x>0:
-				model.rotation_degrees.y=180
+				model.rotation_degrees.y = 180
+				if entity_ref != null:
+					entity_collision.position.z = absf(entity_collision.position.z)
 			else:
-				model.rotation_degrees.y=0
+				model.rotation_degrees.y = 0
+				if entity_ref != null:
+					entity_collision.position.z = absf(entity_collision.position.z) * -1.0
 
 			velocity.z = direction.x * SPEED
 		else:
 			velocity.z = move_toward(velocity.x, 0, SPEED)
 
-	if entity_ref != null and entity_ref.position != _entity_position:
+	if entity_ref != null and not entity_ref.position.is_equal_approx(_entity_position):
 		entity_ref.position = entity_ref.position.move_toward(_entity_position, PICKUP_SPEED * delta)
+		entity_collision.position = entity_ref.position
+	
+		if model.rotation_degrees.y == 180:
+			entity_collision.position.z = absf(entity_collision.position.z)
+		else:
+			entity_collision.position.z = absf(entity_collision.position.z) * -1
 
 	velocity.x = 0
 	global_position.x = 0
@@ -192,28 +203,30 @@ func _push_entity(
 	if push_dir.length_squared() < 0.01:
 		return
 
-	body.velocity += push_dir * body.push_force
+	body.apply_central_impulse(
+		push_dir * body.push_force
+	)
 	
 func _push_rope(
 	collision: KinematicCollision3D,
 	body: RigidBody3D,
 ) -> void:
 	# TODO: This still needs tweaking
-	var push_direction := -collision.get_normal()
+	var push_dir := -collision.get_normal()
 
-	push_direction.x = 0.0
+	push_dir.x = 0.0
 
-	if push_direction.length_squared() < 0.001:
+	if push_dir.length_squared() < 0.001:
 		return
 	
-	if push_direction.z >= 0.0 and push_direction.z < 0.7:
-		push_direction.z = 0.7
-	elif push_direction.z < 0.0 and push_direction.z > -0.7   :
-		push_direction.z = -0.7
+	if push_dir.z >= 0.0 and push_dir.z < 0.7:
+		push_dir.z = 0.7
+	elif push_dir.z < 0.0 and push_dir.z > -0.7   :
+		push_dir.z = -0.7
 	
-	push_direction = push_direction.normalized()
+	push_dir = push_dir.normalized()
 
-	var push_speed := velocity.dot(push_direction)
+	var push_speed := velocity.dot(push_dir)
 
 	if push_speed <= 0.0:
 		push_speed = 0.5 
@@ -223,7 +236,7 @@ func _push_rope(
 	push_force = maxf(0.5 * push_force, push_force)
 
 	body.apply_central_impulse(
-		push_direction * push_force
+		push_dir * push_force
 	)
 	
 func _on_area_3d_interact_area_entered(area: Area3D) -> void:
@@ -238,20 +251,10 @@ func _on_area_3d_interact_area_exited(area: Area3D) -> void:
 		if _entities.has(parent):
 			_entities.erase(parent)
 	
-func _kick__entities() -> void:
-	for entity in _entities:
-		if not entity.can_kick:
-			continue
-	
-		if model.rotation_degrees.y == 0.0:
-			entity.velocity.z -= entity.kick_force
-		else:
-			entity.velocity.z += entity.kick_force
-
 func _pickup_entity() -> void:
 	if _entities.is_empty() or entity_ref != null:
 		return
-		
+	
 	for entity in _entities:
 		if not entity.can_pickup:
 			continue
@@ -262,13 +265,13 @@ func _pickup_entity() -> void:
 	if entity_ref == null:
 		return
 	
-	entity_ref.disabled = true
 	_entities.erase(entity_ref)
 	
 	add_collision_exception_with(entity_ref)
 	entity_ref.add_collision_exception_with(self)
 	
 	entity_ref.reparent(model, true)
+	entity_ref.freeze = true
 	
 	var entity_size = entity_ref.get_size()
 	var player_size = get_size()
@@ -283,36 +286,63 @@ func _pickup_entity() -> void:
 	
 	_entity_position.z *= -1
 	
+	entity_collision.position = entity_ref.position
+	entity_collision.shape = entity_ref.collision.shape.duplicate()
+	entity_collision.disabled = false
+	
 func _drop_entity() -> void:
 	if entity_ref == null:
 		return
+
+	entity_collision.disabled = true
 	
 	entity_ref.reparent(get_tree().get_first_node_in_group(&"Room"), true)
 	_entities.append(entity_ref)
-	entity_ref.disabled = false
+	entity_ref.freeze = false
 	
 	remove_collision_exception_with(entity_ref)
 	entity_ref.remove_collision_exception_with(self)
 	
+	entity_ref.apply_central_impulse(
+		velocity
+	)
 	entity_ref = null
+
+func _kick_entities() -> void:
+	for entity in _entities:
+		if not entity.can_kick:
+			continue
 	
+		if model.rotation_degrees.y == 0.0:
+			entity.apply_central_impulse(
+				Vector3(0, 0, -entity.kick_force)
+			)
+		else:
+			entity.apply_central_impulse(
+				Vector3(0, 0, entity.kick_force)
+			)
+
 func _throw_entity() -> void:
-	if entity_ref == null or not entity_ref.can_throw or entity_ref.position != _entity_position:
+	if entity_ref == null or not entity_ref.can_throw or not entity_ref.position.is_equal_approx(_entity_position):
 		return
 	
+	entity_collision.disabled = true
+	
 	entity_ref.reparent(get_tree().get_first_node_in_group(&"Room"), true)
 	_entities.append(entity_ref)
-	entity_ref.disabled = false
+	entity_ref.freeze = false
 	
 	remove_collision_exception_with(entity_ref)
 	entity_ref.remove_collision_exception_with(self)
 	
-	var throw_velocity = Vector3(0.0, 0.25, 0.25)
+	var throw_dir = Vector3(0.0, 1.0, 1.0).normalized()
 	
 	if model.rotation_degrees.y == 0.0:
-		throw_velocity.z *= -1
-		
-	entity_ref.velocity = velocity + (throw_velocity * entity_ref.kick_force)
+		throw_dir.z *= -1
+	
+	entity_ref.apply_central_impulse(
+		velocity + (throw_dir * entity_ref.throw_force)
+	)
 	
 	entity_ref = null
 	

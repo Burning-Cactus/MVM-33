@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chouojtrsyrvv"]
 
-[ext_resource type="Script" uid="uid://dangcgnq540n5" path="res://scenes/platform/small_collapsible_platform.gd" id="1_aftp0"]
+[ext_resource type="Script" uid="uid://dangcgnq540n5" path="res://scenes/platform/platform_small_collapsible.gd" id="1_aftp0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
 size = Vector3(2, 0.2, 1)
@@ -11,7 +11,7 @@ size = Vector3(2, 0.2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
 size = Vector3(2, 0.22, 0.98)
 
-[node name="SmallCollapsiblePlatform" type="StaticBody3D" unique_id=122289592]
+[node name="PlatformSmallCollapsible" type="StaticBody3D" unique_id=122289592]
 script = ExtResource("1_aftp0")
 collapse_delay = 1.0
 restore_delay = 2.0
