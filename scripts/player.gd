@@ -21,7 +21,7 @@ class_name Player
 @onready var damage_timer: Timer = $DamageTimer
 var is_invincible: bool = false
 
-var health:int  = 100
+var player_data: PlayerData
 var attack_damage:int = 7
 
 var double_jump_unlocked := false
@@ -56,8 +56,8 @@ enum PlayerState {
 var state: PlayerState = PlayerState.NORMAL
 
 func _ready() -> void:
-	health = GameManager.player_data["health"]
-	for ability in GameManager.player_data["unlocked_abilities"]:
+	player_data = GameManager.player_data
+	for ability in player_data.unlocked_abilities:
 		if ability == "double_jump":
 			double_jump_unlocked = true
 		elif ability == "slide":
@@ -288,7 +288,6 @@ func receive_damage(amount: int,source_position:float):
 	if is_invincible:
 		return
 	GameManager.update_health(-amount)
-	health = GameManager.player_data["health"]
 	#TODO invul visual flashing
 	is_invincible = true
 	apply_player_knockback(source_position)

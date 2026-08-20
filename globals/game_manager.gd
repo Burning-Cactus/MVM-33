@@ -18,11 +18,7 @@ var last_save_room_path: String = ""
 
 var switches: Dictionary[StringName, bool] = {}
 
-var player_data: Dictionary = {
-	"health": 100,
-	"max_health": 100,
-	"unlocked_abilities": []
-}
+var player_data := PlayerData.new(100, 100)
 
 func discover_room(coords: Vector2i, room_data: Dictionary):
 	current_room_coords = coords
@@ -31,20 +27,20 @@ func discover_room(coords: Vector2i, room_data: Dictionary):
 	map_updated.emit()
 		
 func update_health(amount: int):
-	player_data["health"] = clampi(player_data["health"] + amount, 0, player_data["max_health"])
-	player_health_changed.emit(player_data["health"], player_data["max_health"])
-	if player_data["health"] <= 0:
+	player_data.health = clampi(player_data.health + amount, 0, player_data.max_health)
+	player_health_changed.emit(player_data.health, player_data.max_health)
+	if player_data.health <= 0:
 		handle_player_death()
 
 func update_max_health(amount: int):
-	player_data["max_health"] += amount
-	player_data["health"] += amount
-	player_health_changed.emit(player_data["health"], player_data["max_health"])
+	player_data.max_health += amount
+	player_data.health += amount
+	player_health_changed.emit(player_data.health, player_data.max_health)
 
 func unlock_ability(ability_name: String):
-	if not player_data["unlocked_abilities"].has(ability_name):
-		player_data["unlocked_abilities"].append(ability_name)
-		abilities_updated.emit(player_data["unlocked_abilities"])
+	if not player_data.unlocked_abilities.has(ability_name):
+		player_data.unlocked_abilities.append(ability_name)
+		abilities_updated.emit(player_data.unlocked_abilities)
 
 func save_game(room_path: String):
 	last_save_room_path = room_path
@@ -103,15 +99,14 @@ func reset_game():
 	current_room_coords = Vector2i(0,0)
 	last_save_room_path = ""
 	explored_rooms.clear()
-	player_data = {
-		"health": 100,
-		"max_health": 100,
-		"unlocked_abilities": []
-	}
+	player_data = PlayerData.new(
+		100,
+		100,
+	)
 		
 func respawn_player():
-	player_data["health"] = player_data["max_health"]
-	player_health_changed.emit(player_data["health"], player_data["max_health"])
+	player_data.health = player_data.max_health
+	player_health_changed.emit(player_data.health, player_data.max_health)
 	if last_save_room_path != "":
 		target_door_id = "SAVE_POINT"
 		get_tree().call_deferred("change_scene_to_file", last_save_room_path)
@@ -130,7 +125,6 @@ func transition_to_room(room_scene_path: String, door_id: String):
 
 
 func register_player(player_node: CharacterBody3D):
-	player_node.health = player_data["health"]
 	var doors = get_tree().get_nodes_in_group("Exit")
 	for door in doors:
 		if door.door_id == target_door_id:

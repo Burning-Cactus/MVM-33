@@ -16,7 +16,6 @@ func _on_body_entered(body):
 	# Check if the colliding object is the player
 	if body is Player:
 		# Save current player health before leaving
-		GameManager.player_data["health"] = body.health
 		
 		# Execute the transition
 		GameManager.transition_to_room(target_room_path, target_door_id)
