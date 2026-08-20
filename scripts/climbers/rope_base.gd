@@ -1,21 +1,24 @@
 extends Node3D
-class_name RopeBase
+class_name Rope
 
 @export_category("Rope")
 @export var segment_count: int = 12
 @export var segment_length: float = 0.4
 @export var segment_radius: float = 0.05
-@export var segment_mass: float = 0.5
+@export var segment_mass: float = 2
+@export var segment_interact_radius: float = 0.05
 
 @export_category("Physics")
-@export var push_force: float = 2
 @export var linear_damp: float = 0.05
-@export var angular_damp: float = 0.1
+@export var angular_damp: float = 5.0
 @export var gravity_scale: float = 1.0
 
 var anchor: StaticBody3D = null
 var segments: Array[RigidBody3D] = []
 var joints: Array[PinJoint3D] = []
+
+func _init() -> void:
+	add_to_group(&"Ropes")
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -41,6 +44,11 @@ func generate_chain() -> void:
 		segment.axis_lock_angular_z = true
 		segment.continuous_cd = true
 		segment.can_sleep = false
+		
+		segment.collision_layer = 0
+		segment.collision_mask = 0
+		segment.set_collision_mask_value(6, true)
+		segment.set_collision_layer_value(6, true)
 
 		var mesh_instance := MeshInstance3D.new()
 	
@@ -56,9 +64,24 @@ func generate_chain() -> void:
 		
 		var collision := CollisionShape3D.new()
 		collision.shape = shape
+		
+		var interact_area := Area3D.new()
+		interact_area.collision_layer = 0
+		interact_area.collision_mask = 0
+		interact_area.set_collision_layer_value(5, true)
+		
+		var interact_shape := CylinderShape3D.new()
+		interact_shape.radius = segment_radius + segment_interact_radius
+		interact_shape.height = segment_length * 0.95
+		
+		var interact_collision := CollisionShape3D.new()
+		interact_collision.shape = interact_shape
+		interact_area.add_child(interact_collision)
+		
 
 		segment.add_child(mesh_instance)
 		segment.add_child(collision)
+		segment.add_child(interact_area)
 		add_child(segment)
 
 		# Position under previous

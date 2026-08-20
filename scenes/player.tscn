@@ -19,6 +19,8 @@ size = Vector3(1, 1, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a2or"]
+
 [sub_resource type="Animation" id="Animation_4flbx"]
 length = 0.001
 tracks/0/type = "value"
@@ -82,6 +84,7 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" unique_id=1575609299 groups=["Player"]]
 collision_layer = 3
+collision_mask = 41
 script = ExtResource("1_4flbx")
 
 [node name="Model" type="MeshInstance3D" parent="." unique_id=1500403010]
@@ -114,6 +117,13 @@ shape = SubResource("CapsuleShape3D_4flbx")
 shape = SubResource("BoxShape3D_7s81i")
 disabled = true
 
+[node name="RopeArea" type="Area3D" parent="." unique_id=557435948]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RopeArea" unique_id=290069420]
+shape = SubResource("CapsuleShape3D_5a2or")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2037548390]
 libraries/ = SubResource("AnimationLibrary_i3pqv")
 
@@ -125,3 +135,5 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.00
 [connection signal="body_entered" from="Model/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="area_entered" from="Model/InteractArea" to="." method="_on_area_3d_interact_area_entered"]
 [connection signal="area_exited" from="Model/InteractArea" to="." method="_on_area_3d_interact_area_exited"]
+[connection signal="body_entered" from="RopeArea" to="." method="_on_rope_area_body_entered"]
+[connection signal="body_exited" from="RopeArea" to="." method="_on_rope_area_body_exited"]
