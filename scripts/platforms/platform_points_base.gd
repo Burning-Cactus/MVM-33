@@ -31,7 +31,10 @@ func _physics_process(delta: float) -> void:
 	for follower in _followers:
 		follower.progress += speed * delta
 		var platform: Node3D = follower.get_meta("platform")
-		platform.global_transform = follower.global_transform
+		if platform is Rope:
+			platform.anchor.global_transform = follower.global_transform
+		else:
+			platform.global_transform = follower.global_transform
 
 func _build_path() -> void:
 	_path = Path3D.new()

@@ -13,7 +13,7 @@ class_name Rope
 @export var angular_damp: float = 5.0
 @export var gravity_scale: float = 1.0
 
-var anchor: StaticBody3D = null
+var anchor: AnimatableBody3D = null
 var segments: Array[RigidBody3D] = []
 var joints: Array[PinJoint3D] = []
 
@@ -28,7 +28,9 @@ func generate_rope() -> void:
 	clear_rope()
 
 	if anchor == null:
-		anchor = StaticBody3D.new()
+		anchor = AnimatableBody3D.new()
+		anchor.collision_layer = 0
+		anchor.collision_mask = 0
 		add_child(anchor)
 	
 	var prev_body: PhysicsBody3D = anchor as PhysicsBody3D
@@ -94,10 +96,11 @@ func generate_rope() -> void:
 
 		var joint := PinJoint3D.new()
 		joint.exclude_nodes_from_collision = true
+		add_child(joint)
+		
+		joint.position = segment.position + Vector3(0, segment_length * 0.5, 0)
 		joint.node_a = prev_body.get_path()
 		joint.node_b = segment.get_path()
-		joint.position = segment.position + Vector3(0, segment_length * 0.5, 0)
-		add_child(joint)
 
 		joints.append(joint)
 		

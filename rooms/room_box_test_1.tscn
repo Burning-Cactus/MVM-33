@@ -109,17 +109,15 @@ is_moving = true
 
 [node name="PlatformPoints2" parent="." unique_id=668324569 instance=ExtResource("10_35g4d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4)
-points = Array[Vector3]([Vector3(0, 0, 0), Vector3(0, 0, -4)])
-radius = 2.0
-speed = 2.0
+points = Array[Vector3]([Vector3(0, 0, 0), Vector3(0, 2, -4)])
+radius = 0.25
+speed = 1.0
 platform_scene = ExtResource("10_sgt7c")
 platform_count = 1
 is_moving = true
 
 [node name="Rope" parent="." unique_id=1817440151 instance=ExtResource("10_sgt7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.0951, -0.559978)
-segment_count = 6
-segment_length = 0.8
 
 [node name="DiscoveryAreas" type="Node3D" parent="." unique_id=1991221447]
 
