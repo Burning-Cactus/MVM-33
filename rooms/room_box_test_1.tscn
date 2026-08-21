@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://b4bgx1mtuw0wc" path="res://scenes/switches/switch_floor_lever.tscn" id="7_fchnm"]
 [ext_resource type="PackedScene" uid="uid://dhjsjllwdbsce" path="res://scenes/platform/platform_elevating.tscn" id="8_61xuo"]
 [ext_resource type="PackedScene" uid="uid://chouojtrsyrvv" path="res://scenes/platform/platform_small_collapsible.tscn" id="8_ivqde"]
+[ext_resource type="PackedScene" uid="uid://cj42j6mb0cjbv" path="res://scenes/platform/platform_points.tscn" id="10_35g4d"]
 [ext_resource type="PackedScene" uid="uid://b3pcnqgvj6d5v" path="res://scenes/climbers/rope.tscn" id="10_sgt7c"]
+[ext_resource type="PackedScene" uid="uid://or5fvoao6hkd" path="res://scenes/platform/platform_small_movable.tscn" id="11_0jao7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pf871"]
 sky_top_color = Color(0.8627451, 0.45490196, 0.54901963, 1)
@@ -97,6 +99,22 @@ lowered_position = Vector3(0, 0, -11)
 [node name="SwitchFloorLever" parent="PlatformElevating" unique_id=1345631147 instance=ExtResource("7_fchnm")]
 switch_id = &"elevator_a"
 global = true
+
+[node name="PlatformPoints" parent="." unique_id=1838435198 instance=ExtResource("10_35g4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -16)
+points = Array[Vector3]([Vector3(0, 0, 0), Vector3(0, 10, 0)])
+platform_scene = ExtResource("11_0jao7")
+platform_count = 10
+is_moving = true
+
+[node name="PlatformPoints2" parent="." unique_id=668324569 instance=ExtResource("10_35g4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4)
+points = Array[Vector3]([Vector3(0, 0, 0), Vector3(0, 0, -4)])
+radius = 2.0
+speed = 2.0
+platform_scene = ExtResource("10_sgt7c")
+platform_count = 1
+is_moving = true
 
 [node name="Rope" parent="." unique_id=1817440151 instance=ExtResource("10_sgt7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.0951, -0.559978)

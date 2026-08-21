@@ -2,11 +2,11 @@ extends AnimatableBody3D
 class_name ElevatingPlatform
 
 @export var switch_id: StringName = &""
-@export var is_raised: bool = false
 @export var global: bool = false
+@export var is_raised: bool = false
 @export var raised_position: Vector3
 @export var lowered_position: Vector3
-@export var move_rate: float = 5.0
+@export var speed: float = 5.0
 
 signal platform_raised()
 signal platform_lowered()
@@ -25,12 +25,12 @@ func _physics_process(delta: float) -> void:
 	if is_raised and position != raised_position:
 		position = position.move_toward(
 			raised_position, 
-			move_rate * delta
+			speed * delta
 		)
 	elif not is_raised and position != lowered_position:
 		position = position.move_toward(
 			lowered_position, 
-			move_rate * delta
+			speed * delta
 		)
 		
 func raise_platform() -> void:

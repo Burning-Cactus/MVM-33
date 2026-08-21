@@ -22,10 +22,10 @@ func _init() -> void:
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
-		generate_chain()
+		generate_rope()
 
-func generate_chain() -> void:
-	clear_chain()
+func generate_rope() -> void:
+	clear_rope()
 
 	if anchor == null:
 		anchor = StaticBody3D.new()
@@ -101,20 +101,9 @@ func generate_chain() -> void:
 
 		joints.append(joint)
 		
-		#var joint_marker := MeshInstance3D.new()
-#
-		#var sphere := SphereMesh.new()
-		#sphere.radius = 0.1
-		#sphere.height = 0.2
-#
-		#joint_marker.mesh = sphere
-		#joint_marker.position = joint.position
-#
-		#add_child(joint_marker)
-		
 		prev_body = segment
 
-func clear_chain() -> void:
+func clear_rope() -> void:
 	for j in joints:
 		j.queue_free()
 		
