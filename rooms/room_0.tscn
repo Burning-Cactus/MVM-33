@@ -108,5 +108,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9565272, 4.2678313)
 [node name="Upgrade" parent="." unique_id=522767488 instance=ExtResource("6_iv03q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.368, -4.333)
 upgrade_type = 1
-
-[connection signal="body_entered" from="DiscoveryAreas/DiscoveryArea" to="DiscoveryAreas/DiscoveryArea" method="_on_body_entered"]

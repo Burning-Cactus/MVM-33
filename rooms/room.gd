@@ -1,7 +1,6 @@
 extends Node3D
 class_name Room
 
-
 var player:Player 
 @export var is_boss_room:bool = false
 @export var boss_enemy:PackedScene
@@ -10,6 +9,11 @@ var player:Player
 @export var boss_trigger_area:Area3D
 @export var boss_spawn_point:Marker3D
 
+@onready var discovery_areas: Node3D = $DiscoveryAreas
+
+func _init() -> void:
+	add_to_group("Room")
+
 func _ready():
 	get_tree().paused = false
 	
@@ -17,6 +21,11 @@ func _ready():
 	
 	if player and GameManager.target_door_id != "":
 		GameManager.register_player(player)
+
+	for area_ in $DiscoveryAreas.get_children():
+		if area_ is DiscoveryArea:
+			area_.register_area()
+	
 	UiLayer.transition_bg.color = Color.BLACK
 	UiLayer.animation_player.play_backwards("fade_to_black")
 	

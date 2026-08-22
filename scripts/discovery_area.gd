@@ -12,6 +12,28 @@ class_name DiscoveryArea
 @export_enum("Wall", "Door", "None") var border_left: String = "Wall"
 @export_enum("Wall", "Door", "None") var border_right: String = "Wall"
 
+func _init() -> void:
+	# Only monitor the player
+	collision_layer = 0
+	collision_mask = 0
+	set_collision_layer_value(2, true)
+	set_collision_mask_value(2, true)
+	
+	# Disable until player is positoined
+	monitoring = false
+
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+
+func register_area() -> void:
+	# We need to enable monitoring the player after it is 
+	# positioned to not trigger from default player position
+	
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	
+	monitoring = true
+
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
 		var map_packet = {

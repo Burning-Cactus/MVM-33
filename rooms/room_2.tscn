@@ -152,5 +152,3 @@ shape = SubResource("BoxShape3D_1kamh")
 
 [node name="EnemyBase" parent="." unique_id=445466315 instance=ExtResource("6_1kamh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.457489, -3.8242645)
-
-[connection signal="body_entered" from="DiscoveryAreas/DiscoveryArea" to="DiscoveryAreas/DiscoveryArea" method="_on_body_entered"]
