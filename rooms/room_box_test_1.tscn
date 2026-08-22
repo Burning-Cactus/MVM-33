@@ -126,7 +126,7 @@ script = ExtResource("4_0i3dq")
 border_right = "Door"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryAreas/DiscoveryArea" unique_id=555130694]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.881907, 0.02624607)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("BoxShape3D_61xuo")
 
 [connection signal="body_entered" from="DiscoveryAreas/DiscoveryArea" to="DiscoveryAreas/DiscoveryArea" method="_on_body_entered"]

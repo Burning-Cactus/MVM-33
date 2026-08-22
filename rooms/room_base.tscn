@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://6ki0l6xltahx"]
+
+[ext_resource type="Script" uid="uid://b2dwv6t11dl5f" path="res://rooms/room.gd" id="1_xe5ka"]
+[ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="2_61bum"]
+[ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_jg44g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jg44g"]
+size = Vector3(12, 12, 16)
+
+[node name="Room" type="Node3D" unique_id=323921774]
+script = ExtResource("1_xe5ka")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1565969197]
+
+[node name="Foreground" type="Node3D" parent="." unique_id=920222622]
+
+[node name="Exits" type="Node3D" parent="." unique_id=1706594599]
+
+[node name="DiscoveryAreas" type="Node3D" parent="." unique_id=110614096]
+
+[node name="DiscoveryArea" type="Area3D" parent="DiscoveryAreas" unique_id=1036469296]
+script = ExtResource("2_61bum")
+metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryAreas/DiscoveryArea" unique_id=212625972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+shape = SubResource("BoxShape3D_jg44g")
+
+[node name="Player" parent="." unique_id=1575609299 instance=ExtResource("3_jg44g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

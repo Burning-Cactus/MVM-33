@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://c8s26dimqkkiu"]
 
-[ext_resource type="Script" uid="uid://dx4pue32ot423" path="res://rooms/exit.gd" id="1_a5fg5"]
+[ext_resource type="Script" uid="uid://dx4pue32ot423" path="res://rooms/exit.gd" id="1_xiid8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mcp8b"]
 size = Vector3(2, 2, 2)
 
 [node name="ExitRight" type="Area3D" unique_id=99155977 groups=["Exit"]]
-script = ExtResource("1_a5fg5")
+script = ExtResource("1_xiid8")
 target_room_path = "uid://s4ym70ymniwg"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1141971743]

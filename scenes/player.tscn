@@ -130,7 +130,7 @@ libraries/ = SubResource("AnimationLibrary_i3pqv")
 [node name="DamageTimer" type="Timer" parent="." unique_id=1803525029]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=839198073]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.0040283, 0.7928543, -0.102962494)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7, 0.8, 0)
 
 [connection signal="body_entered" from="Model/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="area_entered" from="Model/InteractArea" to="." method="_on_area_3d_interact_area_entered"]
