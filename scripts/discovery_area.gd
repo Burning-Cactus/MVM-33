@@ -23,15 +23,16 @@ func _init() -> void:
 	monitoring = false
 
 func _ready() -> void:
-	var collision = CollisionShape3D.new()
-	collision.position.y = 6.0
-	
-	var shape = BoxShape3D.new()
-	shape.size = Vector3(12.0, 11.9, 15.9)
-	
-	collision.shape = shape
-	
-	add_child(collision)
+	if not has_node("CollisionShape2D"):
+		var collision = CollisionShape3D.new()
+		collision.position.y = 6.0
+		
+		var shape = BoxShape3D.new()
+		shape.size = Vector3(12.0, 11.9, 15.9)
+		
+		collision.shape = shape
+		
+		add_child(collision)
 	
 	body_entered.connect(_on_body_entered)
 

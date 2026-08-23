@@ -19,80 +19,88 @@
 environment = ExtResource("2_2rdve")
 
 [node name="Zone0Ceiling34" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="0" unique_id=30100008 instance=ExtResource("3_2rdve")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
 
 [node name="Zone0Wall12DoorCenterLeftTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="1" unique_id=1075629948 instance=ExtResource("4_e2k2r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 9)
 
 [node name="Zone0Wall12DoorBottomLeftCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="2" unique_id=1815745761 instance=ExtResource("6_pbkpj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 9)
+
+[node name="Zone0Wall12DoorBottomLeftCenter2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=47814422 instance=ExtResource("6_pbkpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 9)
 
-[node name="Zone0Wall12DoorBottomLeftBottom" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=47814422 instance=ExtResource("6_pbkpj")]
+[node name="Zone0Wall12LeftBottom" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=1397390951 instance=ExtResource("5_1xfod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 
-[node name="Zone0Wall12DoorTopRightTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=271309600 instance=ExtResource("5_x2qb3")]
+[node name="Zone0Wall12DoorTopRightTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=271309600 instance=ExtResource("5_x2qb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, -24)
+
+[node name="Zone0Wall12DoorBottomRightCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="6" unique_id=140796180 instance=ExtResource("6_pbkpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, -24)
 
-[node name="Zone0Wall12DoorBottomRightCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=140796180 instance=ExtResource("6_pbkpj")]
+[node name="Zone0Wall12RightCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="7" unique_id=790866742 instance=ExtResource("5_1xfod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -24)
 
-[node name="Zone0Wall12RightBottom" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="6" unique_id=790866742 instance=ExtResource("5_1xfod")]
+[node name="Zone0Wall12RightBottom" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="8" unique_id=1030551778 instance=ExtResource("5_1xfod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
 
-[node name="Zone0Floor34" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="7" unique_id=1901547201 instance=ExtResource("8_e2k2r")]
+[node name="Zone0Floor34" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="9" unique_id=1901547201 instance=ExtResource("8_e2k2r")]
 
-[node name="Zone0Ledge2LeftTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="8" unique_id=1251203018 instance=ExtResource("8_hud3l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.5, 7)
+[node name="Zone0Ledge2LeftTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="10" unique_id=1251203018 instance=ExtResource("8_hud3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.5, 7)
 
-[node name="Zone0Ledge2LeftCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="9" unique_id=1643054116 instance=ExtResource("8_hud3l")]
+[node name="Zone0Ledge2LeftCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="11" unique_id=1643054116 instance=ExtResource("8_hud3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 7)
+
+[node name="Zone0Ledge2LeftCenter2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="12" unique_id=791594683 instance=ExtResource("8_hud3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 7)
 
-[node name="Zone0Ledge2RightTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="10" unique_id=644446134 instance=ExtResource("8_hud3l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33, -23)
+[node name="Zone0Ledge2RightTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="13" unique_id=644446134 instance=ExtResource("8_hud3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, -23)
 
-[node name="Zone0Ledge2RightCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="11" unique_id=101144950 instance=ExtResource("8_hud3l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -23)
+[node name="Zone0Ledge2RightCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="14" unique_id=101144950 instance=ExtResource("8_hud3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, -23)
 
 [node name="WallExitLeftTop" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1894737716 instance=ExtResource("9_cotwk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.5, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.5, 9)
 target_room_path = "uid://6tg6hrprtffk"
 door_id = "zone_0_room_7_left_top"
 target_door_id = "zone_0_room_6_right"
 
 [node name="WallExitLeftCenter" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=148537708 instance=ExtResource("9_cotwk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 9)
 target_room_path = "uid://ilt10ghk2uxm"
 door_id = "zone_0_room_7_left_center"
 target_door_id = "zone_0_room_8_right_top"
 
 [node name="WallExitLeftBottom" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="2" unique_id=1621660744 instance=ExtResource("9_cotwk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 9)
 target_room_path = "uid://ilt10ghk2uxm"
 door_id = "zone_0_room_7_left_bottom"
 target_door_id = "zone_0_room_8_right_center"
 
-[node name="WallExitRightBottom" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="3" unique_id=1176092721 instance=ExtResource("10_h3ibk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -25)
-target_room_path = "uid://bnfrubgjjeos4"
-door_id = "zone_0_room_3_right_bottom"
-target_door_id = "zone_0_room_4_left"
+[node name="WallExitRightTop" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="3" unique_id=878819425 instance=ExtResource("10_h3ibk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, -25)
+target_room_path = "uid://ltmluf84050y"
+door_id = "zone_0_room_7_right_top"
+target_door_id = "zone_0_room_19_left"
 
-[node name="WallExitRightTop" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="4" unique_id=878819425 instance=ExtResource("10_h3ibk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33, -25)
-target_room_path = "uid://6tg6hrprtffk"
-door_id = "zone_0_room_3_right_top"
-target_door_id = "zone_0_room_6_left"
+[node name="WallExitRightCenter" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="4" unique_id=1176092721 instance=ExtResource("10_h3ibk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, -25)
+target_room_path = "uid://dq4b52gf3xsha"
+door_id = "zone_0_room_7_right_center"
+target_door_id = "zone_0_room_15_left"
 
 [node name="DiscoveryArea" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="0" unique_id=1036469296]
-room_coordinates = Vector2i(9, 0)
+room_coordinates = Vector2i(9, 1)
 border_top = "None"
-border_left = "Door"
 border_right = "None"
 
 [node name="DiscoveryArea2" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="1" unique_id=910981233]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 script = ExtResource("11_64r3c")
-room_coordinates = Vector2i(9, -1)
+room_coordinates = Vector2i(9, 0)
 border_top = "None"
 border_bottom = "None"
 border_left = "Door"
@@ -102,35 +110,55 @@ metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 [node name="DiscoveryArea3" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="2" unique_id=389333697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
 script = ExtResource("11_64r3c")
+room_coordinates = Vector2i(9, -1)
+border_top = "None"
+border_bottom = "None"
+border_left = "Door"
+border_right = "None"
+metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
+
+[node name="DiscoveryArea4" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="3" unique_id=184065702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
+script = ExtResource("11_64r3c")
 room_coordinates = Vector2i(9, -2)
 border_bottom = "None"
 border_left = "Door"
 border_right = "None"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
-[node name="DiscoveryArea4" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="3" unique_id=1292752996]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, -16)
+[node name="DiscoveryArea5" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="4" unique_id=1642586568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
 script = ExtResource("11_64r3c")
-room_coordinates = Vector2i(10, -2)
-border_bottom = "None"
+room_coordinates = Vector2i(10, 0)
+border_top = "None"
 border_left = "None"
-border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
-[node name="DiscoveryArea5" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="4" unique_id=1458845051]
+[node name="DiscoveryArea6" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="5" unique_id=1458845051]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -16)
 script = ExtResource("11_64r3c")
 room_coordinates = Vector2i(10, -1)
 border_top = "None"
 border_bottom = "None"
 border_left = "None"
+border_right = "None"
+metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
+
+[node name="DiscoveryArea7" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="6" unique_id=1292752996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, -16)
+script = ExtResource("11_64r3c")
+room_coordinates = Vector2i(10, -2)
+border_top = "None"
+border_bottom = "None"
+border_left = "None"
 border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
-[node name="DiscoveryArea6" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="5" unique_id=1642586568]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+[node name="DiscoveryArea8" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="7" unique_id=1437232295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, -16)
 script = ExtResource("11_64r3c")
-room_coordinates = Vector2i(10, 0)
-border_top = "None"
+room_coordinates = Vector2i(10, -2)
+border_bottom = "None"
 border_left = "None"
+border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
