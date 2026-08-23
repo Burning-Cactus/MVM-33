@@ -9,7 +9,7 @@ size = Vector3(2, 1, 34)
 [node name="Zone0Ceiling34" type="StaticBody3D" unique_id=30100008]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=79682563]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, -8)
 shape = SubResource("BoxShape3D_7s81i")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1320256034]

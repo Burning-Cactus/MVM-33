@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/wall_exit_right.tscn" id="7_ok10o"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="8_a3q6a"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jg44g"]
-size = Vector3(12, 12, 16)
-
 [node name="Zone1Room2" unique_id=323921774 instance=ExtResource("1_5k1lq")]
 
 [node name="WorldEnvironment" parent="." index="0" unique_id=1565969197]
@@ -51,7 +48,3 @@ room_coordinates = Vector2i(5, 0)
 border_left = "None"
 border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryAreas/DiscoveryArea2" index="0" unique_id=618023204]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-shape = SubResource("BoxShape3D_jg44g")

@@ -31,6 +31,7 @@ target_door_id = "zone_0_room_3_right_bottom"
 
 [node name="WallExitRight" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=1176092721 instance=ExtResource("9_6trtb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+target_room_path = "uid://ilt10ghk2uxm"
 door_id = "zone_0_room_4_right"
 target_door_id = "zone_0_room_8_left"
 is_enabled = false

@@ -12,9 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b8mx6h2grmqqu" path="res://rooms/zone_0/components/zone_0_ledge_2.tscn" id="8_1u5dn"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="8_i71bq"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jg44g"]
-size = Vector3(12, 12, 16)
-
 [node name="Zone1Room3" unique_id=323921774 instance=ExtResource("1_5qja1")]
 
 [node name="WorldEnvironment" parent="." index="0" unique_id=1565969197]
@@ -43,10 +40,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
 [node name="Zone0Floor18" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="7" unique_id=32620788 instance=ExtResource("7_gb80i")]
 
-[node name="Zone0Ledge2" parent="." index="2" unique_id=1251203018 instance=ExtResource("8_1u5dn")]
+[node name="Zone0Ledge2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="8" unique_id=1251203018 instance=ExtResource("8_1u5dn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.5, 7)
 
-[node name="Zone0Ledge3" parent="." index="3" unique_id=644446134 instance=ExtResource("8_1u5dn")]
+[node name="Zone0Ledge3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="9" unique_id=644446134 instance=ExtResource("8_1u5dn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.5, -7)
 
 [node name="WallExitLeftBottom" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1621660744 instance=ExtResource("6_rlo0u")]
@@ -69,8 +66,9 @@ target_door_id = "zone_0_room_4_left"
 
 [node name="WallExitRightTop" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="3" unique_id=878819425 instance=ExtResource("7_ut5vg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.5, -9)
-door_id = "zone_0_room_0"
-target_door_id = "zone_0_room_1"
+target_room_path = "uid://6tg6hrprtffk"
+door_id = "zone_0_room_3_right_top"
+target_door_id = "zone_0_room_6_left"
 
 [node name="DiscoveryArea" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="0" unique_id=1036469296]
 room_coordinates = Vector2i(6, 0)
@@ -86,10 +84,6 @@ border_top = "None"
 border_bottom = "None"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryAreas/DiscoveryArea2" index="0" unique_id=618023204]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-shape = SubResource("BoxShape3D_jg44g")
-
 [node name="DiscoveryArea3" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="2" unique_id=389333697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
 script = ExtResource("8_i71bq")
@@ -98,7 +92,3 @@ border_bottom = "None"
 border_left = "Door"
 border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryAreas/DiscoveryArea3" index="0" unique_id=1368763985]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-shape = SubResource("BoxShape3D_jg44g")
