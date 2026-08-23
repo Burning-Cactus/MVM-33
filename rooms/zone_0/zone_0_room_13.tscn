@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c1oiq0ahh8g30" path="res://rooms/zone_0/components/zone_0_wall_12_door_center.tscn" id="5_k4khh"]
 [ext_resource type="PackedScene" uid="uid://dlpyg3j8fce7i" path="res://rooms/zone_0/components/zone_0_floor_18.tscn" id="6_6vnnm"]
 [ext_resource type="PackedScene" uid="uid://b8mx6h2grmqqu" path="res://rooms/zone_0/components/zone_0_ledge_2.tscn" id="7_4ayam"]
-[ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/wall_exit_left.tscn" id="8_7hbse"]
+[ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/exit_left.tscn" id="8_7hbse"]
 
 [node name="Zone1Room13" unique_id=323921774 instance=ExtResource("1_7hbse")]
 

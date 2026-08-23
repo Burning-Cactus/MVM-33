@@ -9,7 +9,7 @@ signal switch_toggled(switch_id: StringName, is_on: bool)
 const CELL_SIZE = Vector2(32, 24) 
 const SAVE_FILE_PATH = "user://savegame.dat" # Secure local file path
 
-var target_door_id: String = ""
+var target_door: TargetDoor = null
 var explored_rooms: Dictionary = {}
 var defeated_enemies: Array = []
 var permanent_flags: Array = [] #like bosses and upgrades and shit, so they don´t respawn
@@ -85,8 +85,9 @@ func load_game() -> bool:
 			for str_key in save_data["explored_rooms"].keys():
 				var coords = str_to_var("Vector2i" + str_key) # Rebuilds Vector2i structure
 				explored_rooms[coords] = save_data["explored_rooms"][str_key]
-				
-			target_door_id = "SAVE_POINT"
+			
+			target_door = TargetDoor.new("SAVE_POINT")
+			
 			switches = save_data["switches"]
 			
 			get_tree().call_deferred("change_scene_to_file", last_save_room_path)
@@ -95,7 +96,7 @@ func load_game() -> bool:
 	return false
 
 func reset_game():
-	target_door_id = ""
+	target_door = null
 	current_room_coords = Vector2i(0,0)
 	last_save_room_path = ""
 	explored_rooms.clear()
@@ -108,7 +109,7 @@ func respawn_player():
 	player_data.health = player_data.max_health
 	player_health_changed.emit(player_data.health, player_data.max_health)
 	if last_save_room_path != "":
-		target_door_id = "SAVE_POINT"
+		target_door = TargetDoor.new("SAVE_POINT")
 		get_tree().call_deferred("change_scene_to_file", last_save_room_path)
 		
 func handle_player_death():
@@ -117,8 +118,12 @@ func handle_player_death():
 	await get_tree().create_timer(1).timeout
 	UiLayer.game_over_bg.show()
 	
-func transition_to_room(room_scene_path: String, door_id: String):
-	target_door_id = door_id
+func transition_to_room(
+	room_scene_path: String, 
+	door_id: String, 
+	player: Player = null
+):
+	target_door = TargetDoor.new(door_id, player)
 	UiLayer.animation_player.play("fade_to_black")
 	await UiLayer.animation_player.animation_finished
 	get_tree().call_deferred("change_scene_to_file", room_scene_path)
@@ -127,11 +132,53 @@ func transition_to_room(room_scene_path: String, door_id: String):
 func register_player(player_node: CharacterBody3D):
 	var doors = get_tree().get_nodes_in_group("Exit")
 	for door in doors:
-		if door.door_id == target_door_id:
+		if door.door_id == target_door.door_id:
 			player_node.global_position = door.get_spawn_position()
+			
+			if not player_node is Player:
+				return
+				
+			player_node.set_state(target_door.player_state)
+			
+			if target_door.player_state != Player.PlayerState.NORMAL:
+				player_node.set_direction(target_door.player_direction)
+				return
+				
+			if door.maintain_velocity:
+				player_node.velocity = target_door.player_velocity
+				player_node.set_direction(target_door.player_direction)
+				
+			if door.exit_velocity != Vector3.ZERO:
+				player_node.disable_input_until_on_floor()
+				
+				var exit_velocity = door.exit_velocity
+				
+				if door.maintain_direction or door.maintain_velocity:
+					if door.maintain_velocity and target_door.player_velocity.z > 0:
+						exit_velocity.z = absf(exit_velocity.z)
+					elif door.maintain_velocity and target_door.player_velocity.z < 0:
+						exit_velocity.z = absf(exit_velocity.z) * -1
+					elif target_door.player_direction == Player.PlayerDirection.LEFT:
+						exit_velocity.z = absf(exit_velocity.z)
+						player_node.set_direction(Player.PlayerDirection.LEFT)
+					else:
+						exit_velocity.z = absf(exit_velocity.z) * -1
+						player_node.set_direction(Player.PlayerDirection.RIGHT)
+				else:
+					if exit_velocity.z > 0.0:
+						player_node.set_direction(Player.PlayerDirection.LEFT)
+					elif exit_velocity.z < 0.0:
+						player_node.set_direction(Player.PlayerDirection.RIGHT)
+					else:
+						player_node.set_direction(target_door.player_direction)
+						
+				player_node.velocity += exit_velocity
+			elif not door.maintain_velocity:
+				player_node.set_direction(target_door.player_direction)
+				
 			return
 			
-	print("Warning: No matching door found for ID: ", target_door_id)
+	print("Warning: No matching door found for ID: ", target_door.door_id)
 	
 
 func toggle_switch(switch_id: StringName, is_on: bool):

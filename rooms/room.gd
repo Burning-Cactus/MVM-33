@@ -19,7 +19,7 @@ func _ready():
 	
 	player = get_tree().get_first_node_in_group("Player")
 	
-	if player and GameManager.target_door_id != "":
+	if player and GameManager.target_door != null:
 		GameManager.register_player(player)
 
 	for area_ in $DiscoveryAreas.get_children():

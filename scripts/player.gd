@@ -30,7 +30,8 @@ var slide_unlocked := false
 
 var has_double_jumped := false
 
-var input_disabled:bool = false
+var input_disabled: bool = false
+var input_disabled_until_on_floor: bool = false
 
 # Pickup / Throw
 const PICKUP_SPEED: float = 2
@@ -58,7 +59,18 @@ enum PlayerState {
 	HANGING,
 }
 
-var state: PlayerState = PlayerState.NORMAL
+enum PlayerDirection {
+	LEFT,
+	RIGHT
+}
+
+var state: PlayerState = PlayerState.NORMAL:
+	get = get_state,
+	set = set_state
+	
+var direction: PlayerDirection = PlayerDirection.RIGHT:
+	get = get_direction,
+	set = set_direction
 
 func _ready() -> void:
 	player_data = GameManager.player_data
@@ -76,6 +88,15 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if input_disabled_until_on_floor:
+		if is_on_floor():
+			input_disabled_until_on_floor = false
+			input_disabled = false
+		else:
+			velocity.x = 0
+			global_position.x = 0
+			move_and_slide()
+			
 	if state == PlayerState.HANGING:
 		_process_hanging(delta)
 		return
@@ -103,18 +124,14 @@ func _physics_process(delta: float) -> void:
 			_kick_entities()
 
 		var input_dir := Input.get_vector("right", "left", "up", "down")
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		if direction:
-			if direction.x>0:
-				model.rotation_degrees.y = 180
-				if entity_ref != null:
-					entity_collision.position.z = absf(entity_collision.position.z)
+		var dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if dir:
+			if dir.x>0:
+				set_direction(PlayerDirection.LEFT)
 			else:
-				model.rotation_degrees.y = 0
-				if entity_ref != null:
-					entity_collision.position.z = absf(entity_collision.position.z) * -1.0
+				set_direction(PlayerDirection.RIGHT)
 
-			velocity.z = direction.x * SPEED
+			velocity.z = dir.x * SPEED
 		else:
 			velocity.z = move_toward(velocity.x, 0, SPEED)
 
@@ -123,7 +140,7 @@ func _physics_process(delta: float) -> void:
 		entity_ref.position = entity_ref.position.move_toward(_entity_position, PICKUP_SPEED * delta)
 		entity_collision.position = entity_ref.position
 	
-		if model.rotation_degrees.y == 180:
+		if direction == PlayerDirection.LEFT:
 			entity_collision.position.z = absf(entity_collision.position.z)
 		else:
 			entity_collision.position.z = absf(entity_collision.position.z) * -1
@@ -203,6 +220,7 @@ func _grab_rope() -> void:
 	_rope_grab_offset.y = 0.0
 	
 	set_collision_mask_value(6, false)
+
 	state = PlayerState.HANGING
 
 	velocity = Vector3.ZERO
@@ -598,7 +616,7 @@ func _kick_entities() -> void:
 		if not entity.can_kick:
 			continue
 	
-		if model.rotation_degrees.y == 0.0:
+		if direction == PlayerDirection.RIGHT:
 			entity.apply_central_impulse(
 				Vector3(0, 0, -kick_force)
 			)
@@ -622,7 +640,7 @@ func _throw_entity() -> void:
 	
 	var throw_dir = Vector3(0.0, 1.0, 1.0).normalized()
 	
-	if model.rotation_degrees.y == 0.0:
+	if direction == PlayerDirection.RIGHT:
 		throw_dir.z *= -1
 	
 	entity_ref.linear_velocity = Vector3.ZERO
@@ -663,3 +681,30 @@ func _on_rope_release_timeout() -> void:
 		state != PlayerState.HANGING
 	):
 		set_collision_mask_value(6, true)
+
+func disable_input_until_on_floor() -> void:
+	has_double_jumped = true
+	input_disabled = true
+	input_disabled_until_on_floor = true
+	pass
+
+
+func set_state(value: PlayerState) -> void:
+	state = value
+func get_state() -> PlayerState:
+	return state
+
+func set_direction(value: PlayerDirection) -> void:
+	direction = value
+	
+	if direction == PlayerDirection.LEFT:
+		model.rotation_degrees.y = 180
+		if entity_ref != null:
+			entity_collision.position.z = absf(entity_collision.position.z)
+	else:
+		model.rotation_degrees.y = 0
+		if entity_ref != null:
+			entity_collision.position.z = absf(entity_collision.position.z) * -1.0
+
+func get_direction() -> PlayerDirection:
+	return direction

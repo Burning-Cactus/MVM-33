@@ -11,10 +11,11 @@ size = Vector3(2, 3, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
 size = Vector3(2, 3, 1)
 
-[node name="WallExitLeft" type="StaticBody3D" unique_id=1621660744]
+[node name="ExitLeft" type="StaticBody3D" unique_id=1621660744]
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("1_msjjl")
+maintain_direction = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1478335549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)

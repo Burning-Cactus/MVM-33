@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://4v277kp0tkm6"]
+
+[ext_resource type="Script" uid="uid://c7ejujbrkcpxj" path="res://rooms/exits/exit.gd" id="1_qu378"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jnlpn"]
+size = Vector3(2, 1, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1r5hs"]
+size = Vector3(2, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0vi8"]
+size = Vector3(2, 1, 3)
+
+[node name="ExitTop" type="StaticBody3D" unique_id=299846045]
+script = ExtResource("1_qu378")
+maintain_velocity = true
+maintain_direction = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=747564032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_jnlpn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1050845632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_1r5hs")
+
+[node name="ExitArea" type="Area3D" parent="." unique_id=692468837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitArea" unique_id=1008406854]
+shape = SubResource("BoxShape3D_m0vi8")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1311983329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25, 0)

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://tdntafrg751p"]
+
+[ext_resource type="PackedScene" uid="uid://6ki0l6xltahx" path="res://rooms/room_base.tscn" id="1_hej08"]
+[ext_resource type="Environment" uid="uid://cyrqh24v1yjx8" path="res://resources/zone_1_world_environment.tres" id="2_40fk2"]
+[ext_resource type="PackedScene" uid="uid://dlpyg3j8fce7i" path="res://rooms/zone_0/components/zone_0_floor_18.tscn" id="2_o2k6o"]
+[ext_resource type="PackedScene" uid="uid://c4ackkp6twd0q" path="res://rooms/exits/exit_bottom.tscn" id="3_40fk2"]
+
+[node name="Room" unique_id=323921774 instance=ExtResource("1_hej08")]
+
+[node name="WorldEnvironment" parent="." index="0" unique_id=1565969197]
+environment = ExtResource("2_40fk2")
+
+[node name="Zone0Floor18" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="0" unique_id=30100008 instance=ExtResource("2_o2k6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
+
+[node name="Zone0Floor19" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="1" unique_id=1534024065 instance=ExtResource("2_o2k6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5)
+
+[node name="ExitBottom" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=299846045 instance=ExtResource("3_40fk2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_room_path = "uid://cny0t4k6blaka"
+door_id = "vertical_test_2"
+target_door_id = "vertical_test_1"
+exit_velocity = Vector3(0, 3, -2)
+
+[node name="Player" parent="." index="4" unique_id=1575609299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3.9882617)
