@@ -4,6 +4,9 @@ extends Area3D
 @export_file("*.tscn") var target_room_path: String # Path to the next room scene
 @export var door_id: String = "Door_A"              # This door's unique identifier
 @export var target_door_id: String = "Door_BA"       # The door ID in the NEXT room
+@export var exit_velocity: Vector3 = Vector3.ZERO
+@export var maintain_velocity: bool = false
+@export var maintain_direction: bool = false
 
 @onready var spawn_marker: Marker3D = $Marker3D
 
