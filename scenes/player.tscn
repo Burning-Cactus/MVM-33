@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://48tg7aenk4s1"]
 
 [ext_resource type="Script" uid="uid://d2twe0ejk3qtu" path="res://scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://th5goqfgcynp" path="res://scripts/player/player_climb_handler.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://bjbgaibpi88qb" path="res://scripts/player/player_hang_handler.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://hmjf03tacdhm" path="res://scripts/player/player_entity_handler.gd" id="4_dqkch"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
 
@@ -13,13 +16,11 @@ height = 1.0
 radial_segments = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
-size = Vector3(1, 1, 0.5)
+size = Vector3(0.75, 0.75, 0.5)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a2or"]
 
 [sub_resource type="Animation" id="Animation_4flbx"]
 length = 0.001
@@ -107,7 +108,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/InteractArea" unique_id=1358758455]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -0.5)
 shape = SubResource("BoxShape3D_5a2or")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2006155022]
@@ -117,12 +118,17 @@ shape = SubResource("CapsuleShape3D_4flbx")
 shape = SubResource("BoxShape3D_7s81i")
 disabled = true
 
-[node name="RopeArea" type="Area3D" parent="." unique_id=557435948]
-collision_layer = 0
-collision_mask = 32
+[node name="PlayerClimbHandler" type="Node3D" parent="." unique_id=639808302]
+script = ExtResource("2_g2els")
+metadata/_custom_type_script = "uid://th5goqfgcynp"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RopeArea" unique_id=290069420]
-shape = SubResource("CapsuleShape3D_5a2or")
+[node name="PlayerHangHandler" type="Node3D" parent="." unique_id=596979770]
+script = ExtResource("3_qhqgy")
+metadata/_custom_type_script = "uid://bjbgaibpi88qb"
+
+[node name="PlayerEntityHandler" type="Node3D" parent="." unique_id=624376874]
+script = ExtResource("4_dqkch")
+metadata/_custom_type_script = "uid://hmjf03tacdhm"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2037548390]
 libraries/ = SubResource("AnimationLibrary_i3pqv")
@@ -135,5 +141,3 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7, 0
 [connection signal="body_entered" from="Model/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="area_entered" from="Model/InteractArea" to="." method="_on_area_3d_interact_area_entered"]
 [connection signal="area_exited" from="Model/InteractArea" to="." method="_on_area_3d_interact_area_exited"]
-[connection signal="body_entered" from="RopeArea" to="." method="_on_rope_area_body_entered"]
-[connection signal="body_exited" from="RopeArea" to="." method="_on_rope_area_body_exited"]
