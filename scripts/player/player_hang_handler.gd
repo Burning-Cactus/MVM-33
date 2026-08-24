@@ -104,6 +104,9 @@ func _push_rope(
 	)
 
 func grab() -> void:
+	if player.input_disabled:
+		return
+		
 	if player.state == player.PlayerState.HANGING:
 		return
 	

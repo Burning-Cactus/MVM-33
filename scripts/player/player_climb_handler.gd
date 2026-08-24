@@ -6,7 +6,13 @@ var player: Player = null
 func _ready() -> void:
 	player = get_parent()
 	_add_center_area()
+
+func start() -> void:
+	pass
 	
+func process_hanging(delta: float) -> void:
+	pass
+
 func _add_center_area() -> void:
 	var area = Area3D.new()
 	area.collision_layer = 0

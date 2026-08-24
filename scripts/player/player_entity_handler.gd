@@ -29,6 +29,18 @@ func start() -> void:
 	player.interact_area.area_exited.connect(_on_interact_area_exited)
 	player.direction_changed.connect(_on_direction_changed)
 
+func process_entity(delta: float) -> void:
+	if Input.is_action_just_pressed("kick"):
+		kick()
+		
+	if Input.is_action_just_pressed(&"pickup"):
+		pickup()
+
+	if Input.is_action_just_pressed(&"drop"):
+		drop()
+	elif Input.is_action_just_pressed(&"throw"):
+		throw()
+
 func process_pickup(delta: float) -> void:
 	if entity_ref != null and not entity_ref.position.is_equal_approx(_entity_position):
 		entity_ref.position = entity_ref.position.move_toward(_entity_position, PICKUP_SPEED * delta)
@@ -40,6 +52,9 @@ func process_pickup(delta: float) -> void:
 			entity_collision.position.z = absf(entity_collision.position.z) * -1
 
 func push() -> void:
+	if not player.is_on_floor():
+		return
+		
 	for i in player.get_slide_collision_count():
 		var collision = player.get_slide_collision(i)
 		var collider = collision.get_collider()
@@ -76,6 +91,9 @@ func _push_entity(
 	
 
 func pickup() -> void:
+	if player.input_disabled:
+		return
+		
 	if _entities.is_empty() or entity_ref != null:
 		return
 	
@@ -115,6 +133,9 @@ func pickup() -> void:
 	entity_collision.disabled = false
 	
 func drop() -> void:
+	if player.input_disabled:
+		return
+		
 	if entity_ref == null:
 		return
 
@@ -133,6 +154,9 @@ func drop() -> void:
 	entity_ref = null
 
 func kick() -> void:
+	if player.input_disabled or not player.is_on_floor():
+		return
+	
 	for entity in _entities:
 		if not entity.can_kick:
 			continue
@@ -147,7 +171,13 @@ func kick() -> void:
 			)
 
 func throw() -> void:
-	if entity_ref == null or not entity_ref.can_throw or not entity_ref.position.is_equal_approx(_entity_position):
+	if player.input_disabled:
+		return
+		
+	if (entity_ref == null or 
+		not entity_ref.can_throw or 
+		not entity_ref.position.is_equal_approx(_entity_position)
+	):
 		return
 	
 	entity_collision.disabled = true
@@ -177,7 +207,6 @@ func _on_interact_area_entered(area: Area3D) -> void:
 	var parent = area.get_parent()
 	
 	if parent is Entity:
-		print("C")
 		if parent != entity_ref and not _entities.has(parent):
 			_entities.append(parent)
 	

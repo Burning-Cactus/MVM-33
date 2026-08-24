@@ -66,10 +66,6 @@ func _ready() -> void:
 	hang_handler.start()
 	climb_handler.start()
 	
-
-func start() -> void:
-	pass
-	
 func _physics_process(delta: float) -> void:
 	if input_disabled_until_on_floor:
 		if is_on_floor():
@@ -82,6 +78,9 @@ func _physics_process(delta: float) -> void:
 			
 	if state == PlayerState.HANGING:
 		hang_handler.process_hanging(delta)
+		return
+	elif state == PlayerState.CLIMBING:
+		climb_handler.process_climbing(delta)
 		return
 		
 	if not is_on_floor():
@@ -102,9 +101,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("attack"):
 			animation_player.play("attack")
 			handle_attack()
-
-		if Input.is_action_just_pressed("kick") and is_on_floor():
-			entity_handler.kick()
 
 		var input_dir := Input.get_vector("right", "left", "up", "down")
 		var dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -127,22 +123,11 @@ func _physics_process(delta: float) -> void:
 
 	check_contact_damage()
 	
-	if is_on_floor():
-		entity_handler.push()
-		
+	# This needs to be after move_and_slide() to prevent weird collision issues
+	entity_handler.push()
 	hang_handler.push()
-
-	# This needs to be after move_and_slide() to prevent wierd collision issues
-	if not input_disabled:
-		if Input.is_action_just_pressed(&"pickup"):
-			entity_handler.pickup()
-
-		if Input.is_action_just_pressed(&"drop"):
-			entity_handler.drop()
-		elif Input.is_action_just_pressed(&"throw"):
-			entity_handler.throw()
-			
-		hang_handler.grab()
+	entity_handler.process_entity(delta)
+	hang_handler.grab()
 
 func unlock_ability(ability_name: String) -> void:
 	if ability_name == "double_jump":
