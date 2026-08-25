@@ -23,9 +23,9 @@ func _init() -> void:
 	add_to_group(&"Ladders")
 
 func _ready() -> void:
-	generate_rope()
+	generate_ladder()
 
-func generate_rope() -> void:
+func generate_ladder() -> void:
 	clear_ladder()
 	
 	var current_position: Vector3
@@ -60,6 +60,8 @@ func generate_rope() -> void:
 		# Ladder
 		area.set_collision_layer_value(7, true)
 	else:
+		# Ladder
+		area.set_collision_layer_value(7, true)
 		# Interact
 		area.set_collision_layer_value(5, true)
 	

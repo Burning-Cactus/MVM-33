@@ -109,7 +109,7 @@ func grab() -> void:
 	if player.input_disabled:
 		return
 		
-	if player.state == player.PlayerState.HANGING:
+	if player.state != player.PlayerState.NORMAL:
 		return
 	
 	# Can't grab while holding an entity

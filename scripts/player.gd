@@ -102,9 +102,9 @@ func _physics_process(delta: float) -> void:
 		var input_dir := Input.get_vector("right", "left", "up", "down")
 		var dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if dir:
-			if dir.x>0:
+			if dir.x > 0.0:
 				set_direction(PlayerDirection.LEFT)
-			else:
+			elif dir.x < 0.0:
 				set_direction(PlayerDirection.RIGHT)
 
 			velocity.z = dir.x * SPEED
@@ -203,7 +203,7 @@ func get_state() -> PlayerState:
 
 func set_direction(value: PlayerDirection) -> void:
 	direction = value
-	
+		
 	if direction == PlayerDirection.LEFT:
 		model.rotation_degrees.y = 180
 		model.scale.x = -1
