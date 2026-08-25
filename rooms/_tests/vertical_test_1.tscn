@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dlpyg3j8fce7i" path="res://rooms/zone_0/components/zone_0_floor_18.tscn" id="2_ighmp"]
 [ext_resource type="PackedScene" uid="uid://bb47h1a3iwaq4" path="res://rooms/zone_0/components/zone_0_ceiling_18.tscn" id="3_vxpnc"]
 [ext_resource type="PackedScene" uid="uid://4v277kp0tkm6" path="res://rooms/exits/exit_top.tscn" id="4_73sd0"]
+[ext_resource type="PackedScene" uid="uid://b4eyu11gtdwn4" path="res://rooms/zone_0/components/zone_0_wall_12.tscn" id="5_17pe8"]
+[ext_resource type="PackedScene" uid="uid://cgf3kkp3ig5ob" path="res://scenes/climbers/ladder.tscn" id="5_dgwgx"]
 
 [node name="Room" unique_id=323921774 instance=ExtResource("1_gmuke")]
 
@@ -14,10 +16,22 @@ environment = ExtResource("2_73sd0")
 [node name="Zone0Floor18" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="0" unique_id=30100008 instance=ExtResource("2_ighmp")]
 
 [node name="Zone0Ceiling18" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="1" unique_id=2059703565 instance=ExtResource("3_vxpnc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
 
-[node name="Zone0Ceiling19" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="2" unique_id=257617237 instance=ExtResource("3_vxpnc")]
+[node name="Zone0Wall12" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="2" unique_id=1075629948 instance=ExtResource("5_17pe8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+
+[node name="Zone0Ceiling19" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=257617237 instance=ExtResource("3_vxpnc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, -10.5)
+
+[node name="ForwardLadder" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=1415869863 instance=ExtResource("5_dgwgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+segment_count = 4
+
+[node name="Ladder" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=1421740452 instance=ExtResource("5_dgwgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 5)
+ladder_type = 1
+segment_count = 12
 
 [node name="ExitTop" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=299846045 instance=ExtResource("4_73sd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)

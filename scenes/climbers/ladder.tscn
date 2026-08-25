@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cgf3kkp3ig5ob"]
+
+[ext_resource type="Script" uid="uid://crblrvg46jrm5" path="res://scripts/climbers/ladder_base.gd" id="1_od5bh"]
+[ext_resource type="PackedScene" uid="uid://b8kmhyik88n02" path="res://scenes/climbers/ladder/ladder_top.tscn" id="2_y4ula"]
+[ext_resource type="PackedScene" uid="uid://tge228a5veow" path="res://scenes/climbers/ladder/ladder_center.tscn" id="3_3keyt"]
+[ext_resource type="PackedScene" uid="uid://bspaboyc51cyp" path="res://scenes/climbers/ladder/ladder_bottom.tscn" id="4_disb8"]
+
+[node name="Ladder" type="Node3D" unique_id=1415869863]
+script = ExtResource("1_od5bh")
+ladder_top = ExtResource("2_y4ula")
+ladder_center = ExtResource("3_3keyt")
+ladder_bottom = ExtResource("4_disb8")
+segment_size = Vector3(0.1, 1, 1.5)

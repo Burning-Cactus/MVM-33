@@ -1,14 +1,14 @@
 extends Node3D
 class_name Rope
 
-@export_category("Rope")
+@export_group("Rope")
 @export var segment_count: int = 12
 @export var segment_length: float = 0.4
 @export var segment_radius: float = 0.05
 @export var segment_mass: float = 2
 @export var segment_interact_radius: float = 0.05
 
-@export_category("Physics")
+@export_group("Physics")
 @export var linear_damp: float = 0.05
 @export var angular_damp: float = 5.0
 @export var gravity_scale: float = 1.0
@@ -21,8 +21,7 @@ func _init() -> void:
 	add_to_group(&"Ropes")
 
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		generate_rope()
+	generate_rope()
 
 func generate_rope() -> void:
 	clear_rope()

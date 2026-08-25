@@ -21,7 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 target_room_path = "uid://cny0t4k6blaka"
 door_id = "vertical_test_2"
 target_door_id = "vertical_test_1"
-exit_velocity = Vector3(0, 3, -2)
+exit_velocity = Vector3(0, 4, -3)
 
 [node name="Player" parent="." index="4" unique_id=1575609299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3.9882617)

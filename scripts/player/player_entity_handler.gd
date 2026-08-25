@@ -40,8 +40,7 @@ func process_entity(delta: float) -> void:
 		drop()
 	elif Input.is_action_just_pressed(&"throw"):
 		throw()
-
-func process_pickup(delta: float) -> void:
+		
 	if entity_ref != null and not entity_ref.position.is_equal_approx(_entity_position):
 		entity_ref.position = entity_ref.position.move_toward(_entity_position, PICKUP_SPEED * delta)
 		entity_collision.position = entity_ref.position
@@ -50,6 +49,18 @@ func process_pickup(delta: float) -> void:
 			entity_collision.position.z = absf(entity_collision.position.z)
 		else:
 			entity_collision.position.z = absf(entity_collision.position.z) * -1
+
+func can_pickup() -> bool:
+	for entity in _entities:
+		if not entity.can_pickup:
+			continue
+			
+		return true
+		
+	return false
+	
+func is_holding_entity() -> bool:
+	return entity_ref != null
 
 func push() -> void:
 	if not player.is_on_floor():

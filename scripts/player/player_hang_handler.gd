@@ -54,9 +54,11 @@ func process_hanging(delta: float) -> void:
 	
 	if Input.is_action_just_pressed(&"release"):
 		_release_rope()
+		player.move_and_slide()
 	elif Input.is_action_just_pressed(&"jump"):
 		_release_rope()
 		player.velocity.y = player.JUMP_VELOCITY
+		player.move_and_slide()
 
 func push() -> void:
 	var ropes: Array[Rope] = []
@@ -111,7 +113,7 @@ func grab() -> void:
 		return
 	
 	# Can't grab while holding an entity
-	if player.entity_handler.entity_ref != null or _rope_segments.is_empty():
+	if player.entity_handler.is_holding_entity() != null or _rope_segments.is_empty():
 		return
 		
 	if not Input.is_action_just_pressed("grab"):
@@ -150,7 +152,7 @@ func grab() -> void:
 	
 	player.set_collision_mask_value(6, false)
 
-	player.state = player.PlayerState.HANGING
+	player.set_state(player.PlayerState.HANGING)
 
 	player.velocity = Vector3.ZERO
 	
@@ -219,7 +221,7 @@ func _release_rope() -> void:
 	_rope_grab_body = null
 	_rope_segment_ref = null
 
-	player.state = player.PlayerState.NORMAL
+	player.set_state(player.PlayerState.NORMAL)
 	
 	player.velocity = release_velocity
 	

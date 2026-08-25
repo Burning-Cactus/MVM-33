@@ -39,7 +39,8 @@ enum PlayerState {
 
 enum PlayerDirection {
 	LEFT,
-	RIGHT
+	RIGHT,
+	FORWARD,
 }
 
 var state: PlayerState = PlayerState.NORMAL:
@@ -71,10 +72,6 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			input_disabled_until_on_floor = false
 			input_disabled = false
-		else:
-			velocity.x = 0
-			global_position.x = 0
-			move_and_slide()
 			
 	if state == PlayerState.HANGING:
 		hang_handler.process_hanging(delta)
@@ -88,7 +85,7 @@ func _physics_process(delta: float) -> void:
 
 	if input_disabled and is_on_floor():
 		velocity.z = 0
-	if not input_disabled:
+	elif not input_disabled:
 		if Input.is_action_just_pressed("jump"):
 			if is_on_floor():
 				velocity.y = JUMP_VELOCITY
@@ -112,10 +109,7 @@ func _physics_process(delta: float) -> void:
 
 			velocity.z = dir.x * SPEED
 		else:
-			velocity.z = move_toward(velocity.x, 0, SPEED)
-
-	# Move picked up entity into position
-	entity_handler.process_pickup(delta)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	velocity.x = 0
 	global_position.x = 0
@@ -123,11 +117,13 @@ func _physics_process(delta: float) -> void:
 
 	check_contact_damage()
 	
-	# This needs to be after move_and_slide() to prevent weird collision issues
+	# These needs to be after move_and_slide() to prevent issues
+	# from the collisions not being processed yet
 	entity_handler.push()
 	hang_handler.push()
 	entity_handler.process_entity(delta)
 	hang_handler.grab()
+	climb_handler.grab()
 
 func unlock_ability(ability_name: String) -> void:
 	if ability_name == "double_jump":
@@ -211,8 +207,11 @@ func set_direction(value: PlayerDirection) -> void:
 	if direction == PlayerDirection.LEFT:
 		model.rotation_degrees.y = 180
 		model.scale.x = -1
-	else:
+	elif direction == PlayerDirection.RIGHT:
 		model.rotation_degrees.y = 0
+		model.scale.x = 1
+	elif direction == PlayerDirection.FORWARD:
+		model.rotation_degrees.y = 90
 		model.scale.x = 1
 			
 	direction_changed.emit(direction)
