@@ -10,8 +10,9 @@ class_name Switch
 signal switch_toggled(switch_id: StringName, is_on: bool)
 
 func _ready() -> void:
-	if global:
-		GameManager.toggle_switch(switch_id, is_on)
+	if global and switch_id != &"":
+		if not GameManager.switches.has(switch_id):
+			GameManager.toggle_switch(switch_id, is_on)
 
 func toggle_on() -> void:
 	if can_toggle_on and not is_on:

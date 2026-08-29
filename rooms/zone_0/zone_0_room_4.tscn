@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://bnfrubgjjeos4"]
 
 [ext_resource type="PackedScene" uid="uid://6ki0l6xltahx" path="res://rooms/room_base.tscn" id="1_72qs0"]
+[ext_resource type="Script" uid="uid://clbnnb7gyju5p" path="res://rooms/zone_0/zone_0_room_4.gd" id="2_8rhjm"]
 [ext_resource type="Environment" uid="uid://cyrqh24v1yjx8" path="res://resources/zone_1_world_environment.tres" id="2_ho0a8"]
 [ext_resource type="PackedScene" uid="uid://bb47h1a3iwaq4" path="res://rooms/zone_0/components/zone_0_ceiling_17.tscn" id="3_6ybku"]
 [ext_resource type="PackedScene" uid="uid://cb0yn8h6tyhpf" path="res://rooms/zone_0/components/zone_0_wall_11_door_bottom.tscn" id="6_kdb2e"]
+[ext_resource type="PackedScene" uid="uid://c562xup0k7cob" path="res://scenes/doors/door_gate.tscn" id="6_u5bfd"]
 [ext_resource type="PackedScene" uid="uid://dlpyg3j8fce7i" path="res://rooms/zone_0/components/zone_0_floor_17.tscn" id="7_1ri32"]
 [ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/exit_left.tscn" id="8_y6ffm"]
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/exit_right.tscn" id="9_6trtb"]
+[ext_resource type="PackedScene" uid="uid://dt6ex25duegu1" path="res://scenes/enemy_zombie.tscn" id="10_72qs0"]
 
 [node name="Zone1Room4" unique_id=323921774 instance=ExtResource("1_72qs0")]
+script = ExtResource("2_8rhjm")
 
 [node name="WorldEnvironment" parent="." index="0" unique_id=1565969197]
 environment = ExtResource("2_ho0a8")
@@ -24,20 +28,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -8)
 
 [node name="Zone0Floor17" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=32620788 instance=ExtResource("7_1ri32")]
 
-[node name="WallExitLeft" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1621660744 instance=ExtResource("8_y6ffm")]
+[node name="DoorGateLeft" parent="Objects" parent_id_path=PackedInt32Array(831980504) index="0" unique_id=1157026703 instance=ExtResource("6_u5bfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8)
+is_open = true
+switch_id = &"z0r4_door_left"
+
+[node name="DoorGateRight" parent="Objects" parent_id_path=PackedInt32Array(831980504) index="1" unique_id=834656302 instance=ExtResource("6_u5bfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8)
+switch_id = &"z0r4_door_right"
+global = true
+
+[node name="ExitLeft" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1621660744 instance=ExtResource("8_y6ffm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8.5)
 target_room_path = "uid://bu8p34xp1ycvy"
 door_id = "zone_0_room_4_left"
 target_door_id = "zone_0_room_3_right_bottom"
+exit_velocity = Vector3(0, 0, 0)
+maintain_velocity = false
+is_enabled = true
+switch_id = &"z0r4_door_left"
+global = true
 
-[node name="WallExitRight" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=1176092721 instance=ExtResource("9_6trtb")]
+[node name="ExitRight" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=1176092721 instance=ExtResource("9_6trtb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8.5)
 target_room_path = "uid://ilt10ghk2uxm"
 door_id = "zone_0_room_4_right"
 target_door_id = "zone_0_room_8_left"
 is_enabled = false
+switch_id = &"z0r4_door_right"
+global = true
 
 [node name="DiscoveryArea" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="0" unique_id=1036469296]
 room_coordinates = Vector2i(7, 0)
 border_left = "Door"
 border_right = "Door"
+
+[node name="EnemyZombie" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("10_72qs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.5)
+start_direction = 1

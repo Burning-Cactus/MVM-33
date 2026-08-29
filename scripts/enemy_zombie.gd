@@ -6,8 +6,8 @@ func setup_enemy():
 
 func _physics_process(delta):
 	apply_gravity(delta)
-	if not is_in_knockback:
-		
+	
+	if not is_in_knockback and is_on_floor():
 		velocity.z = direction * speed
 		play_animation("walk")
 	else:

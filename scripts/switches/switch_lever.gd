@@ -15,7 +15,7 @@ func _ready() -> void:
 	
 	_start_angle = lever.rotation_degrees
 		
-	if switch_id and global:
+	if global and switch_id != &"":
 		is_on = GameManager.switches.get(switch_id, false)
 		
 		# Should two switches point to the same id, ensure they are synced

@@ -4,6 +4,7 @@ class_name EnemyBase
 @export_group("Base Movement")
 @export var speed: float = 3.0
 @export var rotation_speed: float = 15.0
+@export_enum("Left:1", "Right:-1") var start_direction: int
 
 @export_group("Combat Attributes")
 @export var max_health: int = 20
@@ -22,9 +23,9 @@ var direction: int = 1 # 1 = Right (+X), -1 = Left (-X)
 var is_chasing: bool = false
 var is_in_knockback: bool = false 
 var can_attack: bool = true
+var floor_check_disabled: bool = false
 
 var player_ref: CharacterBody3D = null
-
 
 @onready var visuals: Node3D = $Visuals
 @onready var anim_player: AnimationPlayer = $Visuals/AnimationPlayer
@@ -44,6 +45,9 @@ func _ready():
 		return
 		
 	setup_enemy()
+	
+	direction = start_direction
+	flip_direction()
 
 # Override this in specific enemy scripts if they need extra setup
 func setup_enemy():
@@ -55,11 +59,22 @@ func apply_gravity(delta: float):
 
 func handle_patrol_turning():
 	# Turn around if hitting a vertical 3D wall, or about to walk off an edge
-	if is_on_wall() or (floor_check and not floor_check.is_colliding()):
+	if is_on_wall():
+		var normal = get_wall_normal()
+		
+		if normal.z > 0 and direction != 1:
+			flip_direction()
+		elif normal.z < 0 and direction != -1:
+			flip_direction()
+	elif (floor_check and not floor_check.is_colliding() and not floor_check_disabled):
 		flip_direction()
+		
+	if not is_in_knockback and floor_check_disabled and is_on_floor():
+		floor_check_disabled = false
 
 func flip_direction():
 	direction *= -1
+		
 	if floor_check:
 		floor_check.position.z = direction * 0.6
 
@@ -91,6 +106,7 @@ func take_damage(amount: int,source_position: float):
 func die():
 	if not GameManager.defeated_enemies.has(unique_enemy_id):
 		GameManager.defeated_enemies.append(unique_enemy_id)
+
 	#add death animation exp some drop or whatever here
 	queue_free()
 
@@ -108,6 +124,7 @@ func _on_player_lost(body: Node3D):
 
 func apply_knockback(source_position:float):
 	is_in_knockback = true
+	floor_check_disabled = true
 
 	var knockback_dir = sign(global_position.z - source_position)
 	if knockback_dir == 0: 

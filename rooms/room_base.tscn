@@ -11,6 +11,8 @@ script = ExtResource("1_xe5ka")
 
 [node name="Foreground" type="Node3D" parent="." unique_id=920222622]
 
+[node name="Objects" type="Node3D" parent="." unique_id=831980504]
+
 [node name="Exits" type="Node3D" parent="." unique_id=1706594599]
 
 [node name="DiscoveryAreas" type="Node3D" parent="." unique_id=110614096]
@@ -21,3 +23,5 @@ metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
 [node name="Player" parent="." unique_id=1575609299 instance=ExtResource("3_jg44g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=90746970]

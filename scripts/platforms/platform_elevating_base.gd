@@ -11,17 +11,24 @@ class_name ElevatingPlatform
 signal platform_raised()
 signal platform_lowered()
 
+var _start = false
+
 func _ready() -> void:
 	if global and switch_id != &"":
 		is_raised = GameManager.switches.get(switch_id, false)
 		GameManager.switch_toggled.connect(_on_switch_toggled)
 		
-	if is_raised:
-		position = raised_position
-	else:
-		position = lowered_position
-		
 func _physics_process(delta: float) -> void:
+	if not _start:
+		_start = true
+		
+		# Putting this in _ready() doesn't work every time
+		if is_raised:
+			position = raised_position
+		else:
+			position = lowered_position
+		return
+		
 	if is_raised and position != raised_position:
 		position = position.move_toward(
 			raised_position, 

@@ -10,6 +10,9 @@ var player:Player
 @export var boss_spawn_point:Marker3D
 
 @onready var discovery_areas: Node3D = $DiscoveryAreas
+@onready var enemies: Node3D = $Enemies
+
+signal room_cleared
 
 func _init() -> void:
 	add_to_group("Room")
@@ -37,6 +40,9 @@ func _ready():
 
 			set_doors(false)
 			boss_trigger_area.body_entered.connect(_on_player_entered_boss_area_trigger)
+			
+	for enemy: EnemyBase in enemies.get_children():
+		enemy.tree_exited.connect(_on_enemy_death)
 
 func set_doors(lock: bool):
 	for door in boss_doors.get_children():
@@ -62,3 +68,7 @@ func _on_boss_death():
 	if not GameManager.permanent_flags.has(boss_id + "_defeated"):
 		GameManager.permanent_flags.append(boss_id + "_defeated")
 	UiLayer.hide_boss_ui()#not implemented yet, disconnect the ui update signals and hide the bar
+
+func _on_enemy_death():
+	if enemies.get_children().size() == 0:
+		room_cleared.emit()

@@ -6,23 +6,32 @@ class_name GateDoor
 
 @onready var trigger_area: Area3D = $TriggerArea
 
+var _start: bool = false
 var _start_y: float
 
 func _ready() -> void:
 	super._ready()
 	
-	_start_y = position.y
+	_start_y = global_position.y
+
 	if is_open:
-		position.y -= raise_amount
-	
+		global_position.y = _start_y + raise_amount
+		
 	trigger_area.body_entered.connect(_on_body_entered)
 	trigger_area.body_exited.connect(_on_body_exited)
-	
+
 func _physics_process(delta: float) -> void:
-	if is_open and not is_equal_approx(position.y, _start_y + raise_amount):
-		position.y = move_toward(position.y, _start_y + raise_amount, raise_rate * delta)
-	elif not is_open and not is_equal_approx(position.y, _start_y):
-		position.y = move_toward(position.y, _start_y, raise_rate * delta)
+	# We need to skip the first frame because after the scene has 
+	# been loaded once, the _ready() global_position will get overridden 
+	# by the below before its applied
+	if not _start:
+		_start = true
+		return
+
+	if is_open and not is_equal_approx(global_position.y, _start_y + raise_amount):
+		global_position.y = move_toward(global_position.y, _start_y + raise_amount, raise_rate * delta)
+	elif not is_open and not is_equal_approx(global_position.y, _start_y):
+		global_position.y = move_toward(global_position.y, _start_y, raise_rate * delta)
 	
 func _on_body_entered(body: Node3D) -> void:
 	if switch_id == &"" and body is Player:

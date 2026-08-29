@@ -1,8 +1,10 @@
 extends AnimatableBody3D
 class_name Door
 
-@export var switch_id: StringName = &""
 @export var is_open: bool = false
+
+@export_group("Switch")
+@export var switch_id: StringName = &""
 @export var global: bool = false
 
 signal door_opened()
@@ -26,7 +28,7 @@ func close_door() -> void:
 func _on_switch_toggled(switch_id_: StringName, is_on: bool) -> void:
 	if switch_id_ != switch_id:
 		return
-		
+
 	if is_on:
 		open_door()
 	else:
