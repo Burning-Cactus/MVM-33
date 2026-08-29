@@ -15,7 +15,13 @@ size = Vector3(2, 3, 1)
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("1_msjjl")
+target_room_path = null
+door_id = null
+target_door_id = null
+exit_velocity = null
+maintain_velocity = null
 maintain_direction = true
+is_enabled = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1478335549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)

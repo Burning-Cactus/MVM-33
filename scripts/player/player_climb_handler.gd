@@ -290,6 +290,13 @@ func _on_interact_area_entered(area: Area3D) -> void:
 	var parent = area.get_parent()
 	
 	if parent is Ladder:
+		# After a player goes through an exit on a ladder, we need to
+		# ensure the areas are rotated to match non forward ladders
+		if parent.ladder_type != Ladder.LadderType.FORWARD:
+			if player.get_state() == Player.PlayerState.CLIMBING:
+				for area_: Area3D in _areas:
+					area_.rotation_degrees.y = 90.0
+			
 		_ladder = parent
 	
 func _on_interact_area_exited(area: Area3D) -> void:

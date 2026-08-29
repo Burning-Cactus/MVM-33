@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://50uk1yq4m16d"]
 
-[ext_resource type="Script" uid="uid://b2dwv6t11dl5f" path="res://rooms/room.gd" id="1_mcp8b"]
-[ext_resource type="PackedScene" uid="uid://c8s26dimqkkiu" path="res://rooms/exit.tscn" id="2_vvdcg"]
-[ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_oa8wf"]
-[ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="4_853v1"]
-[ext_resource type="PackedScene" uid="uid://dt6ex25duegu1" path="res://scenes/enemy_zombie.tscn" id="5_c68s2"]
-[ext_resource type="PackedScene" uid="uid://csyvxl4mgwqhi" path="res://scenes/upgrade.tscn" id="6_iv03q"]
+[ext_resource type="Script" uid="uid://b2dwv6t11dl5f" path="res://rooms/room.gd" id="1_f7ree"]
+[ext_resource type="PackedScene" uid="uid://c8s26dimqkkiu" path="res://rooms/_tests/exit.tscn" id="2_egmp7"]
+[ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_tdhn6"]
+[ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="4_t6p1m"]
+[ext_resource type="PackedScene" uid="uid://dt6ex25duegu1" path="res://scenes/enemy_zombie.tscn" id="5_28eut"]
+[ext_resource type="PackedScene" uid="uid://csyvxl4mgwqhi" path="res://scenes/upgrade.tscn" id="6_luigl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mcp8b"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -36,7 +36,7 @@ size = Vector3(2, 1, 15)
 size = Vector3(10, 10, 10)
 
 [node name="Room0" type="Node3D" unique_id=1838590884 groups=["Room"]]
-script = ExtResource("1_mcp8b")
+script = ExtResource("1_f7ree")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1186788305]
 environment = SubResource("Environment_oa8wf")
@@ -85,26 +85,30 @@ shape = SubResource("BoxShape3D_c68s2")
 
 [node name="Exits" type="Node3D" parent="." unique_id=1154867120]
 
-[node name="ExitRight" parent="Exits" unique_id=99155977 instance=ExtResource("2_vvdcg")]
+[node name="ExitRight" parent="Exits" unique_id=99155977 instance=ExtResource("2_egmp7")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, -6)
 door_id = "Door_AB"
+target_door_id = null
+exit_velocity = null
+maintain_velocity = null
+maintain_direction = null
 
-[node name="Player" parent="." unique_id=1575609299 instance=ExtResource("3_oa8wf")]
+[node name="Player" parent="." unique_id=1575609299 instance=ExtResource("3_tdhn6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9361154, 0)
 
 [node name="DiscoveryAreas" type="Node3D" parent="." unique_id=1306511901]
 
 [node name="DiscoveryArea" type="Area3D" parent="DiscoveryAreas" unique_id=135204448]
-script = ExtResource("4_853v1")
+script = ExtResource("4_t6p1m")
 border_right = "Door"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryAreas/DiscoveryArea" unique_id=1727683875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.881907, 0.02624607)
 shape = SubResource("BoxShape3D_iv03q")
 
-[node name="EnemyZombie" parent="." unique_id=445466315 instance=ExtResource("5_c68s2")]
+[node name="EnemyZombie" parent="." unique_id=445466315 instance=ExtResource("5_28eut")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9565272, 4.2678313)
 
-[node name="Upgrade" parent="." unique_id=522767488 instance=ExtResource("6_iv03q")]
+[node name="Upgrade" parent="." unique_id=522767488 instance=ExtResource("6_luigl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.368, -4.333)
 upgrade_type = 1

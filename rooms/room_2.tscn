@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cvcbgd361m653"]
 
 [ext_resource type="Script" uid="uid://b2dwv6t11dl5f" path="res://rooms/room.gd" id="1_secxv"]
-[ext_resource type="PackedScene" uid="uid://c8s26dimqkkiu" path="res://rooms/exit.tscn" id="2_wuvbf"]
+[ext_resource type="PackedScene" uid="uid://c8s26dimqkkiu" path="res://rooms/_tests/exit.tscn" id="2_wuvbf"]
 [ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_bylct"]
 [ext_resource type="Script" uid="uid://cyamtct66n1n6" path="res://scripts/save_point.gd" id="4_13qvk"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="5_qgqlj"]

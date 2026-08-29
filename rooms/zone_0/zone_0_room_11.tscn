@@ -2,13 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://6ki0l6xltahx" path="res://rooms/room_base.tscn" id="1_2pg8h"]
 [ext_resource type="Environment" uid="uid://cyrqh24v1yjx8" path="res://resources/zone_1_world_environment.tres" id="2_y783o"]
-[ext_resource type="PackedScene" uid="uid://beapsny3rvsyv" path="res://rooms/zone_0/components/zone_0_ceiling_50.tscn" id="3_2yxqx"]
-[ext_resource type="PackedScene" uid="uid://cb0yn8h6tyhpf" path="res://rooms/zone_0/components/zone_0_wall_12_door_bottom.tscn" id="4_2yxqx"]
-[ext_resource type="PackedScene" uid="uid://ewy2ht1urmb3" path="res://rooms/zone_0/components/zone_0_floor_50.tscn" id="4_dxsmk"]
-[ext_resource type="PackedScene" uid="uid://dtxwmih6ulgxw" path="res://rooms/zone_0/components/zone_0_wall_12_door_top.tscn" id="4_q5bwn"]
-[ext_resource type="PackedScene" uid="uid://b4eyu11gtdwn4" path="res://rooms/zone_0/components/zone_0_wall_12.tscn" id="5_2pv43"]
+[ext_resource type="PackedScene" uid="uid://beapsny3rvsyv" path="res://rooms/zone_0/components/zone_0_ceiling_49.tscn" id="3_2yxqx"]
+[ext_resource type="PackedScene" uid="uid://cb0yn8h6tyhpf" path="res://rooms/zone_0/components/zone_0_wall_11_door_bottom.tscn" id="4_2yxqx"]
+[ext_resource type="PackedScene" uid="uid://ewy2ht1urmb3" path="res://rooms/zone_0/components/zone_0_floor_49.tscn" id="4_dxsmk"]
+[ext_resource type="PackedScene" uid="uid://dtxwmih6ulgxw" path="res://rooms/zone_0/components/zone_0_wall_11_door_top.tscn" id="4_q5bwn"]
+[ext_resource type="PackedScene" uid="uid://b4eyu11gtdwn4" path="res://rooms/zone_0/components/zone_0_wall_11.tscn" id="5_2pv43"]
+[ext_resource type="PackedScene" uid="uid://cur45g5shjy38" path="res://rooms/zone_0/components/zone_0_joint.tscn" id="5_t4jie"]
 [ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/exit_left.tscn" id="6_2pv43"]
-[ext_resource type="PackedScene" uid="uid://c1oiq0ahh8g30" path="res://rooms/zone_0/components/zone_0_wall_12_door_center.tscn" id="7_0g72r"]
+[ext_resource type="PackedScene" uid="uid://c1oiq0ahh8g30" path="res://rooms/zone_0/components/zone_0_wall_11_door_center.tscn" id="7_0g72r"]
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/exit_right.tscn" id="7_t4jie"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="11_q5bwn"]
 
@@ -17,50 +18,63 @@
 [node name="WorldEnvironment" parent="." index="0" unique_id=1565969197]
 environment = ExtResource("2_y783o")
 
-[node name="Zone0Ceiling50" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="0" unique_id=30100008 instance=ExtResource("3_2yxqx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+[node name="Zone0Ceiling49" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="0" unique_id=30100008 instance=ExtResource("3_2yxqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, -16)
 
-[node name="Zone0Wall12DoorTopLeftTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="1" unique_id=1075629948 instance=ExtResource("4_q5bwn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 9)
+[node name="Zone0Wall11DoorTopLeftTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="1" unique_id=1075629948 instance=ExtResource("4_q5bwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 8)
 
-[node name="Zone0Wall12LeftCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="2" unique_id=992352730 instance=ExtResource("5_2pv43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 9)
+[node name="Zone0Joint" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="2" unique_id=1936238983 instance=ExtResource("5_t4jie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 8)
 
-[node name="Zone0Wall12DoorBottomLeftBottom" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=47814422 instance=ExtResource("4_2yxqx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+[node name="Zone0Wall11LeftCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=992352730 instance=ExtResource("5_2pv43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 8)
 
-[node name="Zone0Wall12DoorBottomRightTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=140796180 instance=ExtResource("4_2yxqx")]
+[node name="Zone0Joint2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=1943697254 instance=ExtResource("5_t4jie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 8)
+
+[node name="Zone0Wall11DoorBottomLeftBottom" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=47814422 instance=ExtResource("4_2yxqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 8)
+
+[node name="Zone0Wall11DoorBottomRightTop" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="6" unique_id=140796180 instance=ExtResource("4_2yxqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, -40)
+
+[node name="Zone0Joint3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="7" unique_id=1936719487 instance=ExtResource("5_t4jie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, -40)
 
-[node name="Zone0Wall12RightCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=1235711995 instance=ExtResource("5_2pv43")]
+[node name="Zone0Wall11RightCenter" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="8" unique_id=1235711995 instance=ExtResource("5_2pv43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, -40)
+
+[node name="Zone0Joint4" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="9" unique_id=80069301 instance=ExtResource("5_t4jie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -40)
 
-[node name="Zone0Wall12DoorCenterRightBottom" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="6" unique_id=1269807615 instance=ExtResource("7_0g72r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+[node name="Zone0Wall11DoorCenterRightBottom" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="10" unique_id=1269807615 instance=ExtResource("7_0g72r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -40)
 
-[node name="Zone0Floor50" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="7" unique_id=1573024128 instance=ExtResource("4_dxsmk")]
+[node name="Zone0Floor49" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="11" unique_id=1573024128 instance=ExtResource("4_dxsmk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
 
 [node name="WallExitLeftTop" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1621660744 instance=ExtResource("6_2pv43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.5, 8.5)
 target_room_path = "uid://c1i7ximyb27xu"
 door_id = "zone_0_room_11_left_top"
 target_door_id = "zone_0_room_12_right"
 
 [node name="WallExitLeftBottom" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=125838259 instance=ExtResource("6_2pv43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8.5)
 target_room_path = "uid://xa7wfk4l4mh1"
 door_id = "zone_0_room_11_left_bottom"
 target_door_id = "zone_0_room_10_right"
 
 [node name="WallExitRightTop" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="2" unique_id=1176092721 instance=ExtResource("7_t4jie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, -41)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.5, -40.5)
 target_room_path = "uid://ilt10ghk2uxm"
 door_id = "zone_0_room_4_right"
 target_door_id = "zone_0_room_8_left"
 is_enabled = false
 
 [node name="WallExitRightBottom" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="3" unique_id=1928985500 instance=ExtResource("7_t4jie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -41)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -40.5)
 target_room_path = "uid://lojy7l1pjr5"
 door_id = "zone_0_room_11_right_bottom"
 target_door_id = "zone_0_room_13_left"

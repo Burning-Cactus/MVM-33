@@ -24,10 +24,19 @@ func _on_exit_area_body_entered(body: Node3D) -> void:
 	if body is Player:
 		# Save current player health before leaving
 		
+		var door_offset: Vector3 = Vector3.ZERO
+		
+		# Vertical exit
+		if is_zero_approx(spawn_marker.position.z):
+			door_offset.z = body.global_position.z - spawn_marker.global_position.z
+		else: # Horizontal exit
+			door_offset.y = body.global_position.y - spawn_marker.global_position.y
+			
 		# Execute the transition
 		GameManager.transition_to_room(
 			target_room_path, 
 			target_door_id,
+			door_offset,
 			body,
 		)
 

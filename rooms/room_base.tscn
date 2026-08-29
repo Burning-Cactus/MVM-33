@@ -20,4 +20,4 @@ script = ExtResource("2_61bum")
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
 [node name="Player" parent="." unique_id=1575609299 instance=ExtResource("3_jg44g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

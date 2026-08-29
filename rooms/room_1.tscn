@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://s4ym70ymniwg"]
 
 [ext_resource type="Script" uid="uid://b2dwv6t11dl5f" path="res://rooms/room.gd" id="1_2otyv"]
-[ext_resource type="PackedScene" uid="uid://c8s26dimqkkiu" path="res://rooms/exit.tscn" id="2_j6sld"]
+[ext_resource type="PackedScene" uid="uid://c8s26dimqkkiu" path="res://rooms/_tests/exit.tscn" id="2_j6sld"]
 [ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_31r0r"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="4_h00nm"]
 [ext_resource type="PackedScene" uid="uid://ectrtomafr4f" path="res://scenes/enemy_zombie_soldier.tscn" id="5_1j48i"]

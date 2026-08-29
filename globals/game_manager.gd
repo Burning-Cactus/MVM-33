@@ -121,9 +121,10 @@ func handle_player_death():
 func transition_to_room(
 	room_scene_path: String, 
 	door_id: String, 
+	door_offset: Vector3 = Vector3.ZERO,
 	player: Player = null
 ):
-	target_door = TargetDoor.new(door_id, player)
+	target_door = TargetDoor.new(door_id, door_offset, player)
 	UiLayer.animation_player.play("fade_to_black")
 	await UiLayer.animation_player.animation_finished
 	get_tree().call_deferred("change_scene_to_file", room_scene_path)
@@ -133,11 +134,11 @@ func register_player(player_node: CharacterBody3D):
 	var doors = get_tree().get_nodes_in_group("Exit")
 	for door in doors:
 		if door.door_id == target_door.door_id:
-			player_node.global_position = door.get_spawn_position()
+			player_node.global_position = door.get_spawn_position() + target_door.door_offset
 			
 			if not player_node is Player:
 				return
-				
+			
 			player_node.set_state(target_door.player_state)
 			
 			if target_door.player_state != Player.PlayerState.NORMAL:
