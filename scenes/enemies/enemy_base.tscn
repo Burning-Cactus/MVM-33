@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://chhjn0jwaooo4"]
+
+[ext_resource type="Script" uid="uid://ckbc15i6bdr70" path="res://scripts/enemy_base.gd" id="1_qty17"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sw0xa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fr7lv"]
+size = Vector3(2, 10, 10)
+
+[node name="EnemyBase" type="CharacterBody3D" unique_id=445466315 groups=["Enemy"]]
+script = ExtResource("1_qty17")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1648093087]
+shape = SubResource("CapsuleShape3D_sw0xa")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=1417463964]
+
+[node name="PlayerDetection" type="Area3D" parent="." unique_id=1218466067]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetection" unique_id=662623750]
+shape = SubResource("BoxShape3D_fr7lv")
+
+[node name="FloorCheck" type="RayCast3D" parent="." unique_id=1821149033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.80038595)
+target_position = Vector3(0, -1.1, 0)

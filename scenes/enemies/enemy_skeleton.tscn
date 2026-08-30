@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b4ndfnys5liq3"]
+
+[ext_resource type="PackedScene" uid="uid://chhjn0jwaooo4" path="res://scenes/enemies/enemy_base.tscn" id="1_lsw4l"]
+[ext_resource type="Script" uid="uid://bgetc81abumkw" path="res://scenes/enemies/enemy_skeleton.gd" id="2_1quu0"]
+[ext_resource type="PackedScene" uid="uid://dpyssn3i81e75" path="res://assets/enemies/skeleton.glb" id="2_vs6eh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lsw4l"]
+size = Vector3(2, 10, 10)
+
+[node name="EnemySkeleton" unique_id=445466315 instance=ExtResource("1_lsw4l")]
+script = ExtResource("2_1quu0")
+speed = 1.2
+max_health = 15
+
+[node name="Model" parent="Visuals" parent_id_path=PackedInt32Array(1417463964) index="0" unique_id=949660926 instance=ExtResource("2_vs6eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99, 0)
+
+[node name="CollisionShape3D" parent="PlayerDetection" parent_id_path=PackedInt32Array(1218466067) index="0" unique_id=662623750]
+shape = SubResource("BoxShape3D_lsw4l")

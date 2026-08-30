@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/exit_left.tscn" id="6_75nnf"]
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/exit_right.tscn" id="7_ok10o"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="8_a3q6a"]
+[ext_resource type="PackedScene" uid="uid://ny54xyy7clkt" path="res://scenes/enemies/enemy_skeleton_wheel.tscn" id="9_k8s8p"]
 
 [node name="Zone1Room2" unique_id=323921774 instance=ExtResource("1_5k1lq")]
 
@@ -50,3 +51,7 @@ room_coordinates = Vector2i(5, 0)
 border_left = "None"
 border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
+
+[node name="EnemySkeletonWheel" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("9_k8s8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32, -8.959)
+start_direction = -1

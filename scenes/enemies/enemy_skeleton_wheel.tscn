@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ny54xyy7clkt"]
+
+[ext_resource type="PackedScene" uid="uid://chhjn0jwaooo4" path="res://scenes/enemies/enemy_base.tscn" id="1_a0yo6"]
+[ext_resource type="Script" uid="uid://wl72pgkyickg" path="res://scenes/enemies/enemy_skeleton_wheel.gd" id="2_1wl5j"]
+[ext_resource type="PackedScene" uid="uid://b0jmwni25arg2" path="res://assets/enemies/skeleton_wheel.glb" id="2_5wvr3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1wl5j"]
+height = 1.0
+radius = 0.82
+
+[node name="EnemySkeletonWheel" unique_id=445466315 instance=ExtResource("1_a0yo6")]
+script = ExtResource("2_1wl5j")
+knockback_force = Vector3(0, 0, 2)
+knockback_duration = 1.0
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=1648093087]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_1wl5j")
+
+[node name="skeleton_wheel" parent="Visuals" parent_id_path=PackedInt32Array(1417463964) index="0" unique_id=2096123031 instance=ExtResource("2_5wvr3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.82, 0)
