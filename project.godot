@@ -118,6 +118,7 @@ release={
 3d_physics/layer_5="Interact"
 3d_physics/layer_6="Rope"
 3d_physics/layer_7="Climb"
+3d_physics/layer_8="Ledge"
 
 [physics]
 

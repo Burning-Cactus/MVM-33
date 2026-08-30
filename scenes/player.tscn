@@ -2,116 +2,100 @@
 
 [ext_resource type="Script" uid="uid://d2twe0ejk3qtu" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://th5goqfgcynp" path="res://scripts/player/player_climb_handler.gd" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://kylehva3eaht" path="res://assets/player_realsize.glb" id="2_qlg0r"]
 [ext_resource type="Script" uid="uid://bjbgaibpi88qb" path="res://scripts/player/player_hang_handler.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://hmjf03tacdhm" path="res://scripts/player/player_entity_handler.gd" id="4_dqkch"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_i3pqv"]
-top_radius = 0.0
-bottom_radius = 0.3
-height = 1.0
-radial_segments = 8
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pj1qo"]
+radius = 0.3
+height = 1.5601807
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
 size = Vector3(0.75, 0.75, 0.5)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ht1ow"]
+radius = 0.3
+height = 0.9861328
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+radius = 0.54785156
+height = 2.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
-
-[sub_resource type="Animation" id="Animation_4flbx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model/Weapon:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Model/AttackArea:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_onrkg"]
-resource_name = "attack"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model/Weapon:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.45),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Model/AttackArea:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.45),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3pqv"]
-_data = {
-&"RESET": SubResource("Animation_4flbx"),
-&"attack": SubResource("Animation_onrkg")
-}
 
 [node name="Player" type="CharacterBody3D" unique_id=1575609299 groups=["Player"]]
 collision_layer = 3
 collision_mask = 41
 script = ExtResource("1_4flbx")
 
-[node name="Model" type="MeshInstance3D" parent="." unique_id=1500403010]
-mesh = SubResource("CapsuleMesh_sh265")
+[node name="Model" parent="." unique_id=1313433059 instance=ExtResource("2_qlg0r")]
 
-[node name="AttackArea" type="Area3D" parent="Model" unique_id=1466970068]
-visible = false
+[node name="Skeleton3D" parent="Model/MAIN" parent_id_path=PackedInt32Array(1313433059, 1858362389) index="0" unique_id=122598099]
+bones/1/position = Vector3(-3.2150335e-14, 0.20231676, 0.09849727)
+bones/1/rotation = Quaternion(-0.4435552, -1.0684097e-07, 5.2875887e-08, 0.89624715)
+bones/2/rotation = Quaternion(0.55219436, 0.0042845807, -0.018262342, 0.83350444)
+bones/3/rotation = Quaternion(-0.12321638, -0.059627883, 0.0043619545, 0.9905772)
+bones/5/rotation = Quaternion(-0.28959942, 0.03930376, -0.0042848457, 0.956331)
+bones/6/rotation = Quaternion(-0.022147326, -0.00096218975, 0.0024712195, 0.9997512)
+bones/8/rotation = Quaternion(0.5676676, 0.5753765, 0.37825572, -0.4512404)
+bones/9/position = Vector3(-0.0037522647, 0.20358165, -0.039587803)
+bones/9/rotation = Quaternion(-0.45788246, -0.18818559, 0.16069046, 0.85387856)
+bones/10/rotation = Quaternion(-0.48377883, -0.15105346, -0.31908864, 0.8008266)
+bones/11/position = Vector3(-0.011258687, 0.34011108, 0.025782404)
+bones/11/rotation = Quaternion(0.070863046, 0.9171232, 0.0707138, 0.38582775)
+bones/14/rotation = Quaternion(0.69767874, -0.40220633, -0.32827783, -0.49366808)
+bones/15/position = Vector3(0.010534736, 0.20363879, -0.038039636)
+bones/15/rotation = Quaternion(-0.58871645, 0.42304912, -0.07183401, 0.68504184)
+bones/16/rotation = Quaternion(-0.12771705, 0.12940134, 0.06988726, 0.9808463)
+bones/17/position = Vector3(0.011258622, 0.34011117, 0.025782505)
+bones/17/rotation = Quaternion(-0.057317704, 0.93152195, 0.20276734, -0.2964235)
+bones/20/rotation = Quaternion(-0.11654571, 0.70939803, 0.6476815, 0.25234953)
+bones/21/rotation = Quaternion(-2.8136547e-08, 1.04657374e-07, 1.0863976e-08, 1)
+bones/21/scale = Vector3(1, 0.99999994, 1)
+bones/22/rotation = Quaternion(-1.8626429e-09, -3.3323886e-09, 1.513399e-09, 1)
+bones/23/position = Vector3(-0.11346623, 0.05169694, -0.04692491)
+bones/23/rotation = Quaternion(0.9617424, -0.016119648, -0.029155169, -0.27192244)
+bones/24/rotation = Quaternion(0.58056307, -0.014105447, -0.030657819, 0.81351566)
+bones/25/rotation = Quaternion(-0.38402703, -0.035297588, 0.03159234, 0.92210585)
+bones/26/position = Vector3(0.1134662, 0.051777948, -0.046995062)
+bones/26/rotation = Quaternion(0.90385044, 0.011071459, 0.031315416, -0.42655742)
+bones/27/rotation = Quaternion(0.41952002, 0.017882427, 0.019382205, 0.9073629)
+bones/28/rotation = Quaternion(-0.30844963, 0.02669062, -0.019255279, 0.9506712)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/AttackArea" unique_id=1800963340]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0476427)
-shape = SubResource("BoxShape3D_onrkg")
+[node name="SwordBoneAttachment" type="BoneAttachment3D" parent="." unique_id=954925717]
+transform = Transform3D(0.7673707, -0.2435821, -0.59313524, -0.64001286, -0.34731376, -0.685387, -0.039056193, 0.9055603, -0.42241433, -0.68826926, -0.26669395, 0.7670812)
+bone_name = "sword.002"
+bone_idx = 22
+use_external_skeleton = true
+external_skeleton = NodePath("../Model/MAIN/Skeleton3D")
 
-[node name="Weapon" type="MeshInstance3D" parent="Model" unique_id=2096723238]
-transform = Transform3D(1, 0, 0, 0, 0.0058293766, 0.999983, 0, -0.999983, 0.0058293766, 0, -0.007824898, -1.0459421)
-visible = false
-mesh = SubResource("CylinderMesh_i3pqv")
+[node name="SwordHitbox" type="Area3D" parent="SwordBoneAttachment" unique_id=1797075612]
+collision_layer = 0
 
-[node name="InteractArea" type="Area3D" parent="Model" unique_id=32101662]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwordBoneAttachment/SwordHitbox" unique_id=1754181364]
+transform = Transform3D(1.0000004, -2.561137e-08, -1.2468081e-07, -9.825453e-08, 1, 0, -2.1507149e-06, 1.4901161e-08, 1, 0, -0.12335229, 8.940697e-08)
+shape = SubResource("CapsuleShape3D_pj1qo")
+debug_color = Color(0.98039216, 0, 0.3764706, 0.8980392)
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=32101662]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/InteractArea" unique_id=1358758455]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=1358758455]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -0.5)
 shape = SubResource("BoxShape3D_5a2or")
 
+[node name="LedgeGrabArea" type="Area3D" parent="." unique_id=970077386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5582784, 0.42019534)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LedgeGrabArea" unique_id=1215890785]
+shape = SubResource("CapsuleShape3D_ht1ow")
+debug_color = Color(0.8721206, 0.0004780346, 0.8459423, 0.41960785)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2006155022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
 shape = SubResource("CapsuleShape3D_4flbx")
 
 [node name="EntityCollisionShape3D" type="CollisionShape3D" parent="." unique_id=127111701]
@@ -130,14 +114,12 @@ metadata/_custom_type_script = "uid://bjbgaibpi88qb"
 script = ExtResource("4_dqkch")
 metadata/_custom_type_script = "uid://hmjf03tacdhm"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2037548390]
-libraries/ = SubResource("AnimationLibrary_i3pqv")
-
 [node name="DamageTimer" type="Timer" parent="." unique_id=1803525029]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=839198073]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7, 0.8, 0)
 
-[connection signal="body_entered" from="Model/AttackArea" to="." method="_on_attack_area_body_entered"]
-[connection signal="area_entered" from="Model/InteractArea" to="." method="_on_area_3d_interact_area_entered"]
-[connection signal="area_exited" from="Model/InteractArea" to="." method="_on_area_3d_interact_area_exited"]
+[connection signal="area_entered" from="InteractArea" to="." method="_on_area_3d_interact_area_entered"]
+[connection signal="area_exited" from="InteractArea" to="." method="_on_area_3d_interact_area_exited"]
+
+[editable path="Model"]
