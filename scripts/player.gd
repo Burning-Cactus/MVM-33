@@ -278,6 +278,9 @@ func get_size() -> Vector3:
 	)
 	
 func can_interact() -> bool:
+	if input_disabled:
+		return false
+		
 	match state:
 		PlayerState.NORMAL, PlayerState.JUMPING, PlayerState.FALLING:
 			return true

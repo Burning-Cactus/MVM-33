@@ -51,6 +51,9 @@ func process_entity(delta: float) -> void:
 			entity_collision.position.z = absf(entity_collision.position.z) * -1
 
 func can_pickup() -> bool:
+	if not player.can_interact():
+		return false
+		
 	for entity in _entities:
 		if not entity.can_pickup:
 			continue
@@ -63,6 +66,9 @@ func is_holding_entity() -> bool:
 	return entity_ref != null
 
 func push() -> void:
+	if not player.can_interact():
+		return
+		
 	if not player.is_on_floor():
 		return
 		
@@ -102,7 +108,7 @@ func _push_entity(
 	
 
 func pickup() -> void:
-	if player.input_disabled:
+	if not player.can_interact():
 		return
 		
 	if _entities.is_empty() or entity_ref != null:
@@ -135,9 +141,12 @@ func pickup() -> void:
 		(player_size.z / 2) + (entity_size.z / 2),
 	)
 	
-	_entity_position += PICKUP_OFFSET
+	var player_offset = player.get_node("CollisionShape3D").position
 	
-	_entity_position.z *= -1
+	_entity_position += player_offset + PICKUP_OFFSET
+	
+	if player.model.scale.z >= 0.0:
+		_entity_position.z *= -1
 	
 	entity_collision.position = entity_ref.position
 	entity_collision.shape = entity_ref.collision.shape.duplicate()
@@ -165,7 +174,10 @@ func drop() -> void:
 	entity_ref = null
 
 func kick() -> void:
-	if player.input_disabled or not player.is_on_floor():
+	if not player.is_on_floor():
+		return
+
+	if not player.can_interact():
 		return
 	
 	for entity in _entities:
@@ -182,7 +194,7 @@ func kick() -> void:
 			)
 
 func throw() -> void:
-	if player.input_disabled:
+	if not player.can_interact():
 		return
 		
 	if (entity_ref == null or 

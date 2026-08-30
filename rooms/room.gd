@@ -40,9 +40,10 @@ func _ready():
 
 			set_doors(false)
 			boss_trigger_area.body_entered.connect(_on_player_entered_boss_area_trigger)
-			
-	for enemy: EnemyBase in enemies.get_children():
-		enemy.tree_exited.connect(_on_enemy_death)
+	
+	if enemies != null:
+		for enemy: EnemyBase in enemies.get_children():
+			enemy.tree_exited.connect(_on_enemy_death)
 
 func set_doors(lock: bool):
 	for door in boss_doors.get_children():

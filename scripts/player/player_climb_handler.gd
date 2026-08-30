@@ -206,10 +206,7 @@ func release() -> void:
 			area.rotation_degrees.y = 0.0
 
 func grab() -> void:
-	if player.input_disabled:
-		return
-	
-	if !player.can_interact():
+	if not player.can_interact():
 		return
 	
 	# Can't climb while holding someting

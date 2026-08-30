@@ -107,16 +107,13 @@ func _push_rope(
 	)
 
 func grab() -> void:
-	if player.input_disabled:
+	if not player.can_interact():
 		return
 		
-	if !player.can_interact():
-		return
-	
 	# Can't grab while holding an entity
-	if player.entity_handler.is_holding_entity() != null or _rope_segments.is_empty():
+	if player.entity_handler.is_holding_entity() or _rope_segments.is_empty():
 		return
-		
+
 	if not Input.is_action_just_pressed("grab"):
 		return
 		

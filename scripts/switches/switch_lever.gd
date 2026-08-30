@@ -30,8 +30,8 @@ func _ready() -> void:
 	trigger_area.body_exited.connect(_on_body_exited)
 	
 func _process(delta: float) -> void:
-	if _player != null and _player.entity_handler.is_holding_entity():
-		if Input.is_action_just_pressed(&"interact"):
+	if _player != null and not _player.entity_handler.is_holding_entity():
+		if Input.is_action_just_pressed(&"interact") and _player.can_interact():
 			if is_on:
 				toggle_off()
 			else:
