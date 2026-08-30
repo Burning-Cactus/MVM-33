@@ -19,6 +19,8 @@ enum LadderType {
 	CENTER,
 }
 
+const FORWARD_OFFSET_X = 0.548
+
 func _init() -> void:
 	add_to_group(&"Ladders")
 
@@ -32,7 +34,7 @@ func generate_ladder() -> void:
 	
 	if ladder_type == LadderType.FORWARD:
 		# 0.5 is half of player size.x
-		current_position = Vector3(-0.5 - (segment_size.x / 2.0), -segment_size.y / 2.0, 0)
+		current_position = Vector3(-FORWARD_OFFSET_X - (segment_size.x / 2.0), -segment_size.y / 2.0, 0)
 	elif ladder_type == LadderType.CENTER:
 		current_position = Vector3(0, -segment_size.y / 2.0, 0)
 	else:

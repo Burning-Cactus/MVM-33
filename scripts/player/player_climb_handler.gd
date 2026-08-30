@@ -105,12 +105,14 @@ func _add_center_area() -> void:
 	area.area_entered.connect(_on_center_area_entered)
 	area.area_exited.connect(_on_center_area_exited)
 	
+	var offset = player.get_node("CollisionShape3D").position
+	
 	var collision = CollisionShape3D.new()
 	var shape = BoxShape3D.new()
 	shape.size = climb_area
 	collision.shape = shape
 	area.add_child(collision)
-	collision.position = Vector3(-climb_area.x / 2.0, climb_area_offset, 0.0)
+	collision.position = offset + Vector3(-climb_area.x / 2.0, climb_area_offset, 0.0)
 	add_child(area)
 	_areas.append(area)
 	
@@ -123,12 +125,14 @@ func _add_top_area() -> void:
 	area.area_entered.connect(_on_top_area_entered)
 	area.area_exited.connect(_on_top_area_exited)
 	
+	var offset = player.get_node("CollisionShape3D").position
+	
 	var collision = CollisionShape3D.new()
 	var shape = BoxShape3D.new()
 	shape.size = Vector3(climb_area.x, 0.05, climb_area.z)
 	collision.shape = shape
 	area.add_child(collision)
-	collision.position = Vector3(-climb_area.x / 2.0, (climb_area.y / 2.0) + climb_area_offset + 0.05, 0.0)
+	collision.position = offset + Vector3(-climb_area.x / 2.0, (climb_area.y / 2.0) + climb_area_offset + 0.05, 0.0)
 	add_child(area)
 	_areas.append(area)
 	
@@ -141,12 +145,14 @@ func _add_bottom_area() -> void:
 	area.area_entered.connect(_on_bottom_area_entered)
 	area.area_exited.connect(_on_bottom_area_exited)
 	
+	var offset = player.get_node("CollisionShape3D").position
+	
 	var collision = CollisionShape3D.new()
 	var shape = BoxShape3D.new()
 	shape.size = Vector3(climb_area.x, 0.05, climb_area.z)
 	collision.shape = shape
 	area.add_child(collision)
-	collision.position = Vector3(-climb_area.x / 2.0, (-climb_area.y / 2.0) + climb_area_offset - 0.05, 0.0)
+	collision.position = offset + Vector3(-climb_area.x / 2.0, (-climb_area.y / 2.0) + climb_area_offset - 0.05, 0.0)
 	add_child(area)
 	_areas.append(area)
 
@@ -159,12 +165,14 @@ func _add_left_area() -> void:
 	area.area_entered.connect(_on_left_area_entered)
 	area.area_exited.connect(_on_left_area_exited)
 	
+	var offset = player.get_node("CollisionShape3D").position
+	
 	var collision = CollisionShape3D.new()
 	var shape = BoxShape3D.new()
 	shape.size = Vector3(climb_area.x, climb_area.y, 0.05)
 	collision.shape = shape
 	area.add_child(collision)
-	collision.position = Vector3(-climb_area.x / 2.0, climb_area_offset, (climb_area.z / 2.0) + 0.05)
+	collision.position = offset + Vector3(-climb_area.x / 2.0, climb_area_offset, (climb_area.z / 2.0) + 0.05)
 	add_child(area)
 	_areas.append(area)
 	
@@ -177,12 +185,14 @@ func _add_right_area() -> void:
 	area.area_entered.connect(_on_right_area_entered)
 	area.area_exited.connect(_on_right_area_exited)
 	
+	var offset = player.get_node("CollisionShape3D").position
+	
 	var collision = CollisionShape3D.new()
 	var shape = BoxShape3D.new()
 	shape.size = Vector3(climb_area.x, climb_area.y, 0.05)
 	collision.shape = shape
 	area.add_child(collision)
-	collision.position = Vector3(-climb_area.x / 2.0, climb_area_offset, (-climb_area.z / 2.0) - 0.05)
+	collision.position = offset + Vector3(-climb_area.x / 2.0, climb_area_offset, (-climb_area.z / 2.0) - 0.05)
 	add_child(area)
 	_areas.append(area)
 
@@ -199,7 +209,7 @@ func grab() -> void:
 	if player.input_disabled:
 		return
 	
-	if player.state != player.PlayerState.NORMAL:
+	if !player.can_interact():
 		return
 	
 	# Can't climb while holding someting

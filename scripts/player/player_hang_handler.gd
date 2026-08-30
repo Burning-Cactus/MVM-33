@@ -41,8 +41,9 @@ func _add_rope_area() -> void:
 	area.area_exited.connect(_on_rope_area_body_exited)
 	
 	var collision = CollisionShape3D.new()
-	var shape = player.get_node("CollisionShape3D").shape.duplicate()
-	collision.shape = shape
+	var player_collision = player.get_node("CollisionShape3D")
+	collision.shape = player_collision.shape.duplicate()
+	collision.position = player_collision.position
 	area.add_child(collision)
 	add_child(area)
 	
@@ -109,7 +110,7 @@ func grab() -> void:
 	if player.input_disabled:
 		return
 		
-	if player.state != player.PlayerState.NORMAL:
+	if !player.can_interact():
 		return
 	
 	# Can't grab while holding an entity

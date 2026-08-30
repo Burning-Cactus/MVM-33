@@ -11,7 +11,7 @@ radius = 0.3
 height = 1.5601807
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
-size = Vector3(0.75, 0.75, 0.5)
+size = Vector3(0.75, 0.75, 0.548)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ht1ow"]
 radius = 0.3
@@ -30,7 +30,7 @@ script = ExtResource("1_4flbx")
 
 [node name="Model" parent="." unique_id=1313433059 instance=ExtResource("2_qlg0r")]
 
-[node name="Skeleton3D" parent="Model/MAIN" parent_id_path=PackedInt32Array(1313433059, 1858362389) index="0" unique_id=122598099]
+[node name="Skeleton3D" parent="Model/MAIN" parent_id_path=PackedInt32Array(1313433059, 1612359759) index="0" unique_id=2129135366]
 bones/1/position = Vector3(-3.2150335e-14, 0.20231676, 0.09849727)
 bones/1/rotation = Quaternion(-0.4435552, -1.0684097e-07, 5.2875887e-08, 0.89624715)
 bones/2/rotation = Quaternion(0.55219436, 0.0042845807, -0.018262342, 0.83350444)
@@ -82,8 +82,9 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=1358758455]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.275, -0.548)
 shape = SubResource("BoxShape3D_5a2or")
+debug_color = Color(0.2511339, 0.6371502, 0, 1)
 
 [node name="LedgeGrabArea" type="Area3D" parent="." unique_id=970077386]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5582784, 0.42019534)

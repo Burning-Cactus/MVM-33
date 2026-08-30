@@ -84,21 +84,25 @@ func _ready() -> void:
 	attack_duration.one_shot = true
 	attack_duration.timeout.connect(end_attack)
 	add_child(attack_duration)
+	
+	model.scale.x = -1
+	model.scale.z = -1
 
 func _physics_process(delta: float) -> void:
 	if input_disabled_until_on_floor:
 		if is_on_floor():
 			input_disabled_until_on_floor = false
 			input_disabled = false
+			
 	match state:
 		PlayerState.NORMAL:
 			if not is_on_floor():
 				set_state(PlayerState.FALLING)
-			elif not input_disabled:
+			else:
 				has_double_jumped = false
-				if Input.is_action_just_pressed("jump"):
+				if _is_action_just_pressed("jump"):
 					set_state(PlayerState.JUMPING)
-				if Input.is_action_just_pressed("attack"):
+				if _is_action_just_pressed("attack"):
 					if Input.is_action_pressed("down"):
 						set_state(PlayerState.SLIDING)
 					else:
@@ -111,23 +115,23 @@ func _physics_process(delta: float) -> void:
 						animation_player.play("IDLE")
 		PlayerState.JUMPING:
 			handle_movement()
-			if Input.is_action_just_pressed("attack"):
+			if _is_action_just_pressed("attack"):
 				set_state(PlayerState.JUMP_ATTACKING)
-			elif Input.is_action_pressed("jump"):
+			elif _is_action_pressed("jump"):
 				velocity.y = JUMP_VELOCITY
 			else:
 				set_state(PlayerState.FALLING)
 		PlayerState.FALLING:
 			if is_on_floor():
 				set_state(PlayerState.NORMAL)
-			elif not input_disabled:
+			else:
 				animation_player.play("JUMP_FALL")
 				# velocity += (get_gravity() - Vector3(0, 2, 0)) * delta
 				velocity.y = move_toward(velocity.y, get_gravity().y * 3, -get_gravity().y * delta)
 				handle_movement()
-				if Input.is_action_just_pressed("attack"):
+				if _is_action_just_pressed("attack"):
 					set_state(PlayerState.JUMP_ATTACKING)
-				elif Input.is_action_just_pressed("jump") && double_jump_unlocked && !has_double_jumped:
+				elif _is_action_just_pressed("jump") && double_jump_unlocked && !has_double_jumped:
 						has_double_jumped = true
 						velocity.y = JUMP_VELOCITY
 						animation_player.play("JUMP_DOUBLE")
@@ -143,7 +147,7 @@ func _physics_process(delta: float) -> void:
 			climb_handler.process_climbing(delta)
 		PlayerState.ATTACKING:
 			velocity.z = 0
-			if attack_cooldown.is_stopped() && Input.is_action_just_pressed("attack"):
+			if attack_cooldown.is_stopped() && _is_action_just_pressed("attack"):
 				handle_attack()
 		PlayerState.ON_LEDGE:
 			pass
@@ -173,7 +177,16 @@ func _physics_process(delta: float) -> void:
 	hang_handler.grab()
 	climb_handler.grab()
 
+func _is_action_just_pressed(action: StringName, exact_match: bool = false) -> bool:
+	return Input.is_action_just_pressed(action, exact_match) and not input_disabled
+	
+func _is_action_pressed(action: StringName, exact_match: bool = false) -> bool:
+	return Input.is_action_pressed(action, exact_match) and not input_disabled
+
 func handle_movement() -> void:
+	if input_disabled:
+		return
+		
 	var input_dir := Input.get_vector("right", "left", "up", "down")
 	var dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if dir:
@@ -263,6 +276,13 @@ func get_size() -> Vector3:
 		$CollisionShape3D.shape.height,
 		$CollisionShape3D.shape.radius * 2,
 	)
+	
+func can_interact() -> bool:
+	match state:
+		PlayerState.NORMAL, PlayerState.JUMPING, PlayerState.FALLING:
+			return true
+			
+	return false
 
 func disable_input_until_on_floor() -> void:
 	has_double_jumped = true
@@ -298,16 +318,16 @@ func set_direction(value: PlayerDirection) -> void:
 		
 	if direction == PlayerDirection.LEFT:
 		model.rotation_degrees.y = 180
+		interact_area.rotation_degrees.y = 180
 		model.scale.x = 1
-		model.scale.z = -1
 	elif direction == PlayerDirection.RIGHT:
 		model.rotation_degrees.y = 0
+		interact_area.rotation_degrees.y = 0
 		model.scale.x = -1
-		model.scale.z = -1
 	elif direction == PlayerDirection.FORWARD:
-		model.rotation_degrees.y = 90
+		model.rotation_degrees.y = -270
+		interact_area.rotation_degrees.y = 270
 		model.scale.x = -1
-		model.scale.z = -1
 			
 	direction_changed.emit(direction)
 

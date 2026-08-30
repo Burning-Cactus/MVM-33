@@ -41,7 +41,6 @@ func handle_3d_rotation(delta: float):
 		if _knockback_delta < knockback_duration / 2.0:
 			_knockback_delta += delta
 			var weight: float = minf(1.0, _knockback_delta / (knockback_duration / 2.0))
-			print(weight, " ", _knockback_delta, " ", (knockback_duration / 2.0))
 			visuals.rotation.y = lerp_angle(0.0, PI, weight)
 		else:
 			_knockback_delta += delta

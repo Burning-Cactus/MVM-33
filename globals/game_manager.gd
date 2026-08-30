@@ -139,12 +139,15 @@ func register_player(player_node: CharacterBody3D):
 			if not player_node is Player:
 				return
 			
-			player_node.set_state(target_door.player_state)
-			
-			if target_door.player_state != Player.PlayerState.NORMAL:
+			if (target_door.player_state == Player.PlayerState.CLIMBING or 
+				target_door.player_state == Player.PlayerState.HANGING
+			):
+				player_node.set_state(target_door.player_state)
 				player_node.set_direction(target_door.player_direction)
 				return
-				
+			
+			player_node.set_state(Player.PlayerState.NORMAL)
+			
 			if door.maintain_velocity:
 				player_node.velocity = target_door.player_velocity
 				player_node.set_direction(target_door.player_direction)
