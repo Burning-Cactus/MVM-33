@@ -21,7 +21,9 @@ class_name EnemyBase
 @export var turning_duration: float = 0.5
 
 @export_group("Animations")
-@export var hurt_animation: StringName = &""
+@export var idle_animation: StringName = &"idle"
+@export var walk_animation: StringName = &"walk"
+@export var hurt_animation: StringName = &"hurt"
 
 var unique_enemy_id: String = ""
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -117,24 +119,29 @@ func flip_direction():
 		floor_check.position.z = direction * 0.6
 
 func handle_3d_rotation(delta: float):
-	if is_turning:
-		pass
-	else:
-		# Target angles: 0 rad for Right (+X), PI rad (180 deg) for Left (-X)
-		var target_y_rot = 0.0 if direction > 0 else PI
-		visuals.rotation.y = rotate_toward(visuals.rotation.y, target_y_rot, rotation_speed * delta)
+	# Target angles: 0 rad for Right (+X), PI rad (180 deg) for Left (-X)
+	var target_y_rot = 0.0 if direction > 0 else PI
+	visuals.rotation.y = rotate_toward(visuals.rotation.y, target_y_rot, rotation_speed * delta)
 
 func lock_to_25d_plane():
 	velocity.x = 0
 	global_transform.origin.x = 0
 
-func play_animation(anim_name: String):
+func play_animation(anim_name: StringName):
+	match anim_name:
+		&"idle":
+			anim_name = idle_animation
+		&"walk":
+			anim_name = walk_animation
+		&"hurt":
+			anim_name = hurt_animation
+			
 	if anim_player and anim_player.has_animation(anim_name):
 		if anim_player.current_animation != anim_name:
 			anim_player.play(anim_name)
 
 func take_damage(amount: int, source_position: float):
-	#current_health -= amount
+	current_health -= amount
 	print(amount, " damage taken, ", current_health, " left.")
 	if current_health <= 0:
 		die()
@@ -142,8 +149,8 @@ func take_damage(amount: int, source_position: float):
 		
 	if has_knockback:
 		apply_knockback(amount, source_position)
-	elif hurt_animation != &"":
-		play_animation(hurt_animation)
+	else:
+		play_animation(&"hurt")
 		
 func die():
 	if not GameManager.defeated_enemies.has(unique_enemy_id):
@@ -166,8 +173,7 @@ func _on_player_lost(body: Node3D):
 
 func apply_knockback(damage_amount, source_position: float) -> void:
 	if damage_amount < knockback_min_damage:
-		if hurt_animation != &"":
-			play_animation("hurt")
+		play_animation(&"hurt")
 		return
 		
 	is_in_knockback = true

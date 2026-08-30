@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 @export_group("Knockback Settings")
-@export var player_knockback_force: float = 8.0
+@export var player_knockback_force: Vector3 = Vector3(0.0, 2.8, 8.0)
 @export var player_knockback_duration: float = 0.3
 
 @onready var player_model: Node3D = $Model
@@ -16,6 +16,7 @@ var is_invincible: bool = false
 
 var player_data: PlayerData
 var attack_damage:int = 7
+var damage_cooldown: float = 1.0
 
 var double_jump_unlocked := false
 var slide_unlocked := false
@@ -167,7 +168,6 @@ func _physics_process(delta: float) -> void:
 	velocity.x = 0
 	global_position.x = 0
 	move_and_slide()
-	check_contact_damage()
 	
 	# These needs to be after move_and_slide() to prevent issues
 	# from the collisions not being processed yet
@@ -205,25 +205,26 @@ func unlock_ability(ability_name: String) -> void:
 		slide_unlocked = true
 	GameManager.unlock_ability(ability_name)
 
-func check_contact_damage():
+func receive_damage(
+	amount: int, 
+	source_position: float = 0.0,
+	independent: bool = false,
+):
+	if independent:
+		GameManager.update_health(-amount)
+		if not is_zero_approx(source_position):
+			apply_player_knockback(source_position)
+		return
+	
 	if is_invincible:
 		return
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var body = collision.get_collider()
-
-		if body and "attack_damage" in body:
-			receive_damage(body.attack_damage,body.global_position.z)
-			return
-
-func receive_damage(amount: int,source_position:float):
-	if is_invincible:
-		return
+		
 	GameManager.update_health(-amount)
 	#TODO invul visual flashing
 	is_invincible = true
-	apply_player_knockback(source_position)
-	damage_timer.start(1.0)
+	if not is_zero_approx(source_position):
+		apply_player_knockback(source_position)
+	damage_timer.start(damage_cooldown)
 	await damage_timer.timeout
 	is_invincible = false
 
@@ -257,8 +258,8 @@ func apply_player_knockback(source_position: float):
 	if knockback_dir == 0:
 		knockback_dir = 1
 
-	velocity.z = knockback_dir * player_knockback_force
-	velocity.y = player_knockback_force * 0.35
+	velocity.z = knockback_dir * player_knockback_force.z
+	velocity.y = player_knockback_force.y
 
 	if animation_player.has_animation("hurt"):
 		animation_player.play("hurt")
@@ -328,8 +329,8 @@ func set_direction(value: PlayerDirection) -> void:
 		interact_area.rotation_degrees.y = 0
 		model.scale.x = -1
 	elif direction == PlayerDirection.FORWARD:
-		model.rotation_degrees.y = -270
-		interact_area.rotation_degrees.y = 270
+		model.rotation_degrees.y = 90
+		interact_area.rotation_degrees.y = 90
 		model.scale.x = -1
 			
 	direction_changed.emit(direction)

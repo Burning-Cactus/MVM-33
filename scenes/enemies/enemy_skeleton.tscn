@@ -11,6 +11,8 @@ size = Vector3(2, 10, 10)
 script = ExtResource("2_1quu0")
 speed = 1.2
 max_health = 15
+idle_animation = &"SKELETON_ENEMY_IDLE_002"
+walk_animation = &"SKELETON_ENEMY_WALK"
 
 [node name="Model" parent="Visuals" parent_id_path=PackedInt32Array(1417463964) index="0" unique_id=949660926 instance=ExtResource("2_vs6eh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99, 0)
