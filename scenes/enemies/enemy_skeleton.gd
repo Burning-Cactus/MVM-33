@@ -11,7 +11,7 @@ func _physics_process(delta):
 		play_animation(&"idle")
 	
 	if is_chasing:
-		handle_chasing()
+		handle_chase_turning()
 	else:
 		handle_patrol_turning()
 		

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmnfiqvwl81ih"]
 
-[ext_resource type="Script" uid="uid://deoe22gjj7bte" path="res://scripts/projectile_base.gd" id="1_5bkip"]
+[ext_resource type="Script" uid="uid://deoe22gjj7bte" path="res://scripts/projectile_base2.gd" id="1_5bkip"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gkcjj"]
 

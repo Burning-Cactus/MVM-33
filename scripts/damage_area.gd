@@ -3,6 +3,8 @@ class_name DamageArea
 
 @export var attack_damage: int = 0
 @export var attack_cooldown: float = 0.0
+@export var independent: bool = false
+@export var apply_knockback: bool = true
 @export var damage_edge: float = 0.02
 
 var player_ref: Player = null
@@ -76,9 +78,10 @@ func process_damage() -> void:
 			return
 		
 		attack_timer.start(attack_cooldown)
-		player_ref.receive_damage(attack_damage, global_position.z, true)
+		
+		player_ref.receive_damage(attack_damage, global_position.z, independent, apply_knockback)
 	else:
-		player_ref.receive_damage(attack_damage, global_position.z)
+		player_ref.receive_damage(attack_damage, global_position.z, independent, apply_knockback)
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:

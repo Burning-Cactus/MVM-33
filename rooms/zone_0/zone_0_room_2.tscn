@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/exit_right.tscn" id="7_ok10o"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="8_a3q6a"]
 [ext_resource type="PackedScene" uid="uid://ny54xyy7clkt" path="res://scenes/enemies/enemy_skeleton_wheel.tscn" id="9_k8s8p"]
+[ext_resource type="PackedScene" uid="uid://cbgh2uspkr1n1" path="res://scenes/enemies/enemy_jumping_spider.tscn" id="9_mkvu4"]
+[ext_resource type="PackedScene" uid="uid://bmb36xgd7utwo" path="res://scenes/enemies/enemy_floating_golem.tscn" id="11_cxo5b"]
 
 [node name="Zone1Room2" unique_id=323921774 instance=ExtResource("1_5k1lq")]
 
@@ -52,6 +54,19 @@ border_left = "None"
 border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
-[node name="EnemySkeletonWheel" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("9_k8s8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32, -8.959)
+[node name="Player" parent="." index="5" unique_id=1575609299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.9196897)
+
+[node name="EnemyJumpingSpider" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("9_mkvu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.773, -15.021176)
+collision_layer = 1
+collision_mask = 1
+
+[node name="EnemySkeletonWheel" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="1" unique_id=900747416 instance=ExtResource("9_k8s8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32, -18.668915)
+collision_layer = 1
+collision_mask = 1
 start_direction = -1
+
+[node name="EnemyFloatingGolem" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="2" unique_id=966322948 instance=ExtResource("11_cxo5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4047227, -3.7067504)

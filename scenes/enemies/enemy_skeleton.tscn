@@ -8,6 +8,8 @@
 size = Vector3(2, 10, 10)
 
 [node name="EnemySkeleton" unique_id=445466315 instance=ExtResource("1_lsw4l")]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_1quu0")
 speed = 1.2
 max_health = 15

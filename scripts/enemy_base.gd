@@ -8,8 +8,8 @@ class_name EnemyBase
 
 @export_group("Combat Attributes")
 @export var max_health: int = 20
-@export var attack_damage: int = 10
-@export var attack_cooldown: float = 1.5
+@export var attack_damage: int = 10 # DamageArea grabs this value
+@export var attack_cooldown: float = 1.5 # DamageArea grabs this value
 
 @export_group("Knockback Settings")
 @export var has_knockback: bool = true
@@ -24,6 +24,8 @@ class_name EnemyBase
 @export var idle_animation: StringName = &"idle"
 @export var walk_animation: StringName = &"walk"
 @export var hurt_animation: StringName = &"hurt"
+@export var jump_animation: StringName = &"jump"
+@export var attack_animation: StringName = &"attack"
 
 var unique_enemy_id: String = ""
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -41,6 +43,7 @@ var player_ref: CharacterBody3D = null
 @onready var model: Node3D = $Visuals/Model
 @onready var floor_check: RayCast3D = $FloorCheck
 @onready var detector: Area3D = $PlayerDetection
+@onready var damage_area: DamageArea = $DamageArea
 
 var anim_player: AnimationPlayer = null
 
@@ -72,7 +75,7 @@ func apply_gravity(delta: float):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-func handle_chasing() -> void:
+func handle_chase_turning() -> void:
 	if not is_chasing or not player_ref:
 		return
 	
@@ -116,7 +119,7 @@ func flip_direction():
 	direction *= -1
 		
 	if floor_check:
-		floor_check.position.z = direction * 0.6
+		floor_check.position.z = direction * absf(floor_check.position.z)
 
 func handle_3d_rotation(delta: float):
 	# Target angles: 0 rad for Right (+X), PI rad (180 deg) for Left (-X)
@@ -135,17 +138,22 @@ func play_animation(anim_name: StringName):
 			anim_name = walk_animation
 		&"hurt":
 			anim_name = hurt_animation
+		&"jump":
+			anim_name = jump_animation
+		&"attack":
+			anim_name = attack_animation
 			
 	if anim_player and anim_player.has_animation(anim_name):
 		if anim_player.current_animation != anim_name:
 			anim_player.play(anim_name)
 
 func take_damage(amount: int, source_position: float):
-	current_health -= amount
-	print(amount, " damage taken, ", current_health, " left.")
-	if current_health <= 0:
-		die()
-		return
+	if max_health > 0:
+		current_health -= amount
+		print(amount, " damage taken, ", current_health, " left.")
+		if current_health <= 0:
+			die()
+			return
 		
 	if has_knockback:
 		apply_knockback(amount, source_position)
@@ -186,8 +194,7 @@ func apply_knockback(damage_amount, source_position: float) -> void:
 	velocity.z = knockback_dir * knockback_force.z
 	velocity.y = knockback_force.y
 	
-	if hurt_animation != &"":
-		play_animation("hurt")
+	play_animation(&"hurt")
 
 	await get_tree().create_timer(knockback_duration).timeout
 	is_in_knockback = false

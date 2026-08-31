@@ -209,10 +209,11 @@ func receive_damage(
 	amount: int, 
 	source_position: float = 0.0,
 	independent: bool = false,
+	apply_knockback: bool = true
 ):
 	if independent:
 		GameManager.update_health(-amount)
-		if not is_zero_approx(source_position):
+		if apply_knockback:
 			apply_player_knockback(source_position)
 		return
 	
@@ -222,7 +223,7 @@ func receive_damage(
 	GameManager.update_health(-amount)
 	#TODO invul visual flashing
 	is_invincible = true
-	if not is_zero_approx(source_position):
+	if apply_knockback:
 		apply_player_knockback(source_position)
 	damage_timer.start(damage_cooldown)
 	await damage_timer.timeout
