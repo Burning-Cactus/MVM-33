@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var transition_bg: ColorRect = $TransitionBG
 @onready var game_over_bg: ColorRect = $GameOverBG
 @onready var boss_ui: Control = $UI/BossUI
+@onready var boss_healthbar: ProgressBar = $UI/BossUI/BossHealthbar
+@onready var boss_label: Label = $UI/BossUI/BossHealthbar/BossLabel
 
 
 func _ready():
@@ -35,6 +37,19 @@ func update_ability_icons(unlocked_list: Array):
 		icon.texture = load("res://assets/ability_icons/" + ability + ".png") 
 		skills_h_box.add_child(icon)
 
+
+func show_boss_ui(boss: EnemyBase) -> void:
+	boss_ui.visible = true
+	boss_label.text = boss.label
+	update_boss_health_display(boss.current_health, boss.max_health)
+	
+func hide_boss_ui() -> void:
+	boss_ui.visible = false
+	
+func update_boss_health_display(current: int, max_health: int):
+	var old_value =  boss_healthbar.value
+	boss_healthbar.max_value = max_health
+	create_tween().tween_property(boss_healthbar, "value", current, 0.2)
 
 func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

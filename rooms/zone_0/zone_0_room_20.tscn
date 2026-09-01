@@ -45,7 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8.5)
 target_room_path = "uid://ltmluf84050y"
 door_id = "zone_0_room_20_left"
 target_door_id = "zone_0_room_19_right"
-is_enabled = false
 
 [node name="WallExitRight" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=1176092721 instance=ExtResource("8_tg5ds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.5, -8.5)

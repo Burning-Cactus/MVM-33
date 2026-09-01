@@ -74,35 +74,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.5, -6.5)
 [node name="Zone0Ledge4" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="18" unique_id=811173085 instance=ExtResource("8_bbs18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.5, -6.5)
 
-[node name="WallExitLeft" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1894737716 instance=ExtResource("9_6ebkn")]
+[node name="ExitRightTop" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1621660744 instance=ExtResource("10_stj7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.5, -8.5)
+target_room_path = "uid://jx80mxtflfab"
+door_id = "zone_0_room_8_right_top"
+target_door_id = "zone_0_room_7_left_center"
+
+[node name="ExitLeftCenter" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=1894737716 instance=ExtResource("9_6ebkn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.5, 8.5)
 target_room_path = "uid://bnfrubgjjeos4"
 door_id = "zone_0_room_8_left"
 target_door_id = "zone_0_room_4_right"
 is_enabled = false
 
-[node name="WallExitRightTop" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=1621660744 instance=ExtResource("10_stj7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.5, -8.5)
-target_room_path = "uid://jx80mxtflfab"
-door_id = "zone_0_room_8_right_top"
-target_door_id = "zone_0_room_7_left_center"
-
-[node name="WallExitRightCenter" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="2" unique_id=878819425 instance=ExtResource("10_stj7f")]
+[node name="ExitRightCenter" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="2" unique_id=878819425 instance=ExtResource("10_stj7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.5, -8.5)
 target_room_path = "uid://jx80mxtflfab"
 door_id = "zone_0_room_8_right_center"
 target_door_id = "zone_0_room_7_left_bottom"
 
-[node name="WallExitRightBottom" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="3" unique_id=1176092721 instance=ExtResource("10_stj7f")]
+[node name="ExitRightBottom" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="3" unique_id=1176092721 instance=ExtResource("10_stj7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -8.5)
-target_room_path = "uid://bnfrubgjjeos4"
+target_room_path = "uid://bor8ayq2olaw3"
 door_id = "zone_0_room_8_right_bottom"
 target_door_id = "zone_0_room_9_left"
 
 [node name="DiscoveryArea" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="0" unique_id=1036469296]
 room_coordinates = Vector2i(8, 2)
 border_top = "None"
-border_left = "None"
 border_right = "Door"
 
 [node name="DiscoveryArea2" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="1" unique_id=910981233]

@@ -1,0 +1,541 @@
+[gd_scene format=4 uid="uid://c15pgyayx0as3"]
+
+[ext_resource type="Texture2D" uid="uid://bfvdvgj7jx54c" path="res://assets/assets_arch_pillars.png" id="1_orp4r"]
+[ext_resource type="Texture2D" uid="uid://doa301qdrp7ee" path="res://assets/assets_walls.png" id="2_ttkyo"]
+[ext_resource type="Texture2D" uid="uid://cxhus7vchrwtb" path="res://assets/assets_cavewall_3_no_dithering.png" id="3_fwg77"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ceo7t"]
+resource_name = "wall_but_dark"
+transparency = 4
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("2_ttkyo")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_e6vet"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "wall_but_dark",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAAAAAAP//AAAAAP////8AAAAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6kjb2"]
+resource_name = "assets_Cube_153"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray("9X///////3//////9X//fw=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_ceo7t"),
+"name": "wall_but_dark",
+"primitive": 3,
+"uv_scale": Vector4(0.5155592, 0.5, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAA/78AAP//AAD/v/////8AAP+/AAAAAAAA/7//////////////////////")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_e6vet")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgj7t"]
+resource_name = "cavewall_slightly_darker"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("3_fwg77")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ab1fl"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "cavewall_slightly_darker",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAAAAAAP//AAAAAP////8AAAAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yh3d4"]
+resource_name = "assets_Cube_149"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray("BgD4//j/BgD4//j/BgAGAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_vgj7t"),
+"name": "cavewall_slightly_darker",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAA/78AAP//AAD/v/////8AAP+/AAAAAAAA/7//////////////////////")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ab1fl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wn4x"]
+resource_name = "wall"
+transparency = 4
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("2_ttkyo")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h6ndm"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAAAAAAP//AAAAAP////8AAAAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_g5j24"]
+resource_name = "assets_Cube_144"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray("BAAJgP9BCUD/QQmABAAJQA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_1wn4x"),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAA/78AAP//AAD/v/////8AAP+/AAAAAAAA/7//////////////////////")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_h6ndm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xcf6"]
+resource_name = "arches_pillar"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_orp4r")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qgy55"]
+_surfaces = [{
+"aabb": AABB(-2.500917, -1.25, 0.93195736, 5.001834, 5.0256047, 0.57240367),
+"format": 34359742465,
+"index_count": 312,
+"index_data": PackedByteArray("AAACACgAAAABAAIAKAACAAMACAAAACgAKAADAAQABAADAAUABAAFAAYAKQAoAAQACAAoACkAKgAEAAYAKQAEACoAKgAGAAcAKgAHAAoAKgAKAAkAKQAqAAkACQAKAAsACQALAAwAKQAJACsAKwAJAAwACAApACsAKwAMAA4ADQArAA4ACAArAA0ADQAOAA8AEAAIABEAEAARABIAEAASABMAFAARAAgAEAAVAAgAFQAUAAgAFAAWABEAFQAZABQALAAWABQAGQAsABQALAAYABYALQAsABkALQAYACwAGwAtABkALQAaABgAHAAaAC0AGwAcAC0AHAAdABoAGwAeABwAHgAdABwAGwAfAB4AHgAgAB0AEAAXABUAEAAuABcAEAATAC4ALgATACIALgAiAC8AFwAuAC8ALwAiACMAFwAvACEALwAjACEAIQAjACQAFwAhACUAIQAkACYAJQAhACYAJQAmACcAMAAxADIAMAAzADEANAAwADIANQAxADMANAAyADYANwA2ADIANwA4ADYAOQA3ADIAOQAyADEANQA6ADEAOQAxADoAOwA6ADUAOQA6ADwAOwA9ADoAPAA6AD0APAA9AD4APwBAAEEAPwBCAEAAQgBDAEAARAA/AEEAQABDAEUAQQBAAEUARQBDAEYARgBDAEcASABGAEcASABJAEYASQBFAEYASgBJAEgAQQBFAEsASQBLAEUASgBMAEkATABLAEkATQBMAEoATQBOAEwATgBPAEwATABPAEsATgBQAE8AUQBPAFAAUgBLAE8AUQBSAE8AUgBBAEsAUwBSAFEARABBAFIAUwBEAFIA"),
+"lods": [1.5015001, PackedByteArray("AAABAAIAAAACAAMAAAADAAQABAADAAUABAAFAAYABwAEAAYACAAAAAQACAAEAAcACAAHAAkABwAKAAkACQAKAAsACQALAAwADQAJAAwACAAJAA0ADQAMAA4ADQAOAA8AEAAIABEAEAARABIAEAASABMAFAARAAgAEAAVAAgAFQAUAAgAFAAWABEAEAAXABUAFAAYABYAFQAZABQAFAAaABgAGwAUABkAHAAaABQAGwAcABQAHAAdABoAGwAeABwAHgAdABwAGwAfAB4AHgAgAB0AEAAhABcAEAATACEAIQATACIAIQAiACMAIQAjACQAFwAhACUAIQAkACYAJQAhACYAJQAmACcA")],
+"name": "arches_pillar",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 84,
+"vertex_data": PackedByteArray("KXigvhlCN76qIa0/FTwgvxFCN75m8YM/FDwgv5hggLRm8YM/5WE+v5MQhz4WDn4/Rqm+vo8Qhz4w968/Ejwgv5oQBz9n8YM/I3igvpcQBz+sIa0/Q0lwupYQBz+hMbg/YFFwuhxCN75G67w/Rqm+Po8Qhz4w968/3HN9PpgQBz+sIa0/EjwgP5oQBz9n8YM/5WE+P5MQhz4WDn4/KXigPhlCN76qIa0/FDwgP5hggLRm8YM/FTwgPxFCN75m8YM/FTwgPxpCN75I67w/EFFwuhJCN77ClG4/FDwgPxBCN77HlG4/FTxuPyQrJL/ClG4/FTwgvxpCN75I67w/YGVwugAAoL9D67w/FDwgvxBCN77HlG4/GTwgPwAAoL9G67w/FTxuvyQrJL/ClG4/GTwgvwAAoL9G67w/nNiWv3NYX7/ClG4/DB7IvwAAoL9G67w/DB7Iv+NCjb9G67w/DB7Iv+JCjb/ClG4/Bg8gwONCjb9I67w/Bg8gwAAAoL9G67w/Bg8gwOJCjb/HlG4/DB7IP+NCjb9G67w/nNiWP3NYX7/ClG4/DB7IP+JCjb/ClG4/Bg8gQOJCjb/HlG4/DB7IPwAAoL9G67w/Bg8gQONCjb9I67w/Bg8gQAAAoL9G67w/KHigvt7MwrSqIa0/tFFwurlE47SgMbg/7MGOuowQhz75G70/KHigPt7MwrSqIa0/FjxuvyYrJL9G67w/nNiWv3ZYX79G67w/FjxuPyYrJL9G67w/nNiWP3ZYX79G67w/wnN9vv6fPkCyIa0/w8o9uvr/nz+iMbg/03N9vvr/nz+tIa0/KLw9uv6fPkCmMbg/5hT9vv6fPkBt8YM/wnN9Pv6fPkCyIa0/7RT9vvv/nz9o8YM/3HN9vpgQBz+sIa0/8hT9vpoQBz9n8YM/btU9upUQBz+hMbg/03N9Pvr/nz+tIa0/5hT9Pv6fPkBt8YM/tXN9PpgQBz+sIa0/7RT9Pvv/nz9o8YM/8hT9PpoQBz9n8YM/ddYyP760Q0Dx6IA/ytClPnn8PEAsoq0/dhmzPr60Q0Bk4a4/wZIlP3n8PECXEoM/+XCluXr8PECaOIM/dNYyP6GQZkDy6IA/Gil4unn8PEB7ELk/ytClvnn8PEAsoq0/wZIlv3n8PECXEoM/ddYyv760Q0Dx6IA/dhmzvr60Q0Bk4a4/dNYyv6GQZkDy6IA/dwaGur60Q0AiOrs/dBmzvqGQZkBm4a4/44hTv4KjcUBgKHc/ItjTvoKjcUBI9LE/UQSGuqGQZkAkOrs/eICeuoKjcUDnjsA/ItjTPoKjcUBI9LE/dBmzPqGQZkBm4a4/44hTP4KjcUBgKHc/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2klma"]
+resource_name = "assets_Cube_160"
+_surfaces = [{
+"aabb": AABB(-2.500917, -1.25, 0.93195736, 5.001834, 5.0256047, 0.57240367),
+"attribute_data": PackedByteArray("f+SCPihgWz5O2Ww+JGBbPk7ZbD4IA4A+hj1sProFmz5/5II+vAWbPrJvhz5whrE9Va+FPmgYjT2yb4c+cIaxPbjdgz7gwnU9HAyCPuBUUT0cDII+4FRRPXRRjD4oYFs+f+SCPrwFmz6A5II+KGBbPnRRjD5oCLY+f+SCPmoItj7V6To+AIBCOJbkAj7ANvA8luQCPgCAQjjU6To+wDbwPBTvcj4AgEI4Fe9yPiRgWz70I4w+AIBCOHRRjD4oYFs+Fe9yPiRgWz4U73I+AIBCONXpOj4AgEI41Ok6PsA28DyW5AI+wDbwPJbkAj4AgEI4f+SCPihgWz5/5II+vAWbPnRRjD5oCLY+gOSCPmQItj6A5II+KGBbPk7ZbD4IA4A+TtlsPiRgWz6GPWw+ugWbPn/kgj68BZs+sm+HPnCGsT0tEIs+cIaxPS0Qiz5whrE9sm+HPnCGsT2yb4c+cIaxPbJvhz5whrE9HAyCPuBUUT243YM+4MJ1PRwMgj7gVFE9Va+FPnAYjT2yb4c+cIaxPbJvhz5whrE9f+SCPrwFmz4Z73I+Zgi2PoDkgj5kCLY+hj1sProFmz5/5II+vAWbPhnvcj5oCLY+hj1sProFmz5/5II+agi2Pg1ReT7gVFE9HAyCPuBUUT0cDII+4FRRPQ1ReT7gVFE9HAyCPuBUUT0NUXk+4FRRPQ1ReT7gVFE9HAyCPuBUUT1O2Ww+CAOAPsDNgj4KA4A+gOSCPuh9WD/3I4w+AAAAP8LNgj4AAAA/dlGMPuh9WD90UYw+aAi2PoDkgj5kCLY+Va+FPmgYjT1Vr4U+aBiNPfYjjD4MA4A+wM2CPgoDgD5zUYw+vAWbPn/kgj5qCLY+BKN2Pv7//z4Co3Y+aAi2PsLNgj7+//8+AqN2Puh9WD+A5II+6H1YP9m3UD5gupo9A6BjPgBn+T0FoGM+8Gb5Pdm3UD5Qupo9gOSCPmQItj4Eo3Y+/v//PsLNgj4AAAA/AqN2PmYItj4Co3Y+531YP4Dkgj7ofVg/wWtsPlaIXT9fS38+EQ9aP5NFfz5WiF0/X8V2PhEPWj90UYw+KGBbPsDNgj4KA4A+9iOMPgwDgD5O2Ww+CAOAPsDNgj4KA4A+9iOMPgwDgD5/5II+vAWbPnNRjD68BZs+wM2CPgoDgD5zUYw+vAWbPr9rbD5ViF0/X0t/PhEPWj9fxXY+EA9aP5JFfz5WiF0/gOSCPuh9WD/3I4w+AAAAP3ZRjD7ofVg/ws2CPv7//z50UYw+aAi2Pn/kgj5qCLY+uN2DPuDCdT1Vr4U+cBiNPVWvhT5wGI09uN2DPuDCdT1Vr4U+aBiNPbjdgz7gwnU9wM2CPgoDgD7AzYI+CgOAPpNFfz5WiF0/dlGMPhEPWj+oS4w+VohdP19Lfz4RD1o/wWtsPkTQeT+TRX8+VohdP3Mnfz5E0Hk/wWtsPlaIXT+/a2w+RNB5P5JFfz5WiF0/v2tsPlWIXT9zJ38+RNB5P5JFfz5WiF0/dlGMPhEPWj9fS38+EQ9aP6hLjD5WiF0/c1GMPrwFmz5/5II+vAWbPsDNgj4KA4A+9iOMPgwDgD643YM+4MJ1PVWvhT5wGI09uN2DPuDCdT243YM+4MJ1PeMdfz74/H8/iC2MPkTQeT9zJ38+RNB5P/cjjD74/H8/cyd/PkTQeT+oS4w+VohdP4gtjD5E0Hk/k0V/PlaIXT9zJ38+RNB5P6hLjD5WiF0/kkV/PlaIXT+ILYw+RNB5P+Mdfz74/H8/iC2MPkTQeT/3I4w++Px/P3Mnfz5E0Hk/nQlsPvj8fz9zJ38+RNB5P50JbD5E0Hk/4x1/Pvj8fz+dCWw++Px/P3Mnfz5E0Hk/4x1/Pvj8fz+eCWw+RNB5P19Lfz7ofVg/X0t/Puh9WD+dCWw+531YP3ZRjD7ofVg/dlGMPuh9WD9fS38+6H1YP50JbD7ofVg/nQlsPuh9WD8="),
+"format": 34359742487,
+"index_count": 312,
+"index_data": PackedByteArray("AABDAEQAAAABAEMARQBGAEcARQBIAEYASQBHAEYASQBKAEcASwAHAAUASwBMAAcATQAMAE4ATQBPAAwAUABRAFIAUABTAFEAVABRAFMAVABTAFUAEAARABIAEAATABEAFAATABAAFABWABMAFABXAFYAFQBXABQAFQAUABYAFQAWABcAFgAYABcAFgAZABgAGQBYABgAWQBYABkAGgBZABkAGgAbAFkAGgAcABsAGgAdABwAWgBbAFwAWgBdAFsAXgBcAFsAXgBfAFwAYABhAGIAYABjAGEAZABlAGYAZAAeAGUAIgBnACQAIgBoAGcAJwAoACkAJwAqACgAKwApACgAKwAoACwAaQBqAGsAaQBsAGoAbQAhACAAbQAfACEAbgBvAHAAbgBxAG8AcgBzAHQAcgB1AHMAdgBzAHUAdgB1AHcAeAAvAC0AeAAuAC8AMQB5AHoAMQAyAHkAewAGAHwAewB9AAYAfgADAAQAfgACAAMAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwA8AD0AOwA+ADwAfwAlACMAfwAmACUAgACBAIIAgACDAIEAPwBAAEEAPwBCAEAAhACFAIYAhACHAIUAiACJAIoAiACLAIkAjACNAI4AjACPAI0AkAAPAJEAkAAOAA8ACwCSAA0ACwCTAJIACQAIAJQACQAKAAgAlQCWAJcAlQAwAJYAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkArACtAK4ArACvAK0AsACxALIAswC0ALAAtQCxALMAtgC3ALUA"),
+"lods": [1.5015001, PackedByteArray("AAABAAIAAAACAAMAAAADAAQABQAGAAcABQAIAAYACQAIAAUACQAKAAgACwAMAA0ACwAOAAwADgAPAAwAEAARABIAEAATABEAFAATABAAFQATABQAFQAUABYAFQAWABcAFgAYABcAFgAZABgAGgAYABkAGgAbABgAGgAcABsAGgAdABwAFwAeAB8AFwAfACAAIAAfACEAIgAjACQAIgAlACMAIgAmACUAJwAoACkAJwAqACgAKwApACgAKwAoACwALQAuAC8ALQAwAC4AMQAwAC0AMQAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwA8AD0AOwA+ADwAPwBAAEEAPwBCAEAA")],
+"material": SubResource("StandardMaterial3D_5xcf6"),
+"name": "arches_pillar",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 184,
+"vertex_data": PackedByteArray("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nNiWP3NYX7/ClG4/nNiWP3ZYX79G67w/ItjTvoKjcUBI9LE/UQSGuqGQZkAkOrs/dBmzvqGQZkBm4a4/eICeuoKjcUDnjsA/dBmzPqGQZkBm4a4/dwaGur60Q0AiOrs/UQSGuqGQZkAkOrs/dhmzPr60Q0Bk4a4/dBmzvqGQZkBm4a4/dwaGur60Q0AiOrs/dhmzvr60Q0Bk4a4/UQSGuqGQZkAkOrs/ItjTPoKjcUBI9LE/UQSGuqGQZkAkOrs/eICeuoKjcUDnjsA/dBmzPqGQZkBm4a4/44hTv4KjcUBgKHc/dBmzvqGQZkBm4a4/dNYyv6GQZkDy6IA/ItjTvoKjcUBI9LE/44hTP4KjcUBgKHc/dBmzPqGQZkBm4a4/ItjTPoKjcUBI9LE/dNYyP6GQZkDy6IA/ytClvnn8PEAsoq0/+XCluXr8PECaOIM/wZIlv3n8PECXEoM/Gil4unn8PEB7ELk/+XCluXr8PECaOIM/ytClPnn8PEAsoq0/wZIlP3n8PECXEoM/+XCluXr8PECaOIM/Dz//fw+//z8PP/9/D7//P8RH124Pv/8/xEfXbg+//z/ER9duD7//P9gy2LL///+/O0I6wv///7/YMtiy////v/lP+M////+/+U/4z////7/5T/jP////v7idMIkmIBfAxZjlcpkb/7+4nTCJcSC+vxuaBpB7HqW/G5oGkNsdAcD/f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9//v//P/9//3/+//8//3//f/7//z//f/9/////P/9//3/+//8//3//f/7//z//f/9/////P/9//3////8/ImIsiWjfQEAbZx2NQuT/PxtnHY1C5P8/G2cdjULk/z/vwP9/70D/vzq4127vQP+/78D/f+9A/786uNdu70D/vzq4127vQP+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/BbD4z////78FsPjP////vwWw+M////+/w706wv///78mzdiy////vybN2LL///+/xEcnkQ+//z/ERyeRD7//P8RHJ5EPv/8/xEcnkQ+//z9es++VJD48wF6z75VMPsm/XrPvlcw+cL9es++VXD6YwP9///////+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+//3///////78PP/9/D7//Pw8//38Pv/8/zF7/f8ze/z/MXv9/zN7/P8xe/3/M3v8/zF7/f8ze/z/MXv9/zN7/P8xe/3/M3v8/2DLYsv///7/YMtiy////v8WY5XKZG/+/xZjlcpkb/7/FmOVymRv/v2/I/39wSP+/b8j/f3BI/79vyP9/cEj/v2/I/39wSP+/b8j/f3BI/79vyP9/cEj/v/9//38AAP+//3//fwAA/7//f/9//v//P/9//3/+//8/jzf/f463/z+PN/9/jrf/P483/3+Ot/8/jzf/f463/z+PN/9/jrf/P483/3+Ot/8/c7dNbfBA/79zt01t8ED/v3O3TW3wQP+/c7dNbfBA/78iYiyJs9/nPyJiLImt3xdAImIsiXnfvD/vwP9/70D/v+/A/3/vQP+/G2fhckLk/z8bZ+FyQuT/Pxtn4XJC5P8/G2fhckLk/z8bZx2NQuT/P4tITW0Ov/8/i0hNbQ6//z+LSE1tDr//P4tITW0Ov/8/DaH/fw4h/78Nof9/DiH/vw2h/38OIf+/DaH/fw4h/78Nof9/DiH/vw2h/38OIf+/BbD4z////78mzdiy////vybN2LL///+/O0I6wv///787QjrC////vztCOsL///+/xEfXbg+//z86uNdu70D/v4OYrHGbG/+/g5iscZsb/7+DmKxxmxv/v4OYrHGbG/+/78D/f+9A/7/vwP9/70D/v+/A/3/vQP+/78D/f+9A/78PP/9/D7//Pw8//38Pv/8/Dz//fw+//z8PP/9/D7//P2BnpnFD5P8/YGemcUPk/z9gZ6ZxQ+T/P2BnpnFD5P8/G5oGkPAd8r8bmgaQJB48wLidMIksIOe/uJ0wiWAgQsD5T/jP////v8O9OsL///+/w706wv///7/DvTrC////v6xoqmtE5P8/rGiqa0Tk/z+saKprROT/P6xoqmtE5P8/mZv/f5ob/7+Zm/9/mhv/v5mb/3+aG/+/mZv/f5ob/79DZP9/Q+T/P0Nk/39D5P8/Q2T/f0Pk/z9DZP9/Q+T/PzmXsWubG/+/OZexa5sb/785l7Frmxv/vzmXsWubG/+/SkzqZQ6//z9KTOplDr//P0pM6mUOv/8/SkzqZQ6//z+0s+pl8ED/v7Sz6mXwQP+/tLPqZfBA/7+0s+pl8ED/v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//38AAP///78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qgy55")
+
+[node name="Pillars2x1" type="Node3D" unique_id=273698596]
+
+[node name="Wall2" type="Node3D" parent="." unique_id=1277205656]
+
+[node name="BrickWallRow" type="Node3D" parent="Wall2" unique_id=929271690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="BrickWall1" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=349922642]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall2" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=1677094956]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 2.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall3" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=1778040827]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall4" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=202570350]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -2.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall5" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=1323943244]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall6" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=877882420]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -7.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall7" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=1802476691]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -10)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall8" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=1557315535]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -12.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall9" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=386056839]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -15)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall10" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=1842601977]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -17.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall11" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=1682326729]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -20)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall12" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=520330959]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -22.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall13" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=2024781689]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -25)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall14" type="MeshInstance3D" parent="Wall2/BrickWallRow" unique_id=1966871529]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -27.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWallRow2" type="Node3D" parent="Wall2" unique_id=844850092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1)
+
+[node name="BrickWall1" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=1075934705]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall2" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=620467625]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 2.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall3" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=140024748]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall4" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=1233337088]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -2.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall5" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=213117985]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall6" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=1690316888]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -7.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall7" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=258320020]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -10)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall8" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=524830210]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -12.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall9" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=1878733570]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -15)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall10" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=981378793]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -17.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall11" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=1838198485]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -20)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="DirtWall" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=298357426]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.65, 1.25, -22.5)
+mesh = SubResource("ArrayMesh_yh3d4")
+
+[node name="BrickWallHolesA" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=401517983]
+transform = Transform3D(-4.371139e-08, 1.32004715e-14, 1, 3.0199158e-07, 1, 0, -1, 3.0199158e-07, -4.371139e-08, -2.5, 1.25, -22.5)
+mesh = SubResource("ArrayMesh_g5j24")
+
+[node name="BrickWall13" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=844119124]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -25)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall14" type="MeshInstance3D" parent="Wall2/BrickWallRow2" unique_id=1023525777]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -27.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWallRow3" type="Node3D" parent="Wall2" unique_id=888571370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 1)
+
+[node name="BrickWall1" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=1457271819]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall2" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=2036886865]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 2.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall3" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=858253541]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall4" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=584676962]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -2.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall5" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=981445816]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall6" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=1194585345]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -7.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall7" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=197054428]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -10)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall8" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=1262128699]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -12.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall9" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=345748249]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -15)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall10" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=282712996]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -17.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall11" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=1316831004]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -20)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall12" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=1787826992]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -22.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall13" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=2072731570]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -25)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall14" type="MeshInstance3D" parent="Wall2/BrickWallRow3" unique_id=2085661047]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -27.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWallRow4" type="Node3D" parent="Wall2" unique_id=777813021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 1)
+
+[node name="BrickWall1" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=34489003]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall2" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=257152983]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 2.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall3" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=1370811347]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall4" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=378202427]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -2.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall5" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=458105685]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall6" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=2090522234]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -7.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall7" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=272566696]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -10)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall8" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=131769137]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -12.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall9" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=1910418249]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -15)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall10" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=2083882894]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -17.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall11" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=1269868601]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -20)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall12" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=104452705]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -22.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall13" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=484668151]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -25)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall14" type="MeshInstance3D" parent="Wall2/BrickWallRow4" unique_id=94980]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -27.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWallRow5" type="Node3D" parent="Wall2" unique_id=223315931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 1)
+
+[node name="BrickWall1" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=1981721732]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall2" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=64119975]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 2.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall3" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=1447190589]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall4" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=978015971]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -2.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall5" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=903519524]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall6" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=971786524]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -7.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall7" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=1673050094]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -10)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall8" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=1066819948]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -12.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall9" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=301828140]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -15)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall10" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=337300941]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -17.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall11" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=166271018]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -20)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall12" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=938016949]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -22.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall13" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=26792033]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -25)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="BrickWall14" type="MeshInstance3D" parent="Wall2/BrickWallRow5" unique_id=289453119]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, -27.5)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="Pillars" type="Node3D" parent="." unique_id=793347791]
+
+[node name="Cube_114" type="MeshInstance3D" parent="Pillars" unique_id=1175424773]
+transform = Transform3D(4.371139e-08, -6.600236e-15, 1, -1.509958e-07, -1, 0, 1, -1.509958e-07, -4.371139e-08, -2.25, 4.279, 4)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_113" type="MeshInstance3D" parent="Pillars" unique_id=194321310]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, 0)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_115" type="MeshInstance3D" parent="Pillars" unique_id=440302011]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -4)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_116" type="MeshInstance3D" parent="Pillars" unique_id=464546346]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -8)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_117" type="MeshInstance3D" parent="Pillars" unique_id=1637170158]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -12)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_118" type="MeshInstance3D" parent="Pillars" unique_id=1465232442]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -16)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_119" type="MeshInstance3D" parent="Pillars" unique_id=725189350]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -20)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_120" type="MeshInstance3D" parent="Pillars" unique_id=1583863532]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -24)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Pillars2" type="Node3D" parent="." unique_id=1259913933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.03, 0)
+
+[node name="Cube_114" type="MeshInstance3D" parent="Pillars2" unique_id=1215639900]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, 4)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_113" type="MeshInstance3D" parent="Pillars2" unique_id=102849302]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, 0)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_115" type="MeshInstance3D" parent="Pillars2" unique_id=1374456664]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -4)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_116" type="MeshInstance3D" parent="Pillars2" unique_id=1045743374]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -8)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_117" type="MeshInstance3D" parent="Pillars2" unique_id=407016581]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -12)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_118" type="MeshInstance3D" parent="Pillars2" unique_id=271399366]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -16)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_119" type="MeshInstance3D" parent="Pillars2" unique_id=1773572152]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -20)
+mesh = SubResource("ArrayMesh_2klma")
+
+[node name="Cube_120" type="MeshInstance3D" parent="Pillars2" unique_id=319110363]
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, -2.25, 4.279, -24)
+mesh = SubResource("ArrayMesh_2klma")

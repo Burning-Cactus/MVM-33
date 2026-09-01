@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://6ki0l6xltahx" path="res://rooms/room_base.tscn" id="1_jgcly"]
 [ext_resource type="Environment" uid="uid://cyrqh24v1yjx8" path="res://resources/zone_1_world_environment.tres" id="2_667hx"]
+[ext_resource type="PackedScene" uid="uid://c15pgyayx0as3" path="res://rooms/backgrounds/pillars_2x1.tscn" id="3_667hx"]
 [ext_resource type="PackedScene" uid="uid://wfas7udr17p2" path="res://rooms/zone_0/components/zone_0_ceiling_33.tscn" id="3_csi2d"]
 [ext_resource type="PackedScene" uid="uid://cb0yn8h6tyhpf" path="res://rooms/zone_0/components/zone_0_wall_11_door_bottom.tscn" id="4_5kars"]
 [ext_resource type="PackedScene" uid="uid://b4eyu11gtdwn4" path="res://rooms/zone_0/components/zone_0_wall_11.tscn" id="5_v2q0y"]
@@ -13,6 +14,9 @@
 
 [node name="WorldEnvironment" parent="." index="0" unique_id=1565969197]
 environment = ExtResource("2_667hx")
+
+[node name="Pillars2x1" parent="Background" parent_id_path=PackedInt32Array(41649736) index="0" unique_id=273698596 instance=ExtResource("3_667hx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="Zone0Ceiling33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="0" unique_id=30100008 instance=ExtResource("3_csi2d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -8)

@@ -1,6 +1,9 @@
 extends CharacterBody3D
 class_name EnemyBase
 
+@export var is_boss: bool = false
+@export var label: StringName = &""
+
 @export_group("Base Movement")
 @export var speed: float = 3.0
 @export var rotation_speed: float = 15.0
@@ -47,6 +50,8 @@ var player_ref: CharacterBody3D = null
 
 var anim_player: AnimationPlayer = null
 
+signal death
+
 func _ready():
 	current_health = max_health
 	if detector:
@@ -55,7 +60,12 @@ func _ready():
 	#generate ID, if its already on the defeated enemy list we despawn the enemy
 	var room_name = get_tree().current_scene.name
 	unique_enemy_id = room_name + "_" + name
-	if GameManager.defeated_enemies.has(unique_enemy_id):
+	
+	if is_boss:
+		if GameManager.permanent_flags.has(unique_enemy_id + "_defeated"):
+			queue_free()
+			return
+	elif GameManager.defeated_enemies.has(unique_enemy_id):
 		queue_free()
 		return
 	
@@ -161,6 +171,8 @@ func take_damage(amount: int, source_position: float):
 	if max_health > 0:
 		current_health -= amount
 		print(amount, " damage taken, ", current_health, " left.")
+		if is_boss:
+			UiLayer.update_boss_health_display(current_health, max_health)
 		if current_health <= 0:
 			die()
 			return
@@ -171,11 +183,15 @@ func take_damage(amount: int, source_position: float):
 		play_animation(&"hurt")
 		
 func die():
-	if not GameManager.defeated_enemies.has(unique_enemy_id):
+	if is_boss:
+		if not GameManager.permanent_flags.has(unique_enemy_id + "_defeated"):
+			GameManager.permanent_flags.append(unique_enemy_id + "_defeated")
+	elif not GameManager.defeated_enemies.has(unique_enemy_id):
 		GameManager.defeated_enemies.append(unique_enemy_id)
 
 	#add death animation exp some drop or whatever here
 	queue_free()
+	death.emit()
 
 func _on_player_detected(body: Node3D):
 	if body is Player:

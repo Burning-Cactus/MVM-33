@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://d0w8vg7auw617"]
+
+[ext_resource type="PackedScene" uid="uid://6ki0l6xltahx" path="res://rooms/room_base.tscn" id="1_2sr1t"]
+[ext_resource type="Environment" uid="uid://cyrqh24v1yjx8" path="res://resources/zone_1_world_environment.tres" id="2_x517p"]
+[ext_resource type="PackedScene" uid="uid://beapsny3rvsyv" path="res://rooms/zone_0/components/zone_0_ceiling_49.tscn" id="3_072fp"]
+[ext_resource type="PackedScene" uid="uid://b4eyu11gtdwn4" path="res://rooms/zone_0/components/zone_0_wall_11.tscn" id="4_1r6dx"]
+[ext_resource type="PackedScene" uid="uid://cb0yn8h6tyhpf" path="res://rooms/zone_0/components/zone_0_wall_11_door_bottom.tscn" id="5_qqirw"]
+[ext_resource type="PackedScene" uid="uid://ewy2ht1urmb3" path="res://rooms/zone_0/components/zone_0_floor_49.tscn" id="6_xmcd7"]
+[ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/exit_left.tscn" id="7_2sr1t"]
+[ext_resource type="PackedScene" uid="uid://c562xup0k7cob" path="res://scenes/doors/door_gate.tscn" id="7_x517p"]
+[ext_resource type="PackedScene" uid="uid://e3pdxcathfth" path="res://scenes/enemies/bosses/boss_pendulum.tscn" id="9_2sr1t"]
+[ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="9_uo3et"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
+size = Vector3(12, 12, 24)
+
+[node name="Zone1Room14" unique_id=323921774 node_paths=PackedStringArray("boss_enemy", "boss_trigger_area") instance=ExtResource("1_2sr1t")]
+is_boss_room = true
+boss_enemy = NodePath("Enemies/EnemyBase")
+boss_switch_id = &"z0r14_door_left"
+boss_trigger_area = NodePath("BossTriggerArea")
+
+[node name="WorldEnvironment" parent="." index="0" unique_id=1565969197]
+environment = ExtResource("2_x517p")
+
+[node name="Zone0Ceiling49" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="0" unique_id=30100008 instance=ExtResource("3_072fp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -16)
+
+[node name="Zone0Wall11DoorBottomLeft" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="1" unique_id=1075629948 instance=ExtResource("5_qqirw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 8)
+
+[node name="Zone0Wall11" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="2" unique_id=1464200993 instance=ExtResource("4_1r6dx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -40)
+
+[node name="Zone0Floor49" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=388222474 instance=ExtResource("6_xmcd7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="DoorGateLeft" parent="Objects" parent_id_path=PackedInt32Array(831980504) index="0" unique_id=94063217 instance=ExtResource("7_x517p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8)
+is_open = true
+switch_id = &"z0r14_door_left"
+global = true
+
+[node name="ExitLeft" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1621660744 instance=ExtResource("7_2sr1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8.5)
+target_room_path = "uid://ctwe8fxjlxd8e"
+door_id = "zone_0_room_14_left"
+target_door_id = "zone_0_room_11_right_top"
+switch_id = &"z0r14_door_left"
+global = true
+
+[node name="DiscoveryArea" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="0" unique_id=1036469296]
+room_coordinates = Vector2i(16, -3)
+border_left = "Door"
+border_right = "None"
+
+[node name="DiscoveryArea2" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="1" unique_id=910981233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+script = ExtResource("9_uo3et")
+room_coordinates = Vector2i(17, -3)
+border_left = "None"
+border_right = "None"
+metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
+
+[node name="DiscoveryArea3" type="Area3D" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="2" unique_id=1381226819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
+script = ExtResource("9_uo3et")
+room_coordinates = Vector2i(18, -3)
+border_left = "None"
+metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
+
+[node name="Player" parent="." index="6" unique_id=1575609299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.9268398)
+
+[node name="EnemyBase" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("9_2sr1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7563114, -31.229773)
+is_boss = true
+
+[node name="BossTriggerArea" type="Area3D" parent="." index="8" unique_id=651811943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -28)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BossTriggerArea" index="0" unique_id=1177189845]
+shape = SubResource("BoxShape3D_5a2or")
+debug_color = Color(0.96, 0, 0.015999755, 0.41960785)

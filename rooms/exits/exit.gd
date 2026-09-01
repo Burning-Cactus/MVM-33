@@ -25,6 +25,7 @@ func _ready():
 		GameManager.switch_toggled.connect(_on_switch_toggled)
 	
 func _on_exit_area_body_entered(body: Node3D) -> void:
+	print(is_enabled)
 	if not is_enabled:
 		return
 		

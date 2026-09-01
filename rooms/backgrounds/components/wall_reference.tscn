@@ -1,0 +1,328 @@
+[gd_scene format=3 uid="uid://54kvm174one2"]
+
+[ext_resource type="Texture2D" uid="uid://dt57td1airr2o" path="res://assets/assets_arches_wall_3_no_dithering.png" id="1_glpfx"]
+[ext_resource type="Texture2D" uid="uid://doa301qdrp7ee" path="res://assets/assets_walls.png" id="2_oaovb"]
+[ext_resource type="Texture2D" uid="uid://cxhus7vchrwtb" path="res://assets/assets_cavewall_3_no_dithering.png" id="3_bwk0o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbc6w"]
+resource_name = "archwall"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_glpfx")
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4483y"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "archwall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_eoh3h"]
+resource_name = "assets_Cube_150"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray(248, 255, 248, 255, 6, 0, 6, 0, 248, 255, 6, 0, 6, 0, 248, 255),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_xbc6w"),
+"name": "archwall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 128, 0, 0, 255, 255, 0, 0, 0, 128, 255, 255, 255, 255, 0, 0, 0, 128, 0, 0, 0, 0, 0, 0, 0, 128, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_4483y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ceo7t"]
+resource_name = "wall_but_dark"
+transparency = 4
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("2_oaovb")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_e6vet"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "wall_but_dark",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6kjb2"]
+resource_name = "assets_Cube_153"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray(245, 127, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 245, 127, 255, 127),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_ceo7t"),
+"name": "wall_but_dark",
+"primitive": 3,
+"uv_scale": Vector4(0.5155592, 0.5, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_e6vet")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgj7t"]
+resource_name = "cavewall_slightly_darker"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("3_bwk0o")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ab1fl"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "cavewall_slightly_darker",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yh3d4"]
+resource_name = "assets_Cube_149"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray(6, 0, 248, 255, 248, 255, 6, 0, 248, 255, 248, 255, 6, 0, 6, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_vgj7t"),
+"name": "cavewall_slightly_darker",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ab1fl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wn4x"]
+resource_name = "wall"
+transparency = 4
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("2_oaovb")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h6ndm"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_g5j24"]
+resource_name = "assets_Cube_144"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray(4, 0, 9, 128, 255, 65, 9, 64, 255, 65, 9, 128, 4, 0, 9, 64),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_1wn4x"),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_h6ndm")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5xnji"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n663f"]
+resource_name = "assets_Cube_143"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray(0, 0, 238, 255, 0, 66, 238, 191, 0, 66, 238, 255, 0, 0, 238, 191),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_1wn4x"),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5xnji")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1hhea"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_47hgv"]
+resource_name = "assets_Cube_142"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray(0, 0, 229, 191, 0, 66, 230, 127, 0, 66, 229, 191, 0, 0, 230, 127),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_1wn4x"),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1hhea")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tj5p3"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ttkyo"]
+resource_name = "assets_Cube_145"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray(8, 67, 249, 255, 8, 133, 249, 191, 8, 133, 249, 255, 8, 67, 249, 191),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_1wn4x"),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tj5p3")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ok4mk"]
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fwg77"]
+resource_name = "assets_Cube_141"
+_surfaces = [{
+"aabb": AABB(-1.25, -1.25, 1.25, 2.5, 2.5, 1e-05),
+"attribute_data": PackedByteArray(1, 67, 255, 191, 1, 133, 0, 128, 1, 133, 255, 191, 1, 67, 0, 128),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_1wn4x"),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ok4mk")
+
+[node name="Wall" type="Node3D" unique_id=402988264]
+
+[node name="BrickWallCurved" type="MeshInstance3D" parent="." unique_id=324263930]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_eoh3h")
+
+[node name="BrickWall" type="MeshInstance3D" parent="." unique_id=1789525808]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_6kjb2")
+
+[node name="DirtWall" type="MeshInstance3D" parent="." unique_id=981527483]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_yh3d4")
+
+[node name="BrickWallHolesA" type="MeshInstance3D" parent="." unique_id=970476196]
+transform = Transform3D(-4.371139e-08, 1.32004715e-14, 1, 3.0199158e-07, 1, 0, -1, 3.0199158e-07, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_g5j24")
+
+[node name="BrickWallHolesB" type="MeshInstance3D" parent="." unique_id=219751140]
+transform = Transform3D(-4.371139e-08, 1.32004715e-14, 1, 3.0199158e-07, 1, 0, -1, 3.0199158e-07, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_n663f")
+
+[node name="BrickWallHolesC" type="MeshInstance3D" parent="." unique_id=1647069089]
+transform = Transform3D(-4.371139e-08, 1.32004715e-14, 1, 3.0199158e-07, 1, 0, -1, 3.0199158e-07, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_47hgv")
+
+[node name="BrickWallTransitionVertical" type="MeshInstance3D" parent="." unique_id=548262258]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_ttkyo")
+
+[node name="BrickWallTransitionHorizontal" type="MeshInstance3D" parent="." unique_id=198808441]
+transform = Transform3D(-4.371139e-08, 1.32004715e-14, 1, 3.0199158e-07, 1, 0, -1, 3.0199158e-07, -4.371139e-08, -2.5, 1.25, 0)
+mesh = SubResource("ArrayMesh_fwg77")

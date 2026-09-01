@@ -16,7 +16,9 @@ var permanent_flags: Array = [] #like bosses and upgrades and shit, so they donÂ
 var current_room_coords: Vector2i = Vector2i(0, 0)
 var last_save_room_path: String = "" 
 
-var switches: Dictionary[StringName, bool] = {}
+var switches: Dictionary[StringName, bool] = {
+	&"z0r14_door_left": true
+}
 
 var player_data := PlayerData.new(100, 100)
 

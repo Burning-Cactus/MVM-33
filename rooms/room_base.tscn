@@ -9,6 +9,8 @@ script = ExtResource("1_xe5ka")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1565969197]
 
+[node name="Background" type="Node3D" parent="." unique_id=41649736]
+
 [node name="Foreground" type="Node3D" parent="." unique_id=920222622]
 
 [node name="Objects" type="Node3D" parent="." unique_id=831980504]

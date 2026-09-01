@@ -58,7 +58,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -24.5)
 target_room_path = "uid://lojy7l1pjr5"
 door_id = "zone_0_room_11_right_bottom"
 target_door_id = "zone_0_room_13_left"
-is_enabled = false
 
 [node name="DiscoveryArea" parent="DiscoveryAreas" parent_id_path=PackedInt32Array(110614096) index="0" unique_id=1036469296]
 room_coordinates = Vector2i(19, -2)
