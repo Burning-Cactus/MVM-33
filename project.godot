@@ -119,6 +119,7 @@ release={
 3d_physics/layer_6="Rope"
 3d_physics/layer_7="Climb"
 3d_physics/layer_8="Ledge"
+3d_physics/layer_9="Projectile"
 
 [physics]
 

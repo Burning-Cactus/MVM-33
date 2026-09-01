@@ -2,6 +2,7 @@ extends EnemyBase
 
 @export_enum("Two:0", "Four:1") var golem_type: int = 0
 @export var player_stop_distance: float = 4.0
+@export var projectile: PackedScene = null
 
 @onready var golem_body_2: MeshInstance3D = $Visuals/Model/Armature_002/Skeleton3D/FLOATING_GOLEM_BODY
 @onready var golem_body_4: MeshInstance3D = $Visuals/Model/Armature_002/Skeleton3D/FLOATING_GOLEM_2_BODY

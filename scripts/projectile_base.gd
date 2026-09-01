@@ -12,7 +12,6 @@ class_name ProjectileBase
 @export var independent: bool = false
 @export var apply_knockback: bool = true
 
-
 var target: Vector3 = Vector3.ZERO
 
 func _ready():
