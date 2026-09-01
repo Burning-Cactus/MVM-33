@@ -131,6 +131,19 @@ func lock_to_25d_plane():
 	global_transform.origin.x = 0
 
 func play_animation(anim_name: StringName):
+	anim_name = get_anim_name(anim_name)
+			
+	if anim_player and anim_player.has_animation(anim_name):
+		if anim_player.current_animation != anim_name:
+			anim_player.play(anim_name)
+
+func queue_animation(anim_name: StringName):
+	anim_name = get_anim_name(anim_name)
+			
+	if anim_player and anim_player.has_animation(anim_name):
+		anim_player.queue(anim_name)
+			
+func get_anim_name(anim_name: StringName) -> StringName:
 	match anim_name:
 		&"idle":
 			anim_name = idle_animation
@@ -142,10 +155,7 @@ func play_animation(anim_name: StringName):
 			anim_name = jump_animation
 		&"attack":
 			anim_name = attack_animation
-			
-	if anim_player and anim_player.has_animation(anim_name):
-		if anim_player.current_animation != anim_name:
-			anim_player.play(anim_name)
+	return anim_name
 
 func take_damage(amount: int, source_position: float):
 	if max_health > 0:

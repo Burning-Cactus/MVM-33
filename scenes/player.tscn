@@ -70,9 +70,9 @@ bone_idx = 22
 use_external_skeleton = true
 external_skeleton = NodePath("../Model/MAIN/Skeleton3D")
 
-[node name="SwordHitbox" type="Area3D" parent="SwordBoneAttachment" unique_id=1797075612]
-collision_layer = 0
-collision_mask = 4
+[node name="SwordHitbox" type="Area3D" parent="SwordBoneAttachment" unique_id=1797075612 groups=["Attack"]]
+collision_layer = 512
+collision_mask = 260
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SwordBoneAttachment/SwordHitbox" unique_id=1754181364]
 transform = Transform3D(1.0000004, -2.561137e-08, -1.2468081e-07, -9.825453e-08, 1, 0, -2.1507149e-06, 1.4901161e-08, 1, 0, -0.12335229, 8.940697e-08)

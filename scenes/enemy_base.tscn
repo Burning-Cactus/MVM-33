@@ -10,6 +10,8 @@
 size = Vector3(10, 10, 10)
 
 [node name="EnemyBase" type="CharacterBody3D" unique_id=445466315 groups=["Enemy"]]
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_fr7lv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1648093087]
@@ -24,6 +26,8 @@ mesh = SubResource("CapsuleMesh_fr7lv")
 root_node = NodePath("../..")
 
 [node name="PlayerDetection" type="Area3D" parent="." unique_id=1218466067]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetection" unique_id=662623750]
 shape = SubResource("BoxShape3D_fr7lv")

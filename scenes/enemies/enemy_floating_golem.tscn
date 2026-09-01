@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://chhjn0jwaooo4" path="res://scenes/enemies/enemy_base.tscn" id="1_op4p5"]
 [ext_resource type="Script" uid="uid://nnocfwdorp5y" path="res://scenes/enemies/enemy_floating_golem.gd" id="2_5vlke"]
 [ext_resource type="Texture2D" uid="uid://blb86gwsjagi6" path="res://assets/enemies/floating_golems_floating_golem.png" id="3_a7n5b"]
+[ext_resource type="PackedScene" uid="uid://caplj60mi3sos" path="res://scenes/projectiles/flying_golem_projectile.tscn" id="3_uympj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a7n5b"]
 radius = 0.25
@@ -2207,12 +2208,14 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a7n5b"]
-size = Vector3(2, 10, 16)
+size = Vector3(2, 10, 20)
 
 [node name="EnemyFloatingGolem" unique_id=445466315 instance=ExtResource("1_op4p5")]
 script = ExtResource("2_5vlke")
-golem_type = 0
-player_stop_distance = 4.0
+golem_type = 2
+target_stop_distance = Vector3(0, 2, 7.5)
+projectile = ExtResource("3_uympj")
+attack_cooldown = 3.0
 idle_animation = &"FLOATING_GOLEM_IDLE"
 attack_animation = &"FLOATING_GOLEM_ATTACK"
 
@@ -2292,3 +2295,6 @@ shape = SubResource("BoxShape3D_a7n5b")
 [node name="FloorCheck" parent="." index="3" unique_id=1821149033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
 target_position = Vector3(0, -1.5, 0)
+
+[node name="ProjectileMarker" type="Marker3D" parent="." index="5" unique_id=2106748570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.231781)

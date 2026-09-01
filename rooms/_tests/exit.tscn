@@ -6,6 +6,8 @@
 size = Vector3(2, 2, 2)
 
 [node name="ExitRight" type="Area3D" unique_id=99155977 groups=["Exit"]]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_xiid8")
 target_room_path = "uid://s4ym70ymniwg"
 

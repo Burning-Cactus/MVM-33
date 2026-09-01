@@ -74,6 +74,7 @@ func _ready() -> void:
 		elif ability == "slide":
 			slide_unlocked = true
 	attack_area.monitoring = false
+	attack_area.monitorable = false
 	attack_area.body_entered.connect(_on_attack_area_body_entered)
 	entity_handler.start()
 	hang_handler.start()
@@ -272,6 +273,9 @@ func _on_attack_area_body_entered(body: Node3D) -> void:
 	if body.has_method("take_damage") and body != self:
 		body.take_damage(attack_damage,global_position.z)
 
+func get_global_center() -> Vector3:
+	return global_position + $CollisionShape3D.position
+	
 func get_size() -> Vector3:
 	return Vector3(
 		$CollisionShape3D.shape.radius * 2,
@@ -299,17 +303,21 @@ func set_state(new_state: PlayerState) -> void:
 	match state:
 		PlayerState.ATTACKING:
 			attack_area.monitoring = false
+			attack_area.monitorable = false
 		PlayerState.JUMP_ATTACKING:
 			attack_area.monitoring = false
+			attack_area.monitorable = false
 	match new_state:
 		PlayerState.JUMPING:
 			animation_player.play("JUMP_START")
 		PlayerState.ATTACKING:
 			attack_area.monitoring = true
+			attack_area.monitorable = true
 			attack_step = 0
 			handle_attack()
 		PlayerState.JUMP_ATTACKING:
 			attack_area.monitoring = true
+			attack_area.monitorable = true
 			handle_jump_attack()
 		PlayerState.SLIDING:
 			animation_player.play("SLIDE")
