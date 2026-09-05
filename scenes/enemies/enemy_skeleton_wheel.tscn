@@ -93,10 +93,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d2j3p")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hltov"]
+size = Vector3(2, 10, 12)
+
 [node name="EnemySkeletonWheel" unique_id=445466315 instance=ExtResource("1_a0yo6")]
 script = ExtResource("2_1wl5j")
 chase_duration = 10.0
-speed = 4.0
+speed = 5.5
 max_health = 0
 knockback_force = Vector3(0, 0, 2)
 knockback_duration = 1.0
@@ -113,6 +116,9 @@ mesh = SubResource("ArrayMesh_kkmf1")
 
 [node name="Cylinder" type="MeshInstance3D" parent="Visuals/Model" index="1" unique_id=425911120]
 mesh = SubResource("ArrayMesh_0436h")
+
+[node name="CollisionShape3D" parent="PlayerDetection" parent_id_path=PackedInt32Array(1218466067) index="0" unique_id=662623750]
+shape = SubResource("BoxShape3D_hltov")
 
 [node name="FloorCheck" parent="." index="3" unique_id=1821149033]
 target_position = Vector3(0, -1.02, 0)

@@ -99,6 +99,7 @@ func _ready() -> void:
 	
 	anim_player.animation_changed.connect(_on_animation_changed)
 	anim_player.current_animation_changed.connect(_on_current_animation_changed)
+	anim_player.playback_default_blend_time = 0.2
 	
 	visuals.rotation_degrees.y = 180
 	visuals.scale.x = 1
@@ -116,12 +117,14 @@ func _physics_process(delta: float) -> void:
 				set_state(PlayerState.FALLING)
 			else:
 				has_double_jumped = false
-				if _is_action_just_pressed("jump"):
+				if _is_action_just_pressed(&"jump"):
+					play_animation(&"jump_start")
+					queue_animation(&"fall")
 					set_state(PlayerState.JUMPING)
-				if _is_action_just_pressed("attack"):
-					if Input.is_action_pressed("down"):
+				elif _is_action_just_pressed(&"attack"):
+					if Input.is_action_pressed(&"down"):
 						set_state(PlayerState.SLIDING)
-					elif Input.is_action_pressed("up"):
+					elif Input.is_action_pressed(&"up"):
 						attack_step = 1 # Start with large slash
 						set_state(PlayerState.ATTACKING)
 					else:
@@ -134,35 +137,38 @@ func _physics_process(delta: float) -> void:
 							play_animation(&"walk_hold")
 						else:
 							play_animation(&"walk")
-					else:
+					elif anim_player.current_animation != get_model_animation(&"land").anim_name:
 						if entity_handler.is_holding_entity():
 							play_animation(&"idle_hold")
 						else:
 							play_animation(&"idle")
 		PlayerState.JUMPING:
 			handle_movement()
-			if _is_action_just_pressed("attack"):
+			if _is_action_just_pressed(&"attack"):
 				attack_step = 3
 				set_state(PlayerState.JUMP_ATTACKING)
-			elif _is_action_pressed("jump"):
+			elif _is_action_pressed(&"jump"):
 				velocity.y = JUMP_VELOCITY
 			else:
 				set_state(PlayerState.FALLING)
 		PlayerState.FALLING:
 			if is_on_floor():
+				play_animation(&"land")
 				set_state(PlayerState.NORMAL)
 			else:
-				anim_player.play("JUMP_FALL")
+				if anim_player.current_animation == &"":
+					play_animation(&"fall")
 				# velocity += (get_gravity() - Vector3(0, 2, 0)) * delta
 				velocity.y = move_toward(velocity.y, get_gravity().y * 3, -get_gravity().y * delta)
 				handle_movement()
-				if _is_action_just_pressed("attack"):
+				if _is_action_just_pressed(&"attack"):
 					attack_step = 3
 					set_state(PlayerState.JUMP_ATTACKING)
-				elif _is_action_just_pressed("jump") && double_jump_unlocked && !has_double_jumped:
-						has_double_jumped = true
-						velocity.y = JUMP_VELOCITY
-						anim_player.play("JUMP_DOUBLE")
+				elif _is_action_just_pressed(&"jump") && double_jump_unlocked && !has_double_jumped:
+					has_double_jumped = true
+					velocity.y = JUMP_VELOCITY
+					play_animation(&"jump_double")
+					queue_animation(&"fall")
 		PlayerState.JUMP_ATTACKING:
 			if is_on_floor():
 				set_state(PlayerState.NORMAL)
@@ -273,9 +279,10 @@ func handle_attack():
 			attack_timer.start(cooldown + 0.05)
 			print(cooldown)
 		2:
+			var cooldown = get_animation_length(&"attack_3") + get_animation_length(&"attack_2")
 			play_animation(&"attack_3")
-			print(get_animation_length(&"attack_3") + 0.55)
-			attack_timer.start(get_animation_length(&"attack_3") + 0.55)
+			queue_animation(&"attack_2")
+			attack_timer.start(cooldown + 0.05)
 			
 func _process_attack() -> void:
 	if attack_timer.is_stopped():
@@ -301,13 +308,14 @@ func _process_attack() -> void:
 		attack_area.monitorable = false
 		
 	if (attack_timer.time_left < 0.25 && 
-		_is_action_just_pressed("attack") &&
+		_is_action_just_pressed(&"attack") &&
 		attack_step < 2
 	):
 		do_next_attack = true
 		
 func handle_jump_attack():
 	play_animation(&"jump_attack")
+	queue_animation(&"fall")
 	attack_timer.start(get_animation_length(&"jump_attack"))
 
 func end_attack() -> void:
@@ -328,8 +336,8 @@ func apply_player_knockback(source_position: float):
 	velocity.z = knockback_dir * player_knockback_force.z
 	velocity.y = player_knockback_force.y
 
-	if anim_player.has_animation("hurt"):
-		anim_player.play("hurt")
+	if anim_player.has_animation(&"hurt"):
+		anim_player.play(&"hurt")
 
 	await get_tree().create_timer(player_knockback_duration).timeout
 	input_disabled = false
@@ -348,6 +356,7 @@ func play_animation(anim_name: StringName):
 			
 	if anim_player and anim_player.has_animation(model_anim.anim_name):
 		if anim_player.current_animation != model_anim.anim_name:
+			print("play: ", anim_name)
 			anim_player.play(model_anim.anim_name)
 			model.position = _model_position + model_anim.model_offset
 
@@ -355,6 +364,7 @@ func queue_animation(anim_name: StringName):
 	var model_anim := get_model_animation(anim_name)
 			
 	if anim_player and anim_player.has_animation(model_anim.anim_name):
+		print("queue: ", anim_name)
 		anim_player.queue(model_anim.anim_name)
 			
 func get_model_animation(anim_name: StringName) -> ModelAnimation:
@@ -414,8 +424,6 @@ func set_state(new_state: PlayerState) -> void:
 			attack_area.monitorable = false
 			
 	match new_state:
-		PlayerState.JUMPING:
-			anim_player.play("JUMP_START")
 		PlayerState.ATTACKING:
 			handle_attack()
 		PlayerState.JUMP_ATTACKING:
