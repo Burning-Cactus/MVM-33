@@ -13,6 +13,8 @@ class_name Player
 @onready var anim_player: AnimationPlayer = $Visuals/Model/AnimationPlayer
 @onready var attack_area: Area3D = $SwordBoneAttachment/SwordHitbox
 @onready var interact_area: Area3D = $InteractArea
+@onready var collision: CollisionShape3D = $CollisionShape3D
+@onready var slide_check: ShapeCast3D = $SlideCheck
 
 @onready var damage_timer: Timer = $DamageTimer
 var is_invincible: bool = false
@@ -123,6 +125,7 @@ func _physics_process(delta: float) -> void:
 					set_state(PlayerState.JUMPING)
 				elif _is_action_just_pressed(&"attack"):
 					if Input.is_action_pressed(&"down"):
+						play_animation(&"slide_start")
 						set_state(PlayerState.SLIDING)
 					elif Input.is_action_pressed(&"up"):
 						attack_step = 1 # Start with large slash
@@ -131,17 +134,19 @@ func _physics_process(delta: float) -> void:
 						attack_step = 0 # Normal attack sequence
 						set_state(PlayerState.ATTACKING)
 				else:
-					handle_movement()
-					if velocity.z:
-						if entity_handler.is_holding_entity():
-							play_animation(&"walk_hold")
-						else:
-							play_animation(&"walk")
-					elif anim_player.current_animation != get_model_animation(&"land").anim_name:
-						if entity_handler.is_holding_entity():
-							play_animation(&"idle_hold")
-						else:
-							play_animation(&"idle")
+					if anim_player.current_animation != get_model_animation(&"slide_end").anim_name:
+						handle_movement()
+						
+						if velocity.z:
+							if entity_handler.is_holding_entity():
+								play_animation(&"walk_hold")
+							else:
+								play_animation(&"walk")
+						elif anim_player.current_animation != get_model_animation(&"land").anim_name:
+							if entity_handler.is_holding_entity():
+								play_animation(&"idle_hold")
+							else:
+								play_animation(&"idle")
 		PlayerState.JUMPING:
 			handle_movement()
 			if _is_action_just_pressed(&"attack"):
@@ -186,14 +191,18 @@ func _physics_process(delta: float) -> void:
 		PlayerState.ON_LEDGE:
 			pass
 		PlayerState.SLIDING:
+			var colliding := slide_check.is_colliding()
 			var input_dir := Input.get_vector("right", "left", "up", "down")
 			var dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-			if direction == PlayerDirection.LEFT && dir.x < 0.0:
-				direction = PlayerDirection.RIGHT
+			if not is_zero_approx(dir.x) and not colliding:
+				#direction = PlayerDirection.RIGHT
+				play_animation(&"slide_end")
 				set_state(PlayerState.NORMAL)
-			elif direction == PlayerDirection.RIGHT && dir.x > 0.0:
-				direction = PlayerDirection.LEFT
-				set_state(PlayerState.NORMAL)
+			elif _is_action_just_pressed(&"jump") and not colliding:
+				play_animation(&"slide_end")
+				queue_animation(&"jump_start")
+				queue_animation(&"fall")
+				set_state(PlayerState.JUMPING)
 			else:
 				var motion: float = 1.5 if direction == PlayerDirection.LEFT else -1.5
 				velocity.z = motion * SPEED
@@ -248,10 +257,26 @@ func receive_damage(
 	apply_knockback: bool = true
 ):
 	if independent:
+		if get_state() == PlayerState.SLIDING:
+			if slide_check.is_colliding():
+				reverse_direction()
+				apply_knockback = false
+			else:
+				play_animation(&"slide_end")
+				set_state(PlayerState.NORMAL)
+		
 		GameManager.update_health(-amount)
 		if apply_knockback:
 			apply_player_knockback(source_position)
 		return
+		
+	if get_state() == PlayerState.SLIDING:
+		if slide_check.is_colliding():
+			reverse_direction()
+			apply_knockback = false
+		else:
+			play_animation(&"slide_end")
+			set_state(PlayerState.NORMAL)
 	
 	if is_invincible:
 		return
@@ -277,7 +302,6 @@ func handle_attack():
 			play_animation(&"attack_1")
 			queue_animation(&"attack_2")
 			attack_timer.start(cooldown + 0.05)
-			print(cooldown)
 		2:
 			var cooldown = get_animation_length(&"attack_3") + get_animation_length(&"attack_2")
 			play_animation(&"attack_3")
@@ -356,15 +380,15 @@ func play_animation(anim_name: StringName):
 			
 	if anim_player and anim_player.has_animation(model_anim.anim_name):
 		if anim_player.current_animation != model_anim.anim_name:
-			print("play: ", anim_name)
-			anim_player.play(model_anim.anim_name)
+			#print("play: ", anim_name)
+			anim_player.play_section(model_anim.anim_name, model_anim.start_time, model_anim.end_time)
 			model.position = _model_position + model_anim.model_offset
 
 func queue_animation(anim_name: StringName):
 	var model_anim := get_model_animation(anim_name)
 			
 	if anim_player and anim_player.has_animation(model_anim.anim_name):
-		print("queue: ", anim_name)
+		#print("queue: ", anim_name)
 		anim_player.queue(model_anim.anim_name)
 			
 func get_model_animation(anim_name: StringName) -> ModelAnimation:
@@ -422,6 +446,10 @@ func set_state(new_state: PlayerState) -> void:
 		PlayerState.JUMP_ATTACKING:
 			attack_area.monitoring = false
 			attack_area.monitorable = false
+		PlayerState.SLIDING:
+			collision.rotation_degrees.x = 0.0
+			collision.position.z = 0.0
+			collision.position.y = 1.1
 			
 	match new_state:
 		PlayerState.ATTACKING:
@@ -429,7 +457,13 @@ func set_state(new_state: PlayerState) -> void:
 		PlayerState.JUMP_ATTACKING:
 			handle_jump_attack()
 		PlayerState.SLIDING:
-			anim_player.play("SLIDE")
+			collision.rotation_degrees.x = 90
+			if direction == PlayerDirection.RIGHT:
+				collision.position.z = -0.7
+			else:
+				collision.position.z = 0.7
+			collision.position.y = 0.4
+			
 	state = new_state
 	state_changed.emit(state)
 func get_state() -> PlayerState:
@@ -442,10 +476,14 @@ func set_direction(value: PlayerDirection) -> void:
 		visuals.rotation_degrees.y = 0
 		interact_area.rotation_degrees.y = 180
 		visuals.scale.x = -1
+		if state == PlayerState.SLIDING:
+			collision.position.z = 0.7
 	elif direction == PlayerDirection.RIGHT:
 		visuals.rotation_degrees.y = 180
 		interact_area.rotation_degrees.y = 0
 		visuals.scale.x = 1
+		if state == PlayerState.SLIDING:
+			collision.position.z = -0.7
 	elif direction == PlayerDirection.FORWARD:
 		visuals.rotation_degrees.y = 90
 		interact_area.rotation_degrees.y = 90
@@ -455,3 +493,9 @@ func set_direction(value: PlayerDirection) -> void:
 
 func get_direction() -> PlayerDirection:
 	return direction
+	
+func reverse_direction() -> void:
+	if direction == PlayerDirection.RIGHT:
+		set_direction(PlayerDirection.LEFT)
+	elif direction == PlayerDirection.LEFT:
+		set_direction(PlayerDirection.RIGHT)

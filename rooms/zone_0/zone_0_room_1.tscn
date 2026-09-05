@@ -4,10 +4,12 @@
 [ext_resource type="Environment" uid="uid://cyrqh24v1yjx8" path="res://resources/zone_1_world_environment.tres" id="2_v4jr7"]
 [ext_resource type="PackedScene" uid="uid://wfas7udr17p2" path="res://rooms/zone_0/components/zone_0_ceiling_33.tscn" id="3_1nyfn"]
 [ext_resource type="PackedScene" uid="uid://cb0yn8h6tyhpf" path="res://rooms/zone_0/components/zone_0_wall_11_door_bottom.tscn" id="4_d6c6s"]
+[ext_resource type="PackedScene" uid="uid://b8mx6h2grmqqu" path="res://rooms/zone_0/components/zone_0_ledge_2.tscn" id="5_4hb1e"]
 [ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/exit_left.tscn" id="6_fjtgy"]
 [ext_resource type="PackedScene" uid="uid://bnmq3lgnmpdrh" path="res://rooms/zone_0/components/zone_0_floor_33.tscn" id="6_nr4d3"]
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/exit_right.tscn" id="7_gyvra"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="8_0ci6k"]
+[ext_resource type="PackedScene" uid="uid://b4ndfnys5liq3" path="res://scenes/enemies/enemy_skeleton.tscn" id="10_yxc74"]
 
 [node name="Zone1Room1" unique_id=323921774 instance=ExtResource("1_fjtgy")]
 
@@ -23,7 +25,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 8)
 [node name="Zone0Wall11DoorBottomRight" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="2" unique_id=140796180 instance=ExtResource("4_d6c6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -24)
 
-[node name="Zone0Floor33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=59586251 instance=ExtResource("6_nr4d3")]
+[node name="Zone0Ledge2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=1251203018 instance=ExtResource("5_4hb1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -4.5)
+
+[node name="Zone0Ledge3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=634577155 instance=ExtResource("5_4hb1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.5)
+
+[node name="Zone0Floor33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=59586251 instance=ExtResource("6_nr4d3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
 [node name="WallExitLeft" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1621660744 instance=ExtResource("6_fjtgy")]
@@ -33,7 +41,6 @@ door_id = "zone_0_room_1_left"
 target_door_id = "zone_0_room_0_right"
 exit_velocity = Vector3(0, 0, 0)
 maintain_velocity = false
-is_enabled = true
 
 [node name="WallExitRight" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=1176092721 instance=ExtResource("7_gyvra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -24.5)
@@ -53,3 +60,6 @@ room_coordinates = Vector2i(3, 0)
 border_left = "None"
 border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
+
+[node name="EnemySkeleton" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("10_yxc74")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6.14981)
