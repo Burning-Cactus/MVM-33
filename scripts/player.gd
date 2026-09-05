@@ -271,7 +271,7 @@ func apply_player_knockback(source_position: float):
 
 func _on_attack_area_body_entered(body: Node3D) -> void:
 	if body.has_method("take_damage") and body != self:
-		body.take_damage(attack_damage,global_position.z)
+		body.take_damage(attack_damage, global_position.z)
 
 func get_global_center() -> Vector3:
 	return global_position + $CollisionShape3D.position

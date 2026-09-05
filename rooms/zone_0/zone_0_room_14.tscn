@@ -16,7 +16,7 @@ size = Vector3(12, 12, 24)
 
 [node name="Zone1Room14" unique_id=323921774 node_paths=PackedStringArray("boss_enemy", "boss_trigger_area") instance=ExtResource("1_2sr1t")]
 is_boss_room = true
-boss_enemy = NodePath("Enemies/EnemyBase")
+boss_enemy = NodePath("Enemies/BossPendulum")
 boss_switch_id = &"z0r14_door_left"
 boss_trigger_area = NodePath("BossTriggerArea")
 
@@ -70,10 +70,10 @@ border_left = "None"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
 [node name="Player" parent="." index="6" unique_id=1575609299]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.9268398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -18.33583)
 
-[node name="EnemyBase" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("9_2sr1t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7563114, -31.229773)
+[node name="BossPendulum" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("9_2sr1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5886116, -25.617369)
 is_boss = true
 
 [node name="BossTriggerArea" type="Area3D" parent="." index="8" unique_id=651811943]

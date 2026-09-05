@@ -39,6 +39,8 @@ var is_in_knockback: bool = false
 var is_turning: bool = false
 var can_attack: bool = true
 var floor_check_disabled: bool = false
+var is_invincible: bool = false
+var damage_cooldown: float = 1.0
 
 var player_ref: CharacterBody3D = null
 
@@ -168,6 +170,11 @@ func get_anim_name(anim_name: StringName) -> StringName:
 	return anim_name
 
 func take_damage(amount: int, source_position: float):
+	if is_invincible:
+		return
+		
+	is_invincible = true
+	
 	if max_health > 0:
 		current_health -= amount
 		print(amount, " damage taken, ", current_health, " left.")
@@ -181,6 +188,10 @@ func take_damage(amount: int, source_position: float):
 		apply_knockback(amount, source_position)
 	else:
 		play_animation(&"hurt")
+	
+	if not is_zero_approx(damage_cooldown):
+		await get_tree().create_timer(damage_cooldown).timeout
+	is_invincible = false
 		
 func die():
 	if is_boss:
