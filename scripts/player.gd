@@ -29,6 +29,11 @@ var jump_attack_damage: int = 10
 var jump_attack_delay: float = 0.0
 var damage_cooldown: float = 1.0
 
+var fall_delta: float = 0.0
+var jump_coyote_time: float = 0.15 # Delay after walking of edge that jump can still happen
+var jump_delta: float = 0.0 # Amount of time jump has been held down
+var max_jump_delta: float = 0.20
+
 var double_jump_unlocked := false
 var slide_unlocked := false
 
@@ -149,10 +154,11 @@ func _physics_process(delta: float) -> void:
 								play_animation(&"idle")
 		PlayerState.JUMPING:
 			handle_movement()
+			jump_delta += delta
 			if _is_action_just_pressed(&"attack"):
 				attack_step = 3
 				set_state(PlayerState.JUMP_ATTACKING)
-			elif _is_action_pressed(&"jump"):
+			elif _is_action_pressed(&"jump") and jump_delta < max_jump_delta:
 				velocity.y = JUMP_VELOCITY
 			else:
 				set_state(PlayerState.FALLING)
@@ -161,6 +167,8 @@ func _physics_process(delta: float) -> void:
 				play_animation(&"land")
 				set_state(PlayerState.NORMAL)
 			else:
+				fall_delta += delta
+				
 				if anim_player.current_animation == &"":
 					play_animation(&"fall")
 				# velocity += (get_gravity() - Vector3(0, 2, 0)) * delta
@@ -169,11 +177,14 @@ func _physics_process(delta: float) -> void:
 				if _is_action_just_pressed(&"attack"):
 					attack_step = 3
 					set_state(PlayerState.JUMP_ATTACKING)
-				elif _is_action_just_pressed(&"jump") && double_jump_unlocked && !has_double_jumped:
-					has_double_jumped = true
-					velocity.y = JUMP_VELOCITY
-					play_animation(&"jump_double")
-					queue_animation(&"fall")
+				elif _is_action_just_pressed(&"jump"):
+					if fall_delta < jump_coyote_time:
+						set_state(PlayerState.JUMPING)
+					elif double_jump_unlocked && !has_double_jumped:
+						has_double_jumped = true
+						velocity.y = JUMP_VELOCITY
+						play_animation(&"jump_double")
+						queue_animation(&"fall")
 		PlayerState.JUMP_ATTACKING:
 			if is_on_floor():
 				set_state(PlayerState.NORMAL)
@@ -194,7 +205,10 @@ func _physics_process(delta: float) -> void:
 			var colliding := slide_check.is_colliding()
 			var input_dir := Input.get_vector("right", "left", "up", "down")
 			var dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-			if not is_zero_approx(dir.x) and not colliding:
+			if not is_on_floor():
+				play_animation(&"slide_end")
+				set_state(PlayerState.NORMAL)
+			elif not is_zero_approx(dir.x) and not colliding:
 				#direction = PlayerDirection.RIGHT
 				play_animation(&"slide_end")
 				set_state(PlayerState.NORMAL)
@@ -349,6 +363,7 @@ func end_attack() -> void:
 		set_state(PlayerState.NORMAL)
 	else:
 		set_state(PlayerState.FALLING)
+		fall_delta = 9999 # Set fall delta to high so can't coyote jump again
 
 func apply_player_knockback(source_position: float):
 	input_disabled = true
@@ -452,6 +467,10 @@ func set_state(new_state: PlayerState) -> void:
 			collision.position.y = 1.1
 			
 	match new_state:
+		PlayerState.JUMPING:
+			jump_delta = 0.0
+		PlayerState.FALLING:
+			fall_delta = 0.0
 		PlayerState.ATTACKING:
 			handle_attack()
 		PlayerState.JUMP_ATTACKING:
@@ -459,9 +478,9 @@ func set_state(new_state: PlayerState) -> void:
 		PlayerState.SLIDING:
 			collision.rotation_degrees.x = 90
 			if direction == PlayerDirection.RIGHT:
-				collision.position.z = -0.7
+				collision.position.z = -0.5
 			else:
-				collision.position.z = 0.7
+				collision.position.z = 0.5
 			collision.position.y = 0.4
 			
 	state = new_state
@@ -477,13 +496,13 @@ func set_direction(value: PlayerDirection) -> void:
 		interact_area.rotation_degrees.y = 180
 		visuals.scale.x = -1
 		if state == PlayerState.SLIDING:
-			collision.position.z = 0.7
+			collision.position.z = 0.5
 	elif direction == PlayerDirection.RIGHT:
 		visuals.rotation_degrees.y = 180
 		interact_area.rotation_degrees.y = 0
 		visuals.scale.x = 1
 		if state == PlayerState.SLIDING:
-			collision.position.z = -0.7
+			collision.position.z = -0.5
 	elif direction == PlayerDirection.FORWARD:
 		visuals.rotation_degrees.y = 90
 		interact_area.rotation_degrees.y = 90
