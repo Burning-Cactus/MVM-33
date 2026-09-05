@@ -203,12 +203,11 @@ func _physics_process(delta: float) -> void:
 			pass
 		PlayerState.SLIDING:
 			var colliding := slide_check.is_colliding()
-			var input_dir := Input.get_vector("right", "left", "up", "down")
-			var dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			var x_dir := Input.get_axis(&"right", &"left")
 			if not is_on_floor():
 				play_animation(&"slide_end")
 				set_state(PlayerState.NORMAL)
-			elif not is_zero_approx(dir.x) and not colliding:
+			elif not is_zero_approx(x_dir) and not colliding:
 				#direction = PlayerDirection.RIGHT
 				play_animation(&"slide_end")
 				set_state(PlayerState.NORMAL)
@@ -245,15 +244,14 @@ func _is_action_pressed(action: StringName, exact_match: bool = false) -> bool:
 func handle_movement() -> void:
 	if input_disabled:
 		return
-		
-	var input_dir := Input.get_vector("right", "left", "up", "down")
-	var dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if dir:
-		if dir.x > 0.0:
+	
+	var x_dir := Input.get_axis(&"right", &"left")
+	if x_dir:
+		if x_dir > 0.0:
 			set_direction(PlayerDirection.LEFT)
-		elif dir.x < 0.0:
+		elif x_dir < 0.0:
 			set_direction(PlayerDirection.RIGHT)
-		velocity.z = dir.x * SPEED
+		velocity.z = x_dir * SPEED
 	else:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
