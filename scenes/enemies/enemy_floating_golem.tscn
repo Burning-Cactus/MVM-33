@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://nnocfwdorp5y" path="res://scenes/enemies/enemy_floating_golem.gd" id="2_5vlke"]
 [ext_resource type="Texture2D" uid="uid://blb86gwsjagi6" path="res://assets/enemies/floating_golems_floating_golem.png" id="3_a7n5b"]
 [ext_resource type="PackedScene" uid="uid://caplj60mi3sos" path="res://scenes/projectiles/flying_golem_projectile.tscn" id="3_uympj"]
+[ext_resource type="Script" uid="uid://4r5temfmdhpg" path="res://resources/model_animation.gd" id="4_fmdd1"]
+
+[sub_resource type="Resource" id="Resource_dg0h0"]
+script = ExtResource("4_fmdd1")
+anim_name = &"FLOATING_GOLEM_IDLE"
+metadata/_custom_type_script = "uid://4r5temfmdhpg"
+
+[sub_resource type="Resource" id="Resource_p1c6w"]
+script = ExtResource("4_fmdd1")
+anim_name = &"FLOATING_GOLEM_ATTACK"
+metadata/_custom_type_script = "uid://4r5temfmdhpg"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a7n5b"]
 radius = 0.25
@@ -2216,8 +2227,10 @@ golem_type = 2
 target_stop_distance = Vector3(0, 2, 7.5)
 projectile = ExtResource("3_uympj")
 attack_cooldown = 3.0
-idle_animation = &"FLOATING_GOLEM_IDLE"
-attack_animation = &"FLOATING_GOLEM_ATTACK"
+model_animations = Dictionary[StringName, ExtResource("4_fmdd1")]({
+&"attack": SubResource("Resource_p1c6w"),
+&"idle": SubResource("Resource_dg0h0")
+})
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=1648093087]
 shape = SubResource("CapsuleShape3D_a7n5b")

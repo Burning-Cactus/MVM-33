@@ -54,7 +54,7 @@ border_left = "None"
 border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
-[node name="Player" parent="." index="5" unique_id=1575609299]
+[node name="Player" parent="." index="6" unique_id=1575609299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.9196897)
 
 [node name="EnemyJumpingSpider" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("9_mkvu4")]
@@ -67,4 +67,3 @@ start_direction = -1
 [node name="EnemyFloatingGolem" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="2" unique_id=966322948 instance=ExtResource("11_cxo5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4047227, -6.0976644)
 golem_type = 4
-target_stop_distance = Vector3(0, 2, 7.5)

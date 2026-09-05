@@ -3,9 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://chhjn0jwaooo4" path="res://scenes/enemies/enemy_base.tscn" id="1_r0gad"]
 [ext_resource type="Script" uid="uid://cpc0i5rhc5rka" path="res://scenes/enemies/bosses/boss_pendulum.gd" id="2_4va0b"]
 [ext_resource type="ArrayMesh" uid="uid://d0g2itx5cxlj4" path="res://scenes/enemies/bosses/boss_pendulum_body_mesh.tres" id="3_bs8r1"]
+[ext_resource type="Script" uid="uid://4r5temfmdhpg" path="res://resources/model_animation.gd" id="3_ntpcg"]
 [ext_resource type="Skin" uid="uid://pxv5o7meotnf" path="res://scenes/enemies/bosses/boss_pendulume_body_skin.tres" id="4_8s1f2"]
 [ext_resource type="ArrayMesh" uid="uid://dl8j2hyi6dkwp" path="res://scenes/enemies/bosses/boss_pendulum_pendulum_mesh.tres" id="4_mwwa2"]
 [ext_resource type="Script" uid="uid://4yjxaeoyxcg7" path="res://scripts/damage_area.gd" id="6_8s1f2"]
+
+[sub_resource type="Resource" id="Resource_85xih"]
+script = ExtResource("3_ntpcg")
+anim_name = &"PENDULUM_IDLE"
+metadata/_custom_type_script = "uid://4r5temfmdhpg"
+
+[sub_resource type="Resource" id="Resource_5syte"]
+script = ExtResource("3_ntpcg")
+anim_name = &"PENDULUM_ATTACK"
+metadata/_custom_type_script = "uid://4r5temfmdhpg"
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8s1f2"]
 points = PackedVector3Array(0.65552086, 4.281066, 0.2355699, -0.7209143, 3.3561423, -0.08483645, -0.7209143, 3.3561423, 0.07536672, 0.1601875, 1.8345494, -0.16487533, -0.24021067, 2.3955193, 0.71617943, -0.7209143, 4.0769234, 0.71617943, -0.7209143, 4.0769234, -0.4052428, 0.7209143, 4.0769234, -0.4052428, 0.7209143, 3.9168613, 0.71617943, 0.24021067, 1.9150821, 0.4756865, -0.24021067, 1.9150821, -0.16487533, 0.7209143, 3.3561423, -0.08483645, -0.24021067, 4.3972983, 0.39564762, 0.24021067, 2.315488, -0.3250785, 0.1601875, 3.6765175, 0.8763826, -0.24021067, 1.9150821, 0.4756865, 0.24021067, 2.3955193, 0.71617943, 0.07147591, 4.260435, -0.33679768, 0.7209143, 4.0769234, 0.71617943, -0.6667512, 4.3010273, 0.0133775035, -0.24021067, 2.315488, -0.3250785, -0.7209143, 3.7565484, 0.6360151, -0.24021067, 3.5164552, -0.4052428, -0.1601875, 3.6765175, 0.8763826, 0.5869209, 4.289651, -0.13123412, 0.24021067, 1.9150821, -0.16487533, 0.7209143, 3.5164552, 0.39564762, 0.24021067, 4.3972983, 0.39564762, 0.7209143, 3.9168613, -0.4052428, -0.7209143, 3.9168613, -0.4052428, -0.50999707, 4.281664, -0.20166826, -0.48056248, 3.6765175, 0.7962183)
@@ -8428,6 +8439,10 @@ pendulum_max_angle = 40.0
 pendulum_period = 3.0
 pendulum_attack_damage = 15.0
 label = &"Pendulum Giver"
+model_animations = Dictionary[StringName, ExtResource("3_ntpcg")]({
+&"attack": SubResource("Resource_5syte"),
+&"idle": SubResource("Resource_85xih")
+})
 idle_animation = &"PENDULUM_IDLE"
 attack_animation = &"PENDULUM_ATTACK"
 

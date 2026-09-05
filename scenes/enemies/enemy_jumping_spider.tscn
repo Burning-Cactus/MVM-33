@@ -3,6 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://chhjn0jwaooo4" path="res://scenes/enemies/enemy_base.tscn" id="1_7oad3"]
 [ext_resource type="Script" uid="uid://d367a1w33eidp" path="res://scenes/enemies/enemy_jumping_spider.gd" id="2_6w5p7"]
 [ext_resource type="Texture2D" uid="uid://cd6owqjvygdut" path="res://assets/enemies/jumping_spider_spider_cat.png" id="3_6w5p7"]
+[ext_resource type="Script" uid="uid://4r5temfmdhpg" path="res://resources/model_animation.gd" id="3_rbc71"]
+
+[sub_resource type="Resource" id="Resource_1quu0"]
+script = ExtResource("3_rbc71")
+anim_name = &"SPIDER_JUMP"
+metadata/_custom_type_script = "uid://4r5temfmdhpg"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjei"]
 radius = 0.273
@@ -8111,6 +8117,9 @@ jump_velocity = Vector3(0, 8, 5)
 rotation_speed = 10.0
 attack_cooldown = 0.0
 knockback_force = Vector3(0, 1.5, 3.5)
+model_animations = Dictionary[StringName, ExtResource("3_rbc71")]({
+&"jump": SubResource("Resource_1quu0")
+})
 jump_animation = &"SPIDER_JUMP"
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=1648093087]

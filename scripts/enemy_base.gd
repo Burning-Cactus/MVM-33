@@ -24,11 +24,7 @@ class_name EnemyBase
 @export var turning_duration: float = 0.5
 
 @export_group("Animations")
-@export var idle_animation: StringName = &"idle"
-@export var walk_animation: StringName = &"walk"
-@export var hurt_animation: StringName = &"hurt"
-@export var jump_animation: StringName = &"jump"
-@export var attack_animation: StringName = &"attack"
+@export var model_animations: Dictionary[StringName, ModelAnimation] = {}
 
 var unique_enemy_id: String = ""
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -39,8 +35,11 @@ var is_in_knockback: bool = false
 var is_turning: bool = false
 var can_attack: bool = true
 var floor_check_disabled: bool = false
+
+var damage_timer: Timer
 var is_invincible: bool = false
 var damage_cooldown: float = 1.0
+var current_damage_step: int = 0
 
 var player_ref: CharacterBody3D = null
 
@@ -73,7 +72,15 @@ func _ready():
 	
 	if model != null:
 		anim_player = model.get_node_or_null("AnimationPlayer")
-		
+	
+	if anim_player != null:
+		anim_player.animation_changed.connect(_on_animation_changed)
+	
+	damage_timer = Timer.new()
+	damage_timer.one_shot = true
+	damage_timer.timeout.connect(_on_damage_end)
+	add_child(damage_timer)
+	
 	setup_enemy()
 	
 	direction = start_direction
@@ -143,37 +150,35 @@ func lock_to_25d_plane():
 	global_transform.origin.x = 0
 
 func play_animation(anim_name: StringName):
-	anim_name = get_anim_name(anim_name)
+	var model_anim := get_model_animation(anim_name)
 			
-	if anim_player and anim_player.has_animation(anim_name):
-		if anim_player.current_animation != anim_name:
-			anim_player.play(anim_name)
+	if anim_player and anim_player.has_animation(model_anim.anim_name):
+		if anim_player.current_animation != model_anim.anim_name:
+			anim_player.play(model_anim.anim_name)
+			visuals.position = model_anim.model_offset
 
 func queue_animation(anim_name: StringName):
-	anim_name = get_anim_name(anim_name)
+	var model_anim := get_model_animation(anim_name)
 			
-	if anim_player and anim_player.has_animation(anim_name):
-		anim_player.queue(anim_name)
+	if anim_player and anim_player.has_animation(model_anim.anim_name):
+		anim_player.queue(model_anim.anim_name)
 			
-func get_anim_name(anim_name: StringName) -> StringName:
-	match anim_name:
-		&"idle":
-			anim_name = idle_animation
-		&"walk":
-			anim_name = walk_animation
-		&"hurt":
-			anim_name = hurt_animation
-		&"jump":
-			anim_name = jump_animation
-		&"attack":
-			anim_name = attack_animation
-	return anim_name
+func get_model_animation(anim_name: StringName) -> ModelAnimation:
+	if model_animations.has(anim_name):
+		return model_animations.get(anim_name)
+		
+	return ModelAnimation.new(anim_name)
 
-func take_damage(amount: int, source_position: float):
-	if is_invincible:
+func _on_animation_changed(old_name: StringName, new_name: StringName) -> void:
+	var model_anim := get_model_animation(new_name)
+	visuals.position = model_anim.model_offset
+
+func take_damage(amount: int, source_position: float, damage_step: int = 0):
+	if is_invincible and current_damage_step == damage_step:
 		return
 		
 	is_invincible = true
+	current_damage_step = damage_step
 	
 	if max_health > 0:
 		current_health -= amount
@@ -190,9 +195,14 @@ func take_damage(amount: int, source_position: float):
 		play_animation(&"hurt")
 	
 	if not is_zero_approx(damage_cooldown):
-		await get_tree().create_timer(damage_cooldown).timeout
+		if not damage_timer.is_stopped():
+			damage_timer.stop()
+		damage_timer.start(damage_cooldown)
 	is_invincible = false
-		
+
+func _on_damage_end() -> void:
+	is_invincible = false
+	
 func die():
 	if is_boss:
 		if not GameManager.permanent_flags.has(unique_enemy_id + "_defeated"):

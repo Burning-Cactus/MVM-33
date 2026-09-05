@@ -129,7 +129,7 @@ func pickup() -> void:
 	player.add_collision_exception_with(entity_ref)
 	entity_ref.add_collision_exception_with(self)
 	
-	entity_ref.reparent(player.model, true)
+	entity_ref.reparent(player.visuals, true)
 	entity_ref.freeze = true
 	
 	var entity_size = entity_ref.get_size()
@@ -145,8 +145,8 @@ func pickup() -> void:
 	
 	_entity_position += player_offset + PICKUP_OFFSET
 	
-	if player.model.scale.z >= 0.0:
-		_entity_position.z *= -1
+	#if player.get_direction() == Player.PlayerDirection.RIGHT:
+		#_entity_position.z *= -1
 	
 	entity_collision.position = entity_ref.position
 	entity_collision.shape = entity_ref.collision.shape.duplicate()
