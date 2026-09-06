@@ -58,6 +58,7 @@ var can_attack: bool = true
 @onready var climb_handler: PlayerClimbHandler = $PlayerClimbHandler
 @onready var hang_handler: PlayerHangHandler = $PlayerHangHandler
 @onready var entity_handler: PlayerEntityHandler = $PlayerEntityHandler
+@onready var ledge_handler: PlayerLedgeHandler = $PlayerLedgeHandler
 
 var jump_duration: Timer
 
@@ -100,9 +101,11 @@ func _ready() -> void:
 	attack_area.monitoring = false
 	attack_area.monitorable = false
 	attack_area.body_entered.connect(_on_attack_area_body_entered)
+	
 	entity_handler.start()
 	hang_handler.start()
 	climb_handler.start()
+	ledge_handler.start()
 	
 	attack_timer = Timer.new()
 	attack_timer.one_shot = true
@@ -206,7 +209,7 @@ func _physics_process(delta: float) -> void:
 			velocity.z = 0
 			_process_attack()
 		PlayerState.ON_LEDGE:
-			pass
+			ledge_handler.process_ledge(delta)
 		PlayerState.SLIDING:
 			var colliding := slide_check.is_colliding()
 			var x_dir := Input.get_axis(&"right", &"left")
@@ -237,6 +240,7 @@ func _physics_process(delta: float) -> void:
 	entity_handler.process_entity(delta)
 	hang_handler.grab()
 	climb_handler.grab()
+	ledge_handler.grab()
 
 func _is_action_just_pressed(action: StringName, exact_match: bool = false) -> bool:
 	if action == &"attack" and entity_handler.is_holding_entity():
@@ -409,7 +413,13 @@ func play_animation(anim_name: StringName):
 	if anim_player and anim_player.has_animation(model_anim.anim_name):
 		if anim_player.current_animation != model_anim.anim_name:
 			#print("play: ", anim_name)
-			anim_player.play_section(model_anim.anim_name, model_anim.start_time, model_anim.end_time)
+			anim_player.play_section(
+				model_anim.anim_name, 
+				model_anim.start_time, 
+				model_anim.end_time,
+				-1.0,
+				model_anim.speed
+			)
 			model.position = _model_position + model_anim.model_offset
 
 func queue_animation(anim_name: StringName):
@@ -431,7 +441,7 @@ func get_animation_length(anim_name: StringName) -> float:
 	if not anim_player.has_animation(model_anim.anim_name):
 		return 0.0
 		
-	return anim_player.get_animation(model_anim.anim_name).length
+	return anim_player.get_animation(model_anim.anim_name).length / model_anim.speed
 
 func _on_animation_changed(old_name: StringName, new_name: StringName) -> void:
 	var model_anim := get_model_animation(new_name)
@@ -442,6 +452,9 @@ func _on_current_animation_changed(anim_name: StringName) -> void:
 
 func get_global_center() -> Vector3:
 	return global_position + $CollisionShape3D.position
+	
+func get_center() -> Vector3:
+	return $CollisionShape3D.position
 	
 func get_size() -> Vector3:
 	return Vector3(

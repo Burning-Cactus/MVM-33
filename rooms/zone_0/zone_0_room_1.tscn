@@ -63,10 +63,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -24)
 [node name="Zone0Ledge2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=1251203018 instance=ExtResource("5_4hb1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -4.5)
 
-[node name="Zone0Ledge3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=634577155 instance=ExtResource("5_4hb1e")]
+[node name="Zone0Ledge4" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=1047976561 instance=ExtResource("5_4hb1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.655134, -4.5)
+
+[node name="Zone0Ledge3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=634577155 instance=ExtResource("5_4hb1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.5)
 
-[node name="Zone0Floor33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=59586251 instance=ExtResource("6_nr4d3")]
+[node name="Zone0Floor33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="6" unique_id=59586251 instance=ExtResource("6_nr4d3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
 [node name="HeadUpgrade" type="Area3D" parent="Objects" parent_id_path=PackedInt32Array(831980504) index="0" unique_id=1659339272]

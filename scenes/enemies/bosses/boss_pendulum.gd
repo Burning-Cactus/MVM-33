@@ -42,7 +42,6 @@ func _physics_process(delta: float) -> void:
 		
 		var weight: float = clampf(_spin_delta / spin_period, 0.0, 1.0)
 		weight = smoothstep(0.0, 1.0, weight)
-		print(weight, ": ", lerp_angle(0.0, TAU, weight))
 		model.rotation.y = _spin_rotation + lerpf(0.0, TAU, weight)
 		
 		if _spin_delta >= spin_period:
