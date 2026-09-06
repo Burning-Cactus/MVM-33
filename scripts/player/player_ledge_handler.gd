@@ -57,6 +57,7 @@ func process_ledge(delta: float) -> void:
 		if not vertical_check.is_colliding():
 			if player.velocity.y > 0.0:
 				player.velocity.y = 0.0
+				
 			player.velocity.y = move_toward(
 				player.velocity.y, 
 				player.get_gravity().y * 3, 
@@ -65,15 +66,20 @@ func process_ledge(delta: float) -> void:
 		else:
 			player.velocity = Vector3.ZERO
 			if Input.is_action_just_pressed(&"jump"):
-				_is_climbing_up = true
-				_climb_up_delta = 0.0
-				_collision_point = vertical_check.get_collision_point()
-				if player.get_direction() == Player.PlayerDirection.LEFT:
-					_collision_point.z += 0.25
+				var input_dir := Input.get_vector("right", "left", "up", "down")
+				if input_dir.is_zero_approx():
+					_is_climbing_up = true
+					_climb_up_delta = 0.0
+					_collision_point = vertical_check.get_collision_point()
+					if player.get_direction() == Player.PlayerDirection.LEFT:
+						_collision_point.z += 0.25
+					else:
+						_collision_point.z -= 0.25
+					_player_position = player.global_position
+					player.play_animation(&"ledge_climb")
 				else:
-					_collision_point.z -= 0.25
-				_player_position = player.global_position
-				player.play_animation(&"ledge_climb")
+					player.set_state(Player.PlayerState.JUMPING)
+				
 				
 	if _is_climbing_up:
 		_climb_up_delta += delta
@@ -97,6 +103,9 @@ func process_ledge(delta: float) -> void:
 		release()
 		
 func grab() -> void:
+	if player.is_on_floor():
+		return
+		
 	if not player.can_interact():
 		return
 	

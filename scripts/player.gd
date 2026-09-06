@@ -490,7 +490,7 @@ func set_state(new_state: PlayerState) -> void:
 		PlayerState.SLIDING:
 			collision.rotation_degrees.x = 0.0
 			collision.position.z = 0.0
-			collision.position.y = 1.1
+			collision.position.y = 1.0
 			
 	match new_state:
 		PlayerState.JUMPING:
