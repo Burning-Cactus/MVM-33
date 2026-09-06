@@ -30,6 +30,7 @@ func _on_body_entered(body: Node3D) -> void:
 			_entities.append(body)
 			
 		_collapse_timer.start(collapse_delay)
+		start_collapse()
 
 func _on_body_exited(body: Node3D) -> void:
 	if _entities.has(body):
@@ -40,6 +41,7 @@ func _on_body_exited(body: Node3D) -> void:
 		not _collapse_timer.is_stopped()
 	):
 		_collapse_timer.stop()
+		stop_collapse()
 
 func _on_collapse_timeout() -> void:
 	if is_collapsed:
@@ -63,3 +65,10 @@ func restore() -> void:
 		
 	is_collapsed = false
 	collision.set_deferred("disabled", false)
+
+# Override these in child classes
+func start_collapse() -> void:
+	pass
+
+func stop_collapse() -> void:
+	pass

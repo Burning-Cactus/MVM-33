@@ -11,6 +11,33 @@ size = Vector3(2, 0.2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
 size = Vector3(2, 0.22, 0.98)
 
+[sub_resource type="Gradient" id="Gradient_pgkyl"]
+offsets = PackedFloat32Array(0, 0.6824645, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.7251185, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rx3j2"]
+gradient = SubResource("Gradient_pgkyl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ht1ow"]
+emission_shape_offset = Vector3(0, -0.2, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 0.1, 0.5)
+angle_min = -89.99999
+angle_max = 90.000015
+inherit_velocity_ratio = 1.0
+spread = 180.0
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
+color_ramp = SubResource("GradientTexture1D_rx3j2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv845"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_pj1qo"]
+material = SubResource("StandardMaterial3D_fv845")
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="PlatformSmallCollapsible" type="StaticBody3D" unique_id=122289592]
 script = ExtResource("1_aftp0")
 collapse_delay = 1.0
@@ -29,3 +56,10 @@ collision_mask = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=868673510]
 shape = SubResource("BoxShape3D_7s81i")
+
+[node name="CrumblingParticles" type="GPUParticles3D" parent="." unique_id=1552876471]
+emitting = false
+amount_ratio = 0.0
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_ht1ow")
+draw_pass_1 = SubResource("BoxMesh_pj1qo")
