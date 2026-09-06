@@ -10,6 +10,8 @@ class_name Player
 
 @onready var visuals: Node3D = $Visuals
 @onready var model: Node3D = $Visuals/Model
+@onready var model_head: MeshInstance3D = $Visuals/Model/MAIN/Skeleton3D/HEAD
+@onready var model_sword: MeshInstance3D = $Visuals/Model/MAIN/Skeleton3D/Cube_033
 @onready var anim_player: AnimationPlayer = $Visuals/Model/AnimationPlayer
 @onready var attack_area: Area3D = $SwordBoneAttachment/SwordHitbox
 @onready var interact_area: Area3D = $InteractArea
@@ -34,8 +36,11 @@ var jump_coyote_time: float = 0.15 # Delay after walking of edge that jump can s
 var jump_delta: float = 0.0 # Amount of time jump has been held down
 var max_jump_delta: float = 0.20
 
+# Abilities
 var double_jump_unlocked := false
 var slide_unlocked := false
+var head_unlocked := false
+var sword_unlocked := false
 
 var has_double_jumped := false
 
@@ -111,6 +116,7 @@ func _ready() -> void:
 	visuals.rotation_degrees.y = 180
 	visuals.scale.x = 1
 	_model_position = model.position
+	update_model_parts()
 
 func _physics_process(delta: float) -> void:
 	if input_disabled_until_on_floor:
@@ -260,7 +266,16 @@ func unlock_ability(ability_name: String) -> void:
 		double_jump_unlocked = true
 	elif ability_name == "slide":
 		slide_unlocked = true
+	elif ability_name == "head":
+		head_unlocked = true
+	elif ability_name == "sword":
+		sword_unlocked = true
+	update_model_parts()
 	GameManager.unlock_ability(ability_name)
+
+func update_model_parts() -> void:
+	model_head.visible = head_unlocked
+	model_sword.visible = sword_unlocked
 
 func receive_damage(
 	amount: int, 

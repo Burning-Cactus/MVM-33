@@ -8,8 +8,43 @@
 [ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/exit_left.tscn" id="6_fjtgy"]
 [ext_resource type="PackedScene" uid="uid://bnmq3lgnmpdrh" path="res://rooms/zone_0/components/zone_0_floor_33.tscn" id="6_nr4d3"]
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/exit_right.tscn" id="7_gyvra"]
+[ext_resource type="Script" uid="uid://dsgeol7jo3b7l" path="res://scripts/upgrade.gd" id="7_p1uip"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="8_0ci6k"]
+[ext_resource type="PackedScene" uid="uid://dxto5062v4tjt" path="res://assets/head_upgrade.glb" id="8_jdvga"]
 [ext_resource type="PackedScene" uid="uid://b4ndfnys5liq3" path="res://scenes/enemies/enemy_skeleton.tscn" id="10_yxc74"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pj1qo"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_omtwq"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p1uip"]
+lifetime_randomness = 0.1
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.05
+emission_ring_radius = 0.3
+emission_ring_inner_radius = 0.15
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.7
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = -0.020002235
+tangential_accel_max = 0.019997764
+scale_min = 0.79999995
+scale_max = 1.1999999
+emission_curve = SubResource("CurveTexture_omtwq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7iw3w"]
+albedo_color = Color(0, 1, 0.58431375, 1)
+emission_enabled = true
+emission = Color(0.69135684, 0.6913568, 0.69135684, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5e3xg"]
+material = SubResource("StandardMaterial3D_7iw3w")
+radius = 0.013
+height = 0.026
 
 [node name="Zone1Room1" unique_id=323921774 instance=ExtResource("1_fjtgy")]
 
@@ -33,6 +68,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.5)
 
 [node name="Zone0Floor33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=59586251 instance=ExtResource("6_nr4d3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="HeadUpgrade" type="Area3D" parent="Objects" parent_id_path=PackedInt32Array(831980504) index="0" unique_id=1659339272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80977213, -9.612144)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_p1uip")
+upgrade_type = 1
+metadata/_custom_type_script = "uid://dsgeol7jo3b7l"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/HeadUpgrade" index="0" unique_id=1589386642]
+shape = SubResource("SphereShape3D_pj1qo")
+debug_color = Color(0.74509805, 0.21176471, 1, 0.68235296)
+
+[node name="HeadModel" parent="Objects/HeadUpgrade" index="1" unique_id=780123811 instance=ExtResource("8_jdvga")]
+
+[node name="Particles" type="GPUParticles3D" parent="Objects/HeadUpgrade" index="2" unique_id=1942420825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19463122, 0)
+lifetime = 2.0
+explosiveness = 0.05
+randomness = 0.4
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_p1uip")
+draw_pass_1 = SubResource("SphereMesh_5e3xg")
 
 [node name="WallExitLeft" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1621660744 instance=ExtResource("6_fjtgy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8.5)

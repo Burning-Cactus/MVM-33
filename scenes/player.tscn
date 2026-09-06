@@ -57,14 +57,10 @@ script = ExtResource("2_tuyoq")
 anim_name = &"JUMP_LAND"
 metadata/_custom_type_script = "uid://4r5temfmdhpg"
 
-[sub_resource type="Resource" id="Resource_6aerq"]
+[sub_resource type="Resource" id="Resource_75nnf"]
 script = ExtResource("2_tuyoq")
-anim_name = &"WALK"
-metadata/_custom_type_script = "uid://4r5temfmdhpg"
-
-[sub_resource type="Resource" id="Resource_a8ls1"]
-script = ExtResource("2_tuyoq")
-anim_name = &"WALK_BOX"
+anim_name = &"SLIDE"
+start_time = 0.333
 metadata/_custom_type_script = "uid://4r5temfmdhpg"
 
 [sub_resource type="Resource" id="Resource_cxo5b"]
@@ -73,10 +69,14 @@ anim_name = &"SLIDE"
 end_time = 0.333
 metadata/_custom_type_script = "uid://4r5temfmdhpg"
 
-[sub_resource type="Resource" id="Resource_75nnf"]
+[sub_resource type="Resource" id="Resource_6aerq"]
 script = ExtResource("2_tuyoq")
-anim_name = &"SLIDE"
-start_time = 0.333
+anim_name = &"WALK"
+metadata/_custom_type_script = "uid://4r5temfmdhpg"
+
+[sub_resource type="Resource" id="Resource_a8ls1"]
+script = ExtResource("2_tuyoq")
+anim_name = &"WALK_BOX"
 metadata/_custom_type_script = "uid://4r5temfmdhpg"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pj1qo"]
