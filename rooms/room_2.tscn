@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_bylct"]
 [ext_resource type="Script" uid="uid://cyamtct66n1n6" path="res://scripts/save_point.gd" id="4_13qvk"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="5_qgqlj"]
-[ext_resource type="PackedScene" uid="uid://cosghocqltqcj" path="res://scenes/enemy_bat.tscn" id="6_1kamh"]
+[ext_resource type="PackedScene" uid="uid://cosghocqltqcj" path="res://_unused/scenes/enemy_bat.tscn" id="6_1kamh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mcp8b"]
 sky_top_color = Color(0.8627451, 0.45490196, 0.54901963, 1)

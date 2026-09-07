@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqnggxehpocqc"]
 
-[ext_resource type="PackedScene" uid="uid://cdjignw7bcl7s" path="res://scenes/enemy_base.tscn" id="1_vepsm"]
-[ext_resource type="Script" uid="uid://dr7nesqc8yecw" path="res://scripts/enemy_bigger.gd" id="2_dg8xg"]
+[ext_resource type="PackedScene" uid="uid://cdjignw7bcl7s" path="res://_unused/scenes/enemy_base.tscn" id="1_vepsm"]
+[ext_resource type="Script" uid="uid://dr7nesqc8yecw" path="res://_unused/scripts/enemy_bigger.gd" id="2_dg8xg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vepsm"]
 radius = 1.0

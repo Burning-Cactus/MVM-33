@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dm520nsk42ggp"]
 
-[ext_resource type="PackedScene" uid="uid://cdjignw7bcl7s" path="res://scenes/enemy_base.tscn" id="1_mmv4c"]
-[ext_resource type="Script" uid="uid://c05g5yd5lv1bo" path="res://scripts/enemy_axeknight.gd" id="2_brff6"]
+[ext_resource type="PackedScene" uid="uid://cdjignw7bcl7s" path="res://_unused/scenes/enemy_base.tscn" id="1_mmv4c"]
+[ext_resource type="Script" uid="uid://c05g5yd5lv1bo" path="res://_unused/scripts/enemy_axeknight.gd" id="2_brff6"]
 
 [node name="EnemyBase" unique_id=445466315 groups=["Enemy"] instance=ExtResource("1_mmv4c")]
 script = ExtResource("2_brff6")

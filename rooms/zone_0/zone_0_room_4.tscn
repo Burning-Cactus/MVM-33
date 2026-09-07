@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dlpyg3j8fce7i" path="res://rooms/zone_0/components/zone_0_floor_17.tscn" id="7_1ri32"]
 [ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/exit_left.tscn" id="8_y6ffm"]
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/exit_right.tscn" id="9_6trtb"]
-[ext_resource type="PackedScene" uid="uid://dt6ex25duegu1" path="res://scenes/enemy_zombie.tscn" id="10_72qs0"]
+[ext_resource type="PackedScene" uid="uid://b4ndfnys5liq3" path="res://scenes/enemies/enemy_skeleton.tscn" id="11_ho0a8"]
 
 [node name="Zone1Room4" unique_id=323921774 instance=ExtResource("1_72qs0")]
 script = ExtResource("2_8rhjm")
@@ -62,5 +62,5 @@ room_coordinates = Vector2i(7, 0)
 border_left = "Door"
 border_right = "Door"
 
-[node name="EnemyZombie" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("10_72qs0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.5)
+[node name="EnemySkeleton" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=2131942426 instance=ExtResource("11_ho0a8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4.5)

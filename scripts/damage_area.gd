@@ -58,6 +58,8 @@ func _setup_collision() -> void:
 		elif shape is CapsuleShape3D:
 			shape.radius += damage_edge
 			shape.height += damage_edge * 2.0
+		elif shape is SphereShape3D:
+			shape.radius += damage_edge
 		else:
 			print("Unsupported shape.")
 			return

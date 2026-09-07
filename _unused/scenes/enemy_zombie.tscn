@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dt6ex25duegu1"]
 
-[ext_resource type="PackedScene" uid="uid://cdjignw7bcl7s" path="res://scenes/enemy_base.tscn" id="1_1vlb3"]
-[ext_resource type="Script" uid="uid://ca0e4gq7ugedp" path="res://scripts/enemy_zombie.gd" id="2_httt1"]
+[ext_resource type="PackedScene" uid="uid://cdjignw7bcl7s" path="res://_unused/scenes/enemy_base.tscn" id="1_1vlb3"]
+[ext_resource type="Script" uid="uid://ca0e4gq7ugedp" path="res://_unused/scripts/enemy_zombie.gd" id="2_httt1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_httt1"]
 albedo_color = Color(0.41583982, 0.7343456, 0.3664637, 1)

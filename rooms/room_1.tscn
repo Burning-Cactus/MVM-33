@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c8s26dimqkkiu" path="res://rooms/_tests/exit.tscn" id="2_j6sld"]
 [ext_resource type="PackedScene" uid="uid://48tg7aenk4s1" path="res://scenes/player.tscn" id="3_31r0r"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="4_h00nm"]
-[ext_resource type="PackedScene" uid="uid://ectrtomafr4f" path="res://scenes/enemy_zombie_soldier.tscn" id="5_1j48i"]
+[ext_resource type="PackedScene" uid="uid://ectrtomafr4f" path="res://_unused/scenes/enemy_zombie_soldier.tscn" id="5_1j48i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mcp8b"]
 sky_top_color = Color(0.3614563, 0.38902402, 0.8243726, 1)

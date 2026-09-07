@@ -154,8 +154,13 @@ func play_animation(anim_name: StringName):
 			
 	if anim_player and anim_player.has_animation(model_anim.anim_name):
 		if anim_player.current_animation != model_anim.anim_name:
-			anim_player.play(model_anim.anim_name)
-			visuals.position = model_anim.model_offset
+			anim_player.play_section(
+				model_anim.anim_name, 
+				model_anim.start_time, 
+				model_anim.end_time,
+				-1.0,
+				model_anim.speed
+			)
 
 func queue_animation(anim_name: StringName):
 	var model_anim := get_model_animation(anim_name)
@@ -168,6 +173,14 @@ func get_model_animation(anim_name: StringName) -> ModelAnimation:
 		return model_animations.get(anim_name)
 		
 	return ModelAnimation.new(anim_name)
+	
+func get_animation_length(anim_name: StringName) -> float:
+	var model_anim := get_model_animation(anim_name)
+	
+	if not anim_player.has_animation(model_anim.anim_name):
+		return 0.0
+		
+	return anim_player.get_animation(model_anim.anim_name).length / model_anim.speed
 
 func _on_animation_changed(old_name: StringName, new_name: StringName) -> void:
 	var model_anim := get_model_animation(new_name)

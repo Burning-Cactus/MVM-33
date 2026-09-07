@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cpyadvsd3mfno"]
 
-[ext_resource type="Script" uid="uid://duxgpxisqecrx" path="res://scripts/axe_projectile.gd" id="1_caw4g"]
+[ext_resource type="Script" uid="uid://duxgpxisqecrx" path="res://_unused/scripts/axe_projectile.gd" id="1_caw4g"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sly0o"]
 

@@ -10,7 +10,7 @@ material = SubResource("StandardMaterial3D_cxo5b")
 radius = 0.1
 height = 0.2
 
-[node name="ProjectileBase" unique_id=1122869929 instance=ExtResource("1_ued0m")]
+[node name="FlyingGolemProjectile" unique_id=1122869929 instance=ExtResource("1_ued0m")]
 speed = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=548669564]

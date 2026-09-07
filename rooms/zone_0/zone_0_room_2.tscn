@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ny54xyy7clkt" path="res://scenes/enemies/enemy_skeleton_wheel.tscn" id="9_k8s8p"]
 [ext_resource type="PackedScene" uid="uid://cbgh2uspkr1n1" path="res://scenes/enemies/enemy_jumping_spider.tscn" id="9_mkvu4"]
 [ext_resource type="PackedScene" uid="uid://bmb36xgd7utwo" path="res://scenes/enemies/enemy_floating_golem.tscn" id="11_cxo5b"]
+[ext_resource type="PackedScene" uid="uid://ccm3rsp8eed5" path="res://scenes/enemies/enemy_mask.tscn" id="12_iiyxv"]
 
 [node name="Zone1Room2" unique_id=323921774 instance=ExtResource("1_5k1lq")]
 
@@ -65,5 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32, -18.668915)
 start_direction = -1
 
 [node name="EnemyFloatingGolem" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="2" unique_id=966322948 instance=ExtResource("11_cxo5b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4047227, -6.0976644)
-golem_type = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4047227, -13.498976)
+
+[node name="EnemyMask" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="3" unique_id=2108257797 instance=ExtResource("12_iiyxv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.480602, -3.5611658)

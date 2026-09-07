@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dgbmb1h5fn5m7"]
+
+[ext_resource type="PackedScene" uid="uid://dpaiq0e718rk3" path="res://scenes/projectiles/projectile_base.tscn" id="1_vhkdb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vhkdb"]
+radius = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_vijn2"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72v07"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.48235294, 0.8392157, 0.5921569, 0.54901963)
+
+[node name="MaskProjectile" unique_id=1122869929 instance=ExtResource("1_vhkdb")]
+max_life_span = 8.0
+speed = 0.25
+apply_knockback = false
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=1518153007]
+shape = SubResource("SphereShape3D_vhkdb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=1575254041]
+mesh = SubResource("SphereMesh_vijn2")
+surface_material_override/0 = SubResource("StandardMaterial3D_72v07")
