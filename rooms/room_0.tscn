@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dt6ex25duegu1" path="res://_unused/scenes/enemy_zombie.tscn" id="5_28eut"]
 [ext_resource type="PackedScene" uid="uid://csyvxl4mgwqhi" path="res://scenes/upgrade.tscn" id="6_luigl"]
 [ext_resource type="PackedScene" uid="uid://chouojtrsyrvv" path="res://scenes/platform/platform_small_collapsible.tscn" id="7_i1pmv"]
+[ext_resource type="PackedScene" uid="uid://bjqfrssbrmglb" path="res://scenes/enemies/enemy_rat.tscn" id="8_kfai2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mcp8b"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -108,7 +109,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.881907, 0.02624607)
 shape = SubResource("BoxShape3D_iv03q")
 
 [node name="EnemyZombie" parent="." unique_id=445466315 instance=ExtResource("5_28eut")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9565272, 4.2678313)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73608303, 7.798604, 2.7609186)
+visible = false
 
 [node name="Upgrade" parent="." unique_id=522767488 instance=ExtResource("6_luigl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.368, -4.333)
@@ -116,3 +118,6 @@ upgrade_type = 1
 
 [node name="PlatformSmallCollapsible" parent="." unique_id=122289592 instance=ExtResource("7_i1pmv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7062569, -3.086)
+
+[node name="EnemyRat" parent="." unique_id=2003891527 instance=ExtResource("8_kfai2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03529644, 0.36461362, 3.04508)
