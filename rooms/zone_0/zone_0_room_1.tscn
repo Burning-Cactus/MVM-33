@@ -72,12 +72,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.5)
 [node name="Zone0Floor33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="6" unique_id=59586251 instance=ExtResource("6_nr4d3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
-[node name="HeadUpgrade" type="Area3D" parent="Objects" parent_id_path=PackedInt32Array(831980504) index="0" unique_id=1659339272]
+[node name="HeadUpgrade" type="Area3D" parent="Objects" parent_id_path=PackedInt32Array(831980504) index="0" unique_id=1659339272 node_paths=PackedStringArray("model")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80977213, -9.612144)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_p1uip")
 upgrade_type = 1
+model = NodePath("HeadModel")
 metadata/_custom_type_script = "uid://dsgeol7jo3b7l"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/HeadUpgrade" index="0" unique_id=1589386642]

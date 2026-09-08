@@ -8,7 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://b4eyu11gtdwn4" path="res://rooms/zone_0/components/zone_0_wall_11.tscn" id="5_v2q0y"]
 [ext_resource type="PackedScene" uid="uid://bnmq3lgnmpdrh" path="res://rooms/zone_0/components/zone_0_floor_33.tscn" id="6_lgukc"]
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/exit_right.tscn" id="7_avpdn"]
+[ext_resource type="Script" uid="uid://dsgeol7jo3b7l" path="res://scripts/upgrade.gd" id="8_csi2d"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="8_yn1dr"]
+[ext_resource type="PackedScene" uid="uid://cclyd52am7yrs" path="res://assets/sword_upgrade.glb" id="9_5kars"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pj1qo"]
 
 [node name="Zone1Room0" unique_id=323921774 instance=ExtResource("1_jgcly")]
 
@@ -29,6 +33,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -24)
 
 [node name="Zone0Floor33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=59586251 instance=ExtResource("6_lgukc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="SwordUpgrade" type="Area3D" parent="Objects" parent_id_path=PackedInt32Array(831980504) index="0" unique_id=1766898274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -14)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_csi2d")
+metadata/_custom_type_script = "uid://dsgeol7jo3b7l"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/SwordUpgrade" index="0" unique_id=1223519839]
+shape = SubResource("SphereShape3D_pj1qo")
+debug_color = Color(0.8784314, 0, 0.827451, 0.70980394)
+
+[node name="SwordModel" parent="Objects/SwordUpgrade" index="1" unique_id=1483593434 instance=ExtResource("9_5kars")]
+transform = Transform3D(-0.21901709, 0.933405, 0.28423065, 0.1423101, 0.3187464, -0.93709576, -0.9652872, -0.16479099, -0.20264408, -0.40070033, 0.36969125, 0)
 
 [node name="WallExitRight" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1621660744 instance=ExtResource("7_avpdn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -24.5)
