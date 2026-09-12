@@ -2661,12 +2661,12 @@ model_animations = Dictionary[StringName, ExtResource("3_sq7qm")]({
 [node name="CollisionShape3D" parent="." index="0" unique_id=1648093087]
 shape = SubResource("SphereShape3D_b2t44")
 
-[node name="mask2" type="Node3D" parent="Visuals" parent_id_path=PackedInt32Array(1417463964) index="0" unique_id=1968465110]
+[node name="Model" type="Node3D" parent="Visuals" parent_id_path=PackedInt32Array(1417463964) index="0" unique_id=1968465110]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.060011804)
 
-[node name="Armature_003" type="Node3D" parent="Visuals/mask2" index="0" unique_id=1751283516]
+[node name="Armature_003" type="Node3D" parent="Visuals/Model" index="0" unique_id=1751283516]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Visuals/mask2/Armature_003" index="0" unique_id=149402624]
+[node name="Skeleton3D" type="Skeleton3D" parent="Visuals/Model/Armature_003" index="0" unique_id=149402624]
 bones/0/name = "root"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -2752,18 +2752,18 @@ bones/11/position = Vector3(-0.10507196, 0.30733556, -0.14762619)
 bones/11/rotation = Quaternion(-0.5738411, 0.062448476, 0.11860888, 0.80792236)
 bones/11/scale = Vector3(1.0000001, 0.99999994, 1)
 
-[node name="CURSED_MASK" type="MeshInstance3D" parent="Visuals/mask2/Armature_003/Skeleton3D" index="0" unique_id=1770757519]
+[node name="CURSED_MASK" type="MeshInstance3D" parent="Visuals/Model/Armature_003/Skeleton3D" index="0" unique_id=1770757519]
 mesh = SubResource("ArrayMesh_sq7qm")
 skin = SubResource("Skin_ais6y")
 skeleton = NodePath("..")
 
-[node name="CURSED_MASK2" type="MeshInstance3D" parent="Visuals/mask2/Armature_003/Skeleton3D" index="1" unique_id=102416817]
+[node name="CURSED_MASK2" type="MeshInstance3D" parent="Visuals/Model/Armature_003/Skeleton3D" index="1" unique_id=102416817]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_sq7qm")
 skin = SubResource("Skin_ais6y")
 skeleton = NodePath("..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals/mask2" index="1" unique_id=472425352]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals/Model" index="1" unique_id=472425352]
 libraries/ = SubResource("AnimationLibrary_80kv3")
 
 [node name="FloorCheck" parent="." index="3" unique_id=1821149033]

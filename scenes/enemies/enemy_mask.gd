@@ -18,7 +18,7 @@ func _ready() -> void:
 	attack_timer = Timer.new()
 	attack_timer.one_shot = true
 	add_child(attack_timer)
-	
+
 func _physics_process(delta):
 	play_animation(&"idle")
 			
