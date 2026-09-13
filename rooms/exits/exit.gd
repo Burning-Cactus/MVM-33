@@ -6,7 +6,8 @@ extends StaticBody3D
 @export var exit_velocity: Vector3 = Vector3.ZERO
 @export var maintain_velocity: bool = false
 @export var maintain_direction: bool = false
-@export var is_enabled: bool = true
+@export var is_enabled: bool = true:
+	set = _set_is_enabled
 
 @export_group("Switch")
 @export var switch_id: StringName = &""
@@ -14,6 +15,7 @@ extends StaticBody3D
 
 @onready var exit_area: Area3D = $ExitArea
 @onready var spawn_marker: Marker3D = $Marker3D
+@onready var block_collision_shape_3d: CollisionShape3D = $BlockCollisionShape3D
 
 func _ready():
 	add_to_group(&"Exit")
@@ -23,6 +25,8 @@ func _ready():
 	if switch_id != &"" and global:
 		is_enabled = GameManager.switches.get(switch_id, false)
 		GameManager.switch_toggled.connect(_on_switch_toggled)
+	elif block_collision_shape_3d != null:
+		block_collision_shape_3d.disabled = is_enabled
 	
 func _on_exit_area_body_entered(body: Node3D) -> void:
 	if not is_enabled:
@@ -56,3 +60,10 @@ func _on_switch_toggled(switch_id_: StringName, is_on: bool) -> void:
 		return
 	
 	is_enabled = is_on
+
+func _set_is_enabled(value: bool) -> void:
+	is_enabled = value
+	print("A", is_enabled)
+	
+	if block_collision_shape_3d != null:
+		block_collision_shape_3d.disabled = is_enabled

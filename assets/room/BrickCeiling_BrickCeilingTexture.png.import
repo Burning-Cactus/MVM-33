@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vjuatia2boyq"
-path.s3tc="res://.godot/imported/BrickCeiling_BrickFloorTexture.png-871a6bb874f22d8b349b0c8e5b5acb2a.s3tc.ctex"
+path.s3tc="res://.godot/imported/BrickCeiling_BrickCeilingTexture.png-5df4d3d6f2cbe48d5190e2dde51420f4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/room/BrickCeiling_BrickFloorTexture.png"
-dest_files=["res://.godot/imported/BrickCeiling_BrickFloorTexture.png-871a6bb874f22d8b349b0c8e5b5acb2a.s3tc.ctex"]
+source_file="res://assets/room/BrickCeiling_BrickCeilingTexture.png"
+dest_files=["res://.godot/imported/BrickCeiling_BrickCeilingTexture.png-5df4d3d6f2cbe48d5190e2dde51420f4.s3tc.ctex"]
 
 [params]
 

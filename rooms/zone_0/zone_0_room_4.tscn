@@ -43,8 +43,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8.5)
 target_room_path = "uid://bu8p34xp1ycvy"
 door_id = "zone_0_room_4_left"
 target_door_id = "zone_0_room_3_right_bottom"
-exit_velocity = Vector3(0, 0, 0)
-maintain_velocity = false
 switch_id = &"z0r4_door_left"
 global = true
 

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://beapsny3rvsyv"]
 
-[ext_resource type="Texture2D" uid="uid://vjuatia2boyq" path="res://assets/room/BrickCeiling_BrickFloorTexture.png" id="1_wgjyk"]
+[ext_resource type="Texture2D" uid="uid://vjuatia2boyq" path="res://assets/room/BrickCeiling_BrickCeilingTexture.png" id="1_wgjyk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
 size = Vector3(2, 1, 49)
