@@ -1,15 +1,341 @@
-[gd_scene format=3 uid="uid://dj3t6g44otd7j"]
+[gd_scene format=4 uid="uid://dj3t6g44otd7j"]
+
+[ext_resource type="Texture2D" uid="uid://djtujr3ta33q" path="res://assets/room/BrickFloor_BrickFloorTexture.png" id="1_myrnj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
 size = Vector3(2, 1, 65)
 
-[sub_resource type="BoxMesh" id="BoxMesh_5a2or"]
-size = Vector3(2, 1, 65)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6ksu"]
+resource_name = "Material"
+albedo_texture = ExtResource("1_myrnj")
+roughness = 0.75
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_08d8t"]
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwAEAAIABAAAAAIABQADAAEABAADAAUAAAAGAAEABQABAAYABAAHAAAABAAFAAcABwAIAAAACAAGAAAABwAJAAgACAAKAAYACQAKAAgACwAFAAYABwAFAAsACwAGAAoABwALAAkACQALAAoA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAAAAAAAAAAAAP9/AAD//wAA/3//////AAD/fwAAAAAAAP////8AAAAA//8AAAAAAAD///////8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nmlps"]
+resource_name = "BrickFloor_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"attribute_data": PackedByteArray("qqoAAP///////wAAqqr//1VVAACqqv//VVX//6qqAAAAAAAAVVX//wAA//9VVQAAqqoAAP///////wAAqqr//wAAAABVVf//AAD//1VVAABVVQAAqqr//1VV//+qqgAAVVUAAKqq/v9VVf7/qqoAAKqqAAD///////8AAKqq//9VVQAAqqr//1VV//+qqgAAqqoAAP///////wAAqqr//w=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
+"material": SubResource("StandardMaterial3D_r6ksu"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAA/3//////AAD/fwAA/////wAA/////////3////////8AAAAA/////wAAAAD/////AAD//wAA//8AAP///////wAAAAAAAP///38AAAAA/z///wAA////P///AAAAAP8//38AAP///z///wAAAAD//////////////////wAA/////wAA//////9/AAAAAP///////wAA////f///AAD/////AAAAAP//AAAAAAAA////f///AAD//wAA//8AAP///38AAAAA//8AAAAAAAD/P/9/AAD///8//38AAAAA/z8AAAAA////P///AAD//////3////////////////////9/AAD//////////wAAAAD/f/////8AAP9///8AAAAA////////AAD/f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f/8//3//P/9//z//f/8//38AAP9/AAD/fwAA/38AAP9//7//f/+//3//v/9//7//f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/f/9//3//f/9//3//f/9//3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_08d8t")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3nec0"]
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwAEAAIABAAAAAIABQADAAEABAADAAUAAAAGAAEABQABAAYABAAHAAAABAAFAAcABwAIAAAACAAGAAAABwAJAAgACAAKAAYACQAKAAgACwAFAAYABwAFAAsACwAGAAoABwALAAkACQALAAoA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAAAAAAAAAAAAP9/AAD//wAA/3//////AAD/fwAAAAAAAP////8AAAAA//8AAAAAAAD///////8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jpslk"]
+resource_name = "BrickFloor_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"attribute_data": PackedByteArray("qqoAAP///////wAAqqr//1VVAACqqv//VVX//6qqAAAAAAAAVVX//wAA//9VVQAAqqoAAP///////wAAqqr//wAAAABVVf//AAD//1VVAABVVQAAqqr//1VV//+qqgAAVVUAAKqq/v9VVf7/qqoAAKqqAAD///////8AAKqq//9VVQAAqqr//1VV//+qqgAAqqoAAP///////wAAqqr//w=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
+"material": SubResource("StandardMaterial3D_r6ksu"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAA/3//////AAD/fwAA/////wAA/////////3////////8AAAAA/////wAAAAD/////AAD//wAA//8AAP///////wAAAAAAAP///38AAAAA/z///wAA////P///AAAAAP8//38AAP///z///wAAAAD//////////////////wAA/////wAA//////9/AAAAAP///////wAA////f///AAD/////AAAAAP//AAAAAAAA////f///AAD//wAA//8AAP///38AAAAA//8AAAAAAAD/P/9/AAD///8//38AAAAA/z8AAAAA////P///AAD//////3////////////////////9/AAD//////////wAAAAD/f/////8AAP9///8AAAAA////////AAD/f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f/8//3//P/9//z//f/8//38AAP9/AAD/fwAA/38AAP9//7//f/+//3//v/9//7//f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/f/9//3//f/9//3//f/9//3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3nec0")
 
 [node name="Zone0Floor65" type="StaticBody3D" unique_id=30100008]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=79682563]
 shape = SubResource("BoxShape3D_7s81i")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1320256034]
-mesh = SubResource("BoxMesh_5a2or")
+[node name="BrickFloor1" type="MeshInstance3D" parent="." unique_id=1793467605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor2" type="MeshInstance3D" parent="." unique_id=1286983281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor3" type="MeshInstance3D" parent="." unique_id=298105767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor4" type="MeshInstance3D" parent="." unique_id=2104532104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor5" type="MeshInstance3D" parent="." unique_id=1915860909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor6" type="MeshInstance3D" parent="." unique_id=1352823997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor7" type="MeshInstance3D" parent="." unique_id=1431575780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor8" type="MeshInstance3D" parent="." unique_id=386585761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor9" type="MeshInstance3D" parent="." unique_id=1588332582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor10" type="MeshInstance3D" parent="." unique_id=761625089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor11" type="MeshInstance3D" parent="." unique_id=2146378948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor12" type="MeshInstance3D" parent="." unique_id=573625187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor13" type="MeshInstance3D" parent="." unique_id=1078592575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor14" type="MeshInstance3D" parent="." unique_id=2054264418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor15" type="MeshInstance3D" parent="." unique_id=1170578227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor16" type="MeshInstance3D" parent="." unique_id=1047222647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor17" type="MeshInstance3D" parent="." unique_id=1405606190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor18" type="MeshInstance3D" parent="." unique_id=220211385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor19" type="MeshInstance3D" parent="." unique_id=49252404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor20" type="MeshInstance3D" parent="." unique_id=1427568440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor21" type="MeshInstance3D" parent="." unique_id=848913676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor22" type="MeshInstance3D" parent="." unique_id=429396001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor23" type="MeshInstance3D" parent="." unique_id=777627111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor24" type="MeshInstance3D" parent="." unique_id=1277805650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor25" type="MeshInstance3D" parent="." unique_id=569991823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor26" type="MeshInstance3D" parent="." unique_id=1115643063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor27" type="MeshInstance3D" parent="." unique_id=125170566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor28" type="MeshInstance3D" parent="." unique_id=1042867882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor29" type="MeshInstance3D" parent="." unique_id=2142179178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor30" type="MeshInstance3D" parent="." unique_id=564414806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor31" type="MeshInstance3D" parent="." unique_id=91370598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor32" type="MeshInstance3D" parent="." unique_id=480772426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor33" type="MeshInstance3D" parent="." unique_id=1168975521]
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor34" type="MeshInstance3D" parent="." unique_id=243780457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor35" type="MeshInstance3D" parent="." unique_id=1452693611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor36" type="MeshInstance3D" parent="." unique_id=271222557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor37" type="MeshInstance3D" parent="." unique_id=664228632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor38" type="MeshInstance3D" parent="." unique_id=2041804993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor39" type="MeshInstance3D" parent="." unique_id=825508238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor40" type="MeshInstance3D" parent="." unique_id=1884257778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor41" type="MeshInstance3D" parent="." unique_id=1640323081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor42" type="MeshInstance3D" parent="." unique_id=1839822517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor43" type="MeshInstance3D" parent="." unique_id=585598870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor44" type="MeshInstance3D" parent="." unique_id=524182034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor45" type="MeshInstance3D" parent="." unique_id=993347732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor46" type="MeshInstance3D" parent="." unique_id=1026686763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor47" type="MeshInstance3D" parent="." unique_id=693842929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor48" type="MeshInstance3D" parent="." unique_id=857428924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor49" type="MeshInstance3D" parent="." unique_id=861594953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+mesh = SubResource("ArrayMesh_nmlps")
+
+[node name="BrickFloor50" type="MeshInstance3D" parent="." unique_id=1364588525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor51" type="MeshInstance3D" parent="." unique_id=590056175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor52" type="MeshInstance3D" parent="." unique_id=1657844734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor53" type="MeshInstance3D" parent="." unique_id=299867066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor54" type="MeshInstance3D" parent="." unique_id=1323921426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor55" type="MeshInstance3D" parent="." unique_id=493982180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor56" type="MeshInstance3D" parent="." unique_id=900197410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor57" type="MeshInstance3D" parent="." unique_id=1858845526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor58" type="MeshInstance3D" parent="." unique_id=1274968199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor59" type="MeshInstance3D" parent="." unique_id=1098117551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor60" type="MeshInstance3D" parent="." unique_id=94563792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor61" type="MeshInstance3D" parent="." unique_id=2036089593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor62" type="MeshInstance3D" parent="." unique_id=206711719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor63" type="MeshInstance3D" parent="." unique_id=2018508296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor64" type="MeshInstance3D" parent="." unique_id=200820607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31)
+mesh = SubResource("ArrayMesh_jpslk")
+
+[node name="BrickFloor65" type="MeshInstance3D" parent="." unique_id=460992848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
+mesh = SubResource("ArrayMesh_jpslk")

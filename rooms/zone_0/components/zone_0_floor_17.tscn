@@ -1,15 +1,117 @@
-[gd_scene format=3 uid="uid://dlpyg3j8fce7i"]
+[gd_scene format=4 uid="uid://dlpyg3j8fce7i"]
+
+[ext_resource type="Texture2D" uid="uid://djtujr3ta33q" path="res://assets/room/BrickFloor_BrickFloorTexture.png" id="1_r6ksu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
 size = Vector3(2, 1, 17)
 
-[sub_resource type="BoxMesh" id="BoxMesh_5a2or"]
-size = Vector3(2, 1, 17)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6ksu"]
+resource_name = "Material"
+albedo_texture = ExtResource("1_r6ksu")
+roughness = 0.75
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1cxpt"]
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwAEAAIABAAAAAIABQADAAEABAADAAUAAAAGAAEABQABAAYABAAHAAAABAAFAAcABwAIAAAACAAGAAAABwAJAAgACAAKAAYACQAKAAgACwAFAAYABwAFAAsACwAGAAoABwALAAkACQALAAoA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAAAAAAAAAAAAP9/AAD//wAA/3//////AAD/fwAAAAAAAP////8AAAAA//8AAAAAAAD///////8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rhdus"]
+resource_name = "BrickFloor_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"attribute_data": PackedByteArray("qqoAAP///////wAAqqr//1VVAACqqv//VVX//6qqAAAAAAAAVVX//wAA//9VVQAAqqoAAP///////wAAqqr//wAAAABVVf//AAD//1VVAABVVQAAqqr//1VV//+qqgAAVVUAAKqq/v9VVf7/qqoAAKqqAAD///////8AAKqq//9VVQAAqqr//1VV//+qqgAAqqoAAP///////wAAqqr//w=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
+"material": SubResource("StandardMaterial3D_r6ksu"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAA/3//////AAD/fwAA/////wAA/////////3////////8AAAAA/////wAAAAD/////AAD//wAA//8AAP///////wAAAAAAAP///38AAAAA/z///wAA////P///AAAAAP8//38AAP///z///wAAAAD//////////////////wAA/////wAA//////9/AAAAAP///////wAA////f///AAD/////AAAAAP//AAAAAAAA////f///AAD//wAA//8AAP///38AAAAA//8AAAAAAAD/P/9/AAD///8//38AAAAA/z8AAAAA////P///AAD//////3////////////////////9/AAD//////////wAAAAD/f/////8AAP9///8AAAAA////////AAD/f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f/8//3//P/9//z//f/8//38AAP9/AAD/fwAA/38AAP9//7//f/+//3//v/9//7//f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/f/9//3//f/9//3//f/9//3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1cxpt")
 
 [node name="Zone0Floor17" type="StaticBody3D" unique_id=30100008]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=79682563]
 shape = SubResource("BoxShape3D_7s81i")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1320256034]
-mesh = SubResource("BoxMesh_5a2or")
+[node name="BrickFloor1" type="MeshInstance3D" parent="." unique_id=793068105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor2" type="MeshInstance3D" parent="." unique_id=1201219495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor3" type="MeshInstance3D" parent="." unique_id=273316461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor4" type="MeshInstance3D" parent="." unique_id=2056106602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor5" type="MeshInstance3D" parent="." unique_id=1923772792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor6" type="MeshInstance3D" parent="." unique_id=371665166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor7" type="MeshInstance3D" parent="." unique_id=1166536228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor8" type="MeshInstance3D" parent="." unique_id=2065505215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor9" type="MeshInstance3D" parent="." unique_id=903789396]
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor10" type="MeshInstance3D" parent="." unique_id=99838486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor11" type="MeshInstance3D" parent="." unique_id=1408170084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor12" type="MeshInstance3D" parent="." unique_id=1968819095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor13" type="MeshInstance3D" parent="." unique_id=879750325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor14" type="MeshInstance3D" parent="." unique_id=539062004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor15" type="MeshInstance3D" parent="." unique_id=810955463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor16" type="MeshInstance3D" parent="." unique_id=1199223770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+mesh = SubResource("ArrayMesh_rhdus")
+
+[node name="BrickFloor17" type="MeshInstance3D" parent="." unique_id=372170255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+mesh = SubResource("ArrayMesh_rhdus")

@@ -1,15 +1,181 @@
-[gd_scene format=3 uid="uid://wfas7udr17p2"]
+[gd_scene format=4 uid="uid://wfas7udr17p2"]
+
+[ext_resource type="Texture2D" uid="uid://vjuatia2boyq" path="res://assets/room/BrickCeiling_BrickFloorTexture.png" id="1_5wmlb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
 size = Vector3(2, 1, 33)
 
-[sub_resource type="BoxMesh" id="BoxMesh_5a2or"]
-size = Vector3(2, 1, 33)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3uyq3"]
+resource_name = "Material"
+albedo_texture = ExtResource("1_5wmlb")
+roughness = 0.75
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hurh5"]
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwAEAAIABAAAAAIABQADAAEABAADAAUAAAAGAAEABQABAAYABAAHAAAABAAFAAcABwAIAAAACAAGAAAABwAJAAgACAAKAAYACQAKAAgACwAFAAYABwAFAAsACwAGAAoABwALAAkACQALAAoA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAAAAAAAAAAAAP9/AAD//wAA/3//////AAD/fwAAAAAAAP////8AAAAA//8AAAAAAAD///////8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dymax"]
+resource_name = "BrickCeiling_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"attribute_data": PackedByteArray("qqoAAP///////wAAqqr//1VVAACqqv//VVX//6qqAAAAAAAAVVX//wAA//9VVQAAqqoAAP///////wAAqqr//wAAAABVVf//AAD//1VVAABVVQAAqqr//1VV//+qqgAAVVUAAKqq/v9VVf7/qqoAAKqqAAD///////8AAKqq//9VVQAAqqr//1VV//+qqgAAqqoAAP///////wAAqqr//w=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
+"material": SubResource("StandardMaterial3D_3uyq3"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAA/3//////AAD/fwAA/////wAA/////////3////////8AAAAA/////wAAAAD/////AAD//wAA//8AAP///////wAAAAAAAP///38AAAAA/z///wAA////P///AAAAAP8//38AAP///z///wAAAAD//////////////////wAA/////wAA//////9/AAAAAP///////wAA////f///AAD/////AAAAAP//AAAAAAAA////f///AAD//wAA//8AAP///38AAAAA//8AAAAAAAD/P/9/AAD///8//38AAAAA/z8AAAAA////P///AAD//////3////////////////////9/AAD//////////wAAAAD/f/////8AAP9///8AAAAA////////AAD/f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f/8//3//P/9//z//f/8//38AAP9/AAD/fwAA/38AAP9//7//f/+//3//v/9//7//f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/f/9//3//f/9//3//f/9//3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_hurh5")
 
 [node name="Zone0Ceiling33" type="StaticBody3D" unique_id=30100008]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=79682563]
 shape = SubResource("BoxShape3D_7s81i")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1320256034]
-mesh = SubResource("BoxMesh_5a2or")
+[node name="BrickCeiling1" type="MeshInstance3D" parent="." unique_id=348745268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling2" type="MeshInstance3D" parent="." unique_id=186327461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling3" type="MeshInstance3D" parent="." unique_id=304676417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling4" type="MeshInstance3D" parent="." unique_id=1474956390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling5" type="MeshInstance3D" parent="." unique_id=1853546316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling6" type="MeshInstance3D" parent="." unique_id=10363704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling7" type="MeshInstance3D" parent="." unique_id=1103280315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling8" type="MeshInstance3D" parent="." unique_id=1160722930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling9" type="MeshInstance3D" parent="." unique_id=1699583795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling10" type="MeshInstance3D" parent="." unique_id=959326188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling11" type="MeshInstance3D" parent="." unique_id=1686925204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling12" type="MeshInstance3D" parent="." unique_id=1950706900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling13" type="MeshInstance3D" parent="." unique_id=414730865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling14" type="MeshInstance3D" parent="." unique_id=658382020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling15" type="MeshInstance3D" parent="." unique_id=2002942852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling16" type="MeshInstance3D" parent="." unique_id=1020679065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling17" type="MeshInstance3D" parent="." unique_id=1562455787]
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling18" type="MeshInstance3D" parent="." unique_id=2015193619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling19" type="MeshInstance3D" parent="." unique_id=236541494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling20" type="MeshInstance3D" parent="." unique_id=1231692419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling21" type="MeshInstance3D" parent="." unique_id=455213203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling22" type="MeshInstance3D" parent="." unique_id=144361485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling23" type="MeshInstance3D" parent="." unique_id=1864416212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling24" type="MeshInstance3D" parent="." unique_id=1529769091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling25" type="MeshInstance3D" parent="." unique_id=786244293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling26" type="MeshInstance3D" parent="." unique_id=2075387511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling27" type="MeshInstance3D" parent="." unique_id=150048000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling28" type="MeshInstance3D" parent="." unique_id=923194972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling29" type="MeshInstance3D" parent="." unique_id=302371615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling30" type="MeshInstance3D" parent="." unique_id=873553142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling31" type="MeshInstance3D" parent="." unique_id=1605303413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling32" type="MeshInstance3D" parent="." unique_id=1152320562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+mesh = SubResource("ArrayMesh_dymax")
+
+[node name="BrickCeiling33" type="MeshInstance3D" parent="." unique_id=1482739057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+mesh = SubResource("ArrayMesh_dymax")

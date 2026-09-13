@@ -1,15 +1,93 @@
-[gd_scene format=3 uid="uid://b4eyu11gtdwn4"]
+[gd_scene format=4 uid="uid://b4eyu11gtdwn4"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_5a2or"]
-size = Vector3(2, 11, 1)
+[ext_resource type="Texture2D" uid="uid://bnwgvbao7gesa" path="res://assets/room/BrickWall_BrickTexture.png" id="1_hofga"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
 size = Vector3(2, 11, 1)
 
-[node name="Zone0Wall11" type="StaticBody3D" unique_id=1075629948]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tibp4"]
+resource_name = "Material"
+albedo_texture = ExtResource("1_hofga")
+roughness = 0.75
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=995051775]
-mesh = SubResource("BoxMesh_5a2or")
+[sub_resource type="ArrayMesh" id="ArrayMesh_nroj6"]
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEABAACAAYAAwAHAAUACAAEAAYABwAJAAUACAAGAAoABwALAAkACwAIAAoACwAKAAkA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAP//AAAAAP////8AAP9//////wAAAAAAAP//AAD//wAA//8AAAAA//8AAAAA////////AAAAAAAAAAAAAP//AAAAAAAA/3///wAAAAD/////AAAAAP9/AAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_orpvo"]
+resource_name = "BrickWall_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"attribute_data": PackedByteArray("/38AAP//////f/////8AAAAAAAD/f///AAD///9/AAAAAAAA/3///wAA////fwAA/38AAP//////f/////8AAP9/AAD//////3//////AAD/fwAA//////9//////wAA"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_tibp4"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/38AAP////8AAP////////9/////////AAAAAP////8AAAAA/////wAA//8AAP//AAD///////8AAAAAAAD/////AAAAAP//////////////////AAD/////AAD//////38AAAAA////////AAD///9///8AAP////8AAAAA//8AAAAAAAD///9///8AAP//AAD//wAA////fwAAAAD/////AAD//////3////////////////////9/AAD//////3//f/9//3//f/9//3//f/8//3//P/9//z//f/8//3//v/9//7//f/+//3//v/9/////f////3////9/////f////3////9/////f////3//f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_nroj6")
+
+[node name="Zone0Wall11" type="StaticBody3D" unique_id=1075629948]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=927086988]
 shape = SubResource("BoxShape3D_5a2or")
+
+[node name="BrickWall1" type="MeshInstance3D" parent="." unique_id=1907401589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+mesh = SubResource("ArrayMesh_orpvo")
+
+[node name="BrickWall2" type="MeshInstance3D" parent="." unique_id=473286333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+mesh = SubResource("ArrayMesh_orpvo")
+
+[node name="BrickWall3" type="MeshInstance3D" parent="." unique_id=102858023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+mesh = SubResource("ArrayMesh_orpvo")
+
+[node name="BrickWall4" type="MeshInstance3D" parent="." unique_id=1947471750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("ArrayMesh_orpvo")
+
+[node name="BrickWall5" type="MeshInstance3D" parent="." unique_id=703465885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("ArrayMesh_orpvo")
+
+[node name="BrickWall6" type="MeshInstance3D" parent="." unique_id=738851938]
+mesh = SubResource("ArrayMesh_orpvo")
+
+[node name="BrickWall7" type="MeshInstance3D" parent="." unique_id=982707959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("ArrayMesh_orpvo")
+
+[node name="BrickWall8" type="MeshInstance3D" parent="." unique_id=1870390245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("ArrayMesh_orpvo")
+
+[node name="BrickWall9" type="MeshInstance3D" parent="." unique_id=1140147930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("ArrayMesh_orpvo")
+
+[node name="BrickWall10" type="MeshInstance3D" parent="." unique_id=20221008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+mesh = SubResource("ArrayMesh_orpvo")
+
+[node name="BrickWall11" type="MeshInstance3D" parent="." unique_id=1486382591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("ArrayMesh_orpvo")

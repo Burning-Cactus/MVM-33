@@ -67,7 +67,6 @@ door_id = "zone_0_room_3_left_bottom"
 target_door_id = "zone_0_room_2_right"
 exit_velocity = Vector3(0, 0, 0)
 maintain_velocity = false
-is_enabled = true
 
 [node name="WallExitLeftTop" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=1894737716 instance=ExtResource("6_rlo0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.5, 8.5)
@@ -76,7 +75,6 @@ door_id = "zone_0_room_3_left_top"
 target_door_id = "zone_0_room_5_right"
 exit_velocity = Vector3(0, 0, 0)
 maintain_velocity = false
-is_enabled = true
 
 [node name="WallExitRightBottom" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="2" unique_id=1176092721 instance=ExtResource("7_ut5vg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8.5)
@@ -113,7 +111,7 @@ border_left = "Door"
 border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
-[node name="Player" parent="." index="5" unique_id=1575609299]
+[node name="Player" parent="." index="6" unique_id=1575609299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5.0123053)
 
 [node name="EnemySkeleton" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("13_gb80i")]

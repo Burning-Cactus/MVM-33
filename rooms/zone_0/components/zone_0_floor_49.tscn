@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://ewy2ht1urmb3"]
+[gd_scene format=4 uid="uid://ewy2ht1urmb3"]
+
+[ext_resource type="Texture2D" uid="uid://djtujr3ta33q" path="res://assets/room/BrickFloor_BrickFloorTexture.png" id="1_pxkuh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
 size = Vector3(2, 1, 49)
@@ -6,10 +8,245 @@ size = Vector3(2, 1, 49)
 [sub_resource type="BoxMesh" id="BoxMesh_5a2or"]
 size = Vector3(2, 1, 49)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6ksu"]
+resource_name = "Material"
+albedo_texture = ExtResource("1_pxkuh")
+roughness = 0.75
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ckqpf"]
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwAEAAIABAAAAAIABQADAAEABAADAAUAAAAGAAEABQABAAYABAAHAAAABAAFAAcABwAIAAAACAAGAAAABwAJAAgACAAKAAYACQAKAAgACwAFAAYABwAFAAsACwAGAAoABwALAAkACQALAAoA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAAAAAAAAAAAAP9/AAD//wAA/3//////AAD/fwAAAAAAAP////8AAAAA//8AAAAAAAD///////8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_oll61"]
+resource_name = "BrickFloor_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -0.5, 2, 1, 1),
+"attribute_data": PackedByteArray("qqoAAP///////wAAqqr//1VVAACqqv//VVX//6qqAAAAAAAAVVX//wAA//9VVQAAqqoAAP///////wAAqqr//wAAAABVVf//AAD//1VVAABVVQAAqqr//1VV//+qqgAAVVUAAKqq/v9VVf7/qqoAAKqqAAD///////8AAKqq//9VVQAAqqr//1VV//+qqgAAqqoAAP///////wAAqqr//w=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
+"material": SubResource("StandardMaterial3D_r6ksu"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAA/3//////AAD/fwAA/////wAA/////////3////////8AAAAA/////wAAAAD/////AAD//wAA//8AAP///////wAAAAAAAP///38AAAAA/z///wAA////P///AAAAAP8//38AAP///z///wAAAAD//////////////////wAA/////wAA//////9/AAAAAP///////wAA////f///AAD/////AAAAAP//AAAAAAAA////f///AAD//wAA//8AAP///38AAAAA//8AAAAAAAD/P/9/AAD///8//38AAAAA/z8AAAAA////P///AAD//////3////////////////////9/AAD//////////wAAAAD/f/////8AAP9///8AAAAA////////AAD/f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f/8//3//P/9//z//f/8//38AAP9/AAD/fwAA/38AAP9//7//f/+//3//v/9//7//f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/f/9//3//f/9//3//f/9//3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ckqpf")
+
 [node name="Zone0Floor49" type="StaticBody3D" unique_id=30100008]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=79682563]
 shape = SubResource("BoxShape3D_7s81i")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1320256034]
+visible = false
 mesh = SubResource("BoxMesh_5a2or")
+
+[node name="BrickFloor1" type="MeshInstance3D" parent="." unique_id=1683009817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor2" type="MeshInstance3D" parent="." unique_id=972665515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor3" type="MeshInstance3D" parent="." unique_id=1873911114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor4" type="MeshInstance3D" parent="." unique_id=1888922553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor5" type="MeshInstance3D" parent="." unique_id=1594965443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor6" type="MeshInstance3D" parent="." unique_id=2034769842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor7" type="MeshInstance3D" parent="." unique_id=1038167717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor8" type="MeshInstance3D" parent="." unique_id=900083624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor9" type="MeshInstance3D" parent="." unique_id=2138488445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor10" type="MeshInstance3D" parent="." unique_id=409467459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor11" type="MeshInstance3D" parent="." unique_id=564408290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor12" type="MeshInstance3D" parent="." unique_id=668590324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor13" type="MeshInstance3D" parent="." unique_id=2777302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor14" type="MeshInstance3D" parent="." unique_id=736036625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor15" type="MeshInstance3D" parent="." unique_id=2035078189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor16" type="MeshInstance3D" parent="." unique_id=1085882926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor17" type="MeshInstance3D" parent="." unique_id=1714694897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor18" type="MeshInstance3D" parent="." unique_id=134068121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor19" type="MeshInstance3D" parent="." unique_id=1980113876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor20" type="MeshInstance3D" parent="." unique_id=1950789163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor21" type="MeshInstance3D" parent="." unique_id=2046486663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor22" type="MeshInstance3D" parent="." unique_id=497607082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor23" type="MeshInstance3D" parent="." unique_id=1075396190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor24" type="MeshInstance3D" parent="." unique_id=637014370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor25" type="MeshInstance3D" parent="." unique_id=608473293]
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor26" type="MeshInstance3D" parent="." unique_id=192131577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor27" type="MeshInstance3D" parent="." unique_id=196853327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor28" type="MeshInstance3D" parent="." unique_id=1148778204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor29" type="MeshInstance3D" parent="." unique_id=1104590623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor30" type="MeshInstance3D" parent="." unique_id=296604043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor31" type="MeshInstance3D" parent="." unique_id=250672507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor32" type="MeshInstance3D" parent="." unique_id=1038803710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor33" type="MeshInstance3D" parent="." unique_id=580743853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor34" type="MeshInstance3D" parent="." unique_id=768705112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor35" type="MeshInstance3D" parent="." unique_id=2073741743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor36" type="MeshInstance3D" parent="." unique_id=1453189724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor37" type="MeshInstance3D" parent="." unique_id=929913798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor38" type="MeshInstance3D" parent="." unique_id=538912930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor39" type="MeshInstance3D" parent="." unique_id=2086842702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor40" type="MeshInstance3D" parent="." unique_id=788094777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor41" type="MeshInstance3D" parent="." unique_id=2049595115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor42" type="MeshInstance3D" parent="." unique_id=784574778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor43" type="MeshInstance3D" parent="." unique_id=1922288969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor44" type="MeshInstance3D" parent="." unique_id=2132534331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor45" type="MeshInstance3D" parent="." unique_id=881182360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor46" type="MeshInstance3D" parent="." unique_id=1434900396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor47" type="MeshInstance3D" parent="." unique_id=1052619135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor48" type="MeshInstance3D" parent="." unique_id=573290549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
+mesh = SubResource("ArrayMesh_oll61")
+
+[node name="BrickFloor49" type="MeshInstance3D" parent="." unique_id=530813357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+mesh = SubResource("ArrayMesh_oll61")
