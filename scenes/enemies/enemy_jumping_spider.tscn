@@ -8120,7 +8120,6 @@ knockback_force = Vector3(0, 1.5, 3.5)
 model_animations = Dictionary[StringName, ExtResource("3_rbc71")]({
 &"jump": SubResource("Resource_1quu0")
 })
-jump_animation = &"SPIDER_JUMP"
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=1648093087]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.27716875)

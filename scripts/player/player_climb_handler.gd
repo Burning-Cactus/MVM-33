@@ -35,6 +35,7 @@ func start() -> void:
 	
 func process_climbing(delta: float) -> void:
 	var input_dir := Input.get_vector("right", "left", "up", "down")
+	var side_fall_off: bool = false
 	
 	if _cancel_floor_climb_off and not player.is_on_floor():
 		_cancel_floor_climb_off = false
@@ -63,6 +64,15 @@ func process_climbing(delta: float) -> void:
 				
 			player.velocity.z = input_dir.x * climb_speed
 		else:
+			if (player.get_direction() == player.PlayerDirection.LEFT and 
+				input_dir.x < 0.0
+			):
+				side_fall_off = true
+			elif (player.get_direction() == player.PlayerDirection.RIGHT and 
+				input_dir.x > 0.0
+			):
+				side_fall_off = true
+				
 			input_dir.x = 0.0
 			input_dir = input_dir.normalized()
 		
@@ -83,7 +93,8 @@ func process_climbing(delta: float) -> void:
 		release()
 	elif Input.is_action_just_pressed(&"jump"):
 		release()
-		player.velocity.y = player.JUMP_VELOCITY + 1.0
+		player.velocity.y = player.JUMP_VELOCITY
+		player.set_state(player.PlayerState.JUMPING)
 	elif allow_fall:
 		if (not is_in_top_climb_area or
 			not is_in_bottom_climb_area or
@@ -92,7 +103,10 @@ func process_climbing(delta: float) -> void:
 		):
 			release()
 			if not is_in_top_climb_area:
-				player.velocity.y = player.JUMP_VELOCITY + 1.0
+				player.velocity.y = player.JUMP_VELOCITY
+				player.set_state(player.PlayerState.JUMPING)
+		elif _ladder and _ladder.ladder_type != Ladder.LadderType.FORWARD and side_fall_off:
+			release()
 	
 	player.move_and_slide()
 
@@ -229,7 +243,7 @@ func _grab_forward() -> void:
 		return
 		
 	
-	if Input.is_action_just_pressed(&"grab"):
+	if Input.is_action_pressed(&"grab"):
 		# prioritize picking up entities
 		if not player.entity_handler.can_pickup():
 			_cancel_floor_climb_off = true
@@ -253,7 +267,7 @@ func _grab_side() -> void:
 		
 	var has_grabbed: bool = false
 	
-	if Input.is_action_just_pressed("grab"):
+	if Input.is_action_pressed("grab"):
 		_cancel_floor_climb_off = true
 		player.set_state(Player.PlayerState.CLIMBING)
 		has_grabbed = true

@@ -163,9 +163,13 @@ border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
 [node name="Player" parent="." index="6" unique_id=1575609299]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 4.943295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -6.056705)
 
 [node name="EnemySkeleton" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("10_yxc74")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -19.14981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -13)
+
+[node name="EnemySkeleton2" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="1" unique_id=722204265 instance=ExtResource("10_yxc74")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -19)
+start_direction = -1
 
 [editable path="Foreground/Zone0Floor33"]

@@ -127,6 +127,8 @@ func _init_abilities() -> void:
 	head_unlocked = GameManager.has_unlocked_ability("head")
 	sword_unlocked = GameManager.has_unlocked_ability("sword")
 	
+	sword_unlocked = true
+	
 	update_model_parts()
 	
 func _physics_process(delta: float) -> void:
@@ -213,6 +215,10 @@ func _physics_process(delta: float) -> void:
 			hang_handler.process_hanging(delta)
 		PlayerState.CLIMBING:
 			climb_handler.process_climbing(delta)
+			if not is_zero_approx(velocity.z) or not is_zero_approx(velocity.y):
+				play_animation(&"walk_hold")
+			else:
+				play_animation(&"idle_hold")
 		PlayerState.ATTACKING:
 			velocity.z = 0
 			_process_attack()
@@ -542,8 +548,8 @@ func set_direction(value: PlayerDirection) -> void:
 		if state == PlayerState.SLIDING:
 			collision.position.z = -0.5
 	elif direction == PlayerDirection.FORWARD:
-		visuals.rotation_degrees.y = 90
-		interact_area.rotation_degrees.y = 90
+		visuals.rotation_degrees.y = -90
+		interact_area.rotation_degrees.y = -90
 		visuals.scale.x = 1
 			
 	direction_changed.emit(direction)

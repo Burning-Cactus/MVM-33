@@ -58,6 +58,17 @@ script = ExtResource("2_tuyoq")
 anim_name = &"JUMP_LAND"
 metadata/_custom_type_script = "uid://4r5temfmdhpg"
 
+[sub_resource type="Resource" id="Resource_qfm1y"]
+script = ExtResource("2_tuyoq")
+anim_name = &"LEDGE_CLIMB"
+speed = 0.5
+metadata/_custom_type_script = "uid://4r5temfmdhpg"
+
+[sub_resource type="Resource" id="Resource_y4r1p"]
+script = ExtResource("2_tuyoq")
+anim_name = &"LEDGE_HANG"
+metadata/_custom_type_script = "uid://4r5temfmdhpg"
+
 [sub_resource type="Resource" id="Resource_75nnf"]
 script = ExtResource("2_tuyoq")
 anim_name = &"SLIDE"
@@ -78,17 +89,6 @@ metadata/_custom_type_script = "uid://4r5temfmdhpg"
 [sub_resource type="Resource" id="Resource_a8ls1"]
 script = ExtResource("2_tuyoq")
 anim_name = &"WALK_BOX"
-metadata/_custom_type_script = "uid://4r5temfmdhpg"
-
-[sub_resource type="Resource" id="Resource_y4r1p"]
-script = ExtResource("2_tuyoq")
-anim_name = &"LEDGE_HANG"
-metadata/_custom_type_script = "uid://4r5temfmdhpg"
-
-[sub_resource type="Resource" id="Resource_qfm1y"]
-script = ExtResource("2_tuyoq")
-anim_name = &"LEDGE_CLIMB"
-speed = 0.5
 metadata/_custom_type_script = "uid://4r5temfmdhpg"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pj1qo"]
@@ -201,6 +201,8 @@ disabled = true
 
 [node name="PlayerClimbHandler" type="Node3D" parent="." unique_id=639808302]
 script = ExtResource("2_g2els")
+allow_fall = true
+climb_speed = 2.5
 metadata/_custom_type_script = "uid://th5goqfgcynp"
 
 [node name="PlayerHangHandler" type="Node3D" parent="." unique_id=596979770]

@@ -63,7 +63,6 @@ func _on_switch_toggled(switch_id_: StringName, is_on: bool) -> void:
 
 func _set_is_enabled(value: bool) -> void:
 	is_enabled = value
-	print("A", is_enabled)
 	
 	if block_collision_shape_3d != null:
 		block_collision_shape_3d.disabled = is_enabled

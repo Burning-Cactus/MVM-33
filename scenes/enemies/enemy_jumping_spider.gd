@@ -14,7 +14,7 @@ func _ready():
 func _physics_process(delta):
 	apply_gravity(delta)
 	
-	if not is_in_knockback and is_on_floor() and is_chasing:
+	if not is_in_knockback and is_on_floor() and is_chasing and not is_turning:
 		_jump_delta += delta
 		if _jump_delta > jump_cooldown:
 			_jump_delta = 0.0
@@ -58,7 +58,6 @@ func flip_direction():
 	super.flip_direction()
 	
 	var position: float = absf($CollisionShape3D.position.z)
-	print(position * direction * -1.0)
 	$CollisionShape3D.position.z = position * direction * -1.0
 	
 	for child in damage_area.get_children():

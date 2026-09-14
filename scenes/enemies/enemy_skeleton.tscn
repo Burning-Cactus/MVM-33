@@ -15,22 +15,33 @@ script = ExtResource("3_1quu0")
 anim_name = &"SKELETON_ENEMY_WALK"
 metadata/_custom_type_script = "uid://4r5temfmdhpg"
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1quu0"]
+radius = 0.4
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_lsw4l"]
-size = Vector3(2, 10, 10)
+size = Vector3(2, 3, 10)
 
 [node name="EnemySkeleton" unique_id=445466315 instance=ExtResource("1_lsw4l")]
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("2_1quu0")
 speed = 1.2
+rotation_speed = 5.0
 max_health = 15
 model_animations = Dictionary[StringName, ExtResource("3_1quu0")]({
 &"idle": SubResource("Resource_gyhkd"),
 &"walk": SubResource("Resource_3nnob")
 })
 
+[node name="CollisionShape3D" parent="." index="0" unique_id=1648093087]
+shape = SubResource("CapsuleShape3D_1quu0")
+
 [node name="Model" parent="Visuals" parent_id_path=PackedInt32Array(1417463964) index="0" unique_id=949660926 instance=ExtResource("2_vs6eh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99, 0)
 
 [node name="CollisionShape3D" parent="PlayerDetection" parent_id_path=PackedInt32Array(1218466067) index="0" unique_id=662623750]
 shape = SubResource("BoxShape3D_lsw4l")
+
+[node name="FloorCheck" parent="." index="3" unique_id=1821149033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+target_position = Vector3(0, -1.6, 0)

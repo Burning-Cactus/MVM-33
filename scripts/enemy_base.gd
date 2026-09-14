@@ -81,10 +81,12 @@ func _ready():
 	damage_timer.timeout.connect(_on_damage_end)
 	add_child(damage_timer)
 	
-	setup_enemy()
-	
-	direction = start_direction
+	direction = start_direction * -1
 	flip_direction()
+	visuals.rotation.y = 0.0 if direction > 0 else PI
+	floor_check_disabled = true # Disable for first frame to prevent initial turning
+	
+	setup_enemy()
 
 # Override this in specific enemy scripts if they need extra setup
 func setup_enemy():
@@ -109,6 +111,7 @@ func handle_patrol_turning():
 	# Turn around if hitting a vertical 3D wall, or about to walk off an edge
 	if is_on_wall():
 		is_turning = true
+		is_chasing = false
 			
 		var normal = get_wall_normal()
 		
@@ -123,6 +126,7 @@ func handle_patrol_turning():
 		is_turning = false
 	elif (floor_check and not floor_check.is_colliding() and not floor_check_disabled):
 		is_turning = true
+		is_chasing = false
 		
 		flip_direction()
 		

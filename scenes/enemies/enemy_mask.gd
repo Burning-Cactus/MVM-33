@@ -27,7 +27,6 @@ func _physics_process(delta):
 		
 		if _is_too_close:
 			# Prevent the player from getting stuck on it
-			print(diff)
 			velocity = diff.normalized() * -1.0 * speed
 		else:
 			if absf(diff.y) > target_stop_distance.y:

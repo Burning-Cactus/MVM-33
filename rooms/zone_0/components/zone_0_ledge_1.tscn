@@ -1,14 +1,14 @@
-[gd_scene format=4 uid="uid://b8mx6h2grmqqu"]
+[gd_scene format=4 uid="uid://cwlfcbxq4tvkf"]
 
-[ext_resource type="Texture2D" uid="uid://ddmkgytjyiams" path="res://assets/room/BrickLedge_BrickLedgeTexture.png" id="1_b0te4"]
+[ext_resource type="Texture2D" uid="uid://ddmkgytjyiams" path="res://assets/room/BrickLedge_BrickLedgeTexture.png" id="1_ac2cq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
-size = Vector3(2, 0.5, 2)
+size = Vector3(2, 0.5, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tvhs"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("1_b0te4")
+albedo_texture = ExtResource("1_ac2cq")
 roughness = 0.75
 texture_filter = 5
 texture_repeat = false
@@ -53,9 +53,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_5a2or")
 
 [node name="BrickLedge1" type="MeshInstance3D" parent="." unique_id=2100471580]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0.5)
-mesh = SubResource("ArrayMesh_u625r")
-
-[node name="BrickLedge2" type="MeshInstance3D" parent="." unique_id=265739799]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 mesh = SubResource("ArrayMesh_u625r")
