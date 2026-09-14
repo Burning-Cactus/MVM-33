@@ -1,17 +1,61 @@
-[gd_scene format=3 uid="uid://b8mx6h2grmqqu"]
+[gd_scene format=4 uid="uid://b8mx6h2grmqqu"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_5a2or"]
-size = Vector3(2, 0.5, 2)
+[ext_resource type="Texture2D" uid="uid://ddmkgytjyiams" path="res://assets/room/BrickLedge_BrickLedgeTexture.png" id="1_b0te4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
 size = Vector3(2, 0.5, 2)
 
-[node name="Zone0Ledge2" type="StaticBody3D" unique_id=1251203018]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tvhs"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_b0te4")
+roughness = 0.5
+texture_filter = 5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1179305357]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-mesh = SubResource("BoxMesh_5a2or")
+[sub_resource type="ArrayMesh" id="ArrayMesh_ucvs4"]
+_surfaces = [{
+"aabb": AABB(-1, -0.25, -0.5, 2, 0.5, 1),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwAEAAIABAAAAAIABQADAAEABAADAAUAAAAGAAEABQABAAYABAAHAAAABAAFAAcABwAIAAAACAAGAAAABwAJAAgACAAKAAYACQAKAAgACwAFAAYABwAFAAsACwAGAAoABwALAAkACQALAAoA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/3///wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAAAAAAAAAAAAP9/AAD//wAA/3//////AAD/fwAAAAAAAP////8AAAAA//8AAAAAAAD///////8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u625r"]
+resource_name = "BrickLedge_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -0.25, -0.5, 2, 0.5, 1),
+"attribute_data": PackedByteArray("/7///////3///////7//f/9//3//v/+//3//v/+//3//f/9//7//v/9//7//v/9//7//f/////////9//7///8J/wn87wDvAwn87wDvAwn//f/9//7//v/9//7//v/9//3//f/+//7//f/+//7//f/+//3//////////f/+/////f/9//7//v/9//7//v/9//7///////3///////7//fw=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
+"material": SubResource("StandardMaterial3D_8tvhs"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(2, 2, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("/3///wAA//8AAP///////wAA//8AAP///3//////////fwAA/////wAA/////////3////////8AAAAA/////wAAAAD/////AAD//wAA//8AAP///////wAAAAAAAP///38AAAAA/z///wAA////P///AAAAAP8//38AAP///z///wAAAAD//////////////////wAA/////wAA//////9/AAAAAP///////wAA////f///AAD/////AAAAAP//AAAAAAAA////f///AAD//wAA//8AAP///38AAAAA//8AAAAAAAD/P/9/AAD///8//38AAAAA/z8AAAAA////P///AAD//////3////////////////////9/AAD//////////wAA////f/////////9///8AAP//////////////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f/8//3//P/9//z//f/8//38AAP9/AAD/fwAA/38AAP9//7//f/+//3//v/9//7//f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/f/9//3//f/9//3//f/9//3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ucvs4")
+
+[node name="Zone0Ledge2" type="StaticBody3D" unique_id=1251203018]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1688762188]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_5a2or")
+
+[node name="BrickLedge1" type="MeshInstance3D" parent="." unique_id=2100471580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0.5)
+mesh = SubResource("ArrayMesh_u625r")
+
+[node name="BrickLedge2" type="MeshInstance3D" parent="." unique_id=265739799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.5)
+mesh = SubResource("ArrayMesh_u625r")

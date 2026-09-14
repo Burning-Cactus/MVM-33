@@ -30,7 +30,7 @@ func start() -> void:
 	player.direction_changed.connect(_on_direction_changed)
 
 func process_entity(delta: float) -> void:
-	if Input.is_action_just_pressed("kick"):
+	if Input.is_action_just_pressed(&"kick"):
 		kick()
 		
 	if Input.is_action_just_pressed(&"pickup"):
@@ -52,6 +52,9 @@ func process_entity(delta: float) -> void:
 
 func can_pickup() -> bool:
 	if not player.can_interact():
+		return false
+		
+	if not player.grab_unlocked:
 		return false
 		
 	for entity in _entities:

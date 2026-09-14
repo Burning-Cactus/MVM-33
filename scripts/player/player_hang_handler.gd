@@ -110,6 +110,9 @@ func grab() -> void:
 	if not player.can_interact():
 		return
 		
+	if not player.grab_unlocked:
+		return
+		
 	# Can't grab while holding an entity
 	if player.entity_handler.is_holding_entity() or _rope_segments.is_empty():
 		return

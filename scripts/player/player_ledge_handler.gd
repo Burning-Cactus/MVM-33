@@ -106,6 +106,9 @@ func grab() -> void:
 	if player.is_on_floor():
 		return
 		
+	if not player.grab_unlocked:
+		return
+		
 	if not player.can_interact():
 		return
 	

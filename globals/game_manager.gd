@@ -39,7 +39,16 @@ func update_max_health(amount: int):
 	player_data.health += amount
 	player_health_changed.emit(player_data.health, player_data.max_health)
 
-func unlock_ability(ability_name: String):
+func has_unlocked_ability(ability_name: String, ability_id: String = ""):
+	if ability_id != "":
+		ability_name += "_" + ability_id
+		
+	return player_data.unlocked_abilities.has(ability_name)
+	
+func unlock_ability(ability_name: String, ability_id: String = ""):
+	if ability_id != "":
+		ability_name += "_" + ability_id
+		
 	if not player_data.unlocked_abilities.has(ability_name):
 		player_data.unlocked_abilities.append(ability_name)
 		abilities_updated.emit(player_data.unlocked_abilities)

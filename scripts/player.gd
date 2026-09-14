@@ -39,6 +39,7 @@ var max_jump_delta: float = 0.20
 # Abilities
 var double_jump_unlocked := false
 var slide_unlocked := false
+var grab_unlocked := false
 var head_unlocked := false
 var sword_unlocked := false
 
@@ -93,11 +94,9 @@ signal direction_changed(direction: PlayerDirection)
 
 func _ready() -> void:
 	player_data = GameManager.player_data
-	for ability in player_data.unlocked_abilities:
-		if ability == "double_jump":
-			double_jump_unlocked = true
-		elif ability == "slide":
-			slide_unlocked = true
+	
+	_init_abilities()
+	
 	attack_area.monitoring = false
 	attack_area.monitorable = false
 	attack_area.body_entered.connect(_on_attack_area_body_entered)
@@ -121,6 +120,15 @@ func _ready() -> void:
 	_model_position = model.position
 	update_model_parts()
 
+func _init_abilities() -> void:
+	double_jump_unlocked = GameManager.has_unlocked_ability("double_jump")
+	slide_unlocked = GameManager.has_unlocked_ability("slide")
+	grab_unlocked = GameManager.has_unlocked_ability("grab")
+	head_unlocked = GameManager.has_unlocked_ability("head")
+	sword_unlocked = GameManager.has_unlocked_ability("sword")
+	
+	update_model_parts()
+	
 func _physics_process(delta: float) -> void:
 	if input_disabled_until_on_floor:
 		if is_on_floor():
@@ -138,7 +146,7 @@ func _physics_process(delta: float) -> void:
 					queue_animation(&"fall")
 					set_state(PlayerState.JUMPING)
 				elif _is_action_just_pressed(&"attack"):
-					if Input.is_action_pressed(&"down"):
+					if Input.is_action_pressed(&"down") and slide_unlocked:
 						play_animation(&"slide_start")
 						set_state(PlayerState.SLIDING)
 					elif Input.is_action_pressed(&"up"):
@@ -243,8 +251,9 @@ func _physics_process(delta: float) -> void:
 	ledge_handler.grab()
 
 func _is_action_just_pressed(action: StringName, exact_match: bool = false) -> bool:
-	if action == &"attack" and entity_handler.is_holding_entity():
-		return false
+	if action == &"attack":
+		if entity_handler.is_holding_entity() or not sword_unlocked:
+			return false
 		
 	return Input.is_action_just_pressed(action, exact_match) and not input_disabled
 	
@@ -264,8 +273,8 @@ func handle_movement() -> void:
 		velocity.z = x_dir * SPEED
 	else:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
-func unlock_ability(ability_name: String) -> void:
+	
+func unlock_ability(ability_name: String, ability_id: String) -> void:
 	if ability_name == "double_jump":
 		double_jump_unlocked = true
 	elif ability_name == "slide":
@@ -274,8 +283,11 @@ func unlock_ability(ability_name: String) -> void:
 		head_unlocked = true
 	elif ability_name == "sword":
 		sword_unlocked = true
+	elif ability_name == "max_health":
+		GameManager.update_max_health(20)
+		
 	update_model_parts()
-	GameManager.unlock_ability(ability_name)
+	GameManager.unlock_ability(ability_name, ability_id)
 
 func update_model_parts() -> void:
 	model_head.visible = head_unlocked

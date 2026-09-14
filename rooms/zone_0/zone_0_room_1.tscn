@@ -4,13 +4,15 @@
 [ext_resource type="Environment" uid="uid://cyrqh24v1yjx8" path="res://resources/zone_1_world_environment.tres" id="2_v4jr7"]
 [ext_resource type="PackedScene" uid="uid://wfas7udr17p2" path="res://rooms/zone_0/components/zone_0_ceiling_33.tscn" id="3_1nyfn"]
 [ext_resource type="PackedScene" uid="uid://cb0yn8h6tyhpf" path="res://rooms/zone_0/components/zone_0_wall_11_door_bottom.tscn" id="4_d6c6s"]
-[ext_resource type="PackedScene" uid="uid://b8mx6h2grmqqu" path="res://rooms/zone_0/components/zone_0_ledge_2.tscn" id="5_4hb1e"]
 [ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/exit_left.tscn" id="6_fjtgy"]
 [ext_resource type="PackedScene" uid="uid://bnmq3lgnmpdrh" path="res://rooms/zone_0/components/zone_0_floor_33.tscn" id="6_nr4d3"]
+[ext_resource type="PackedScene" uid="uid://bm1mp5fi38ptl" path="res://rooms/zone_0/components/zone_0_stairs.tscn" id="6_p1uip"]
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/exit_right.tscn" id="7_gyvra"]
+[ext_resource type="PackedScene" uid="uid://cur45g5shjy38" path="res://rooms/zone_0/components/zone_0_joint.tscn" id="7_jdvga"]
 [ext_resource type="Script" uid="uid://dsgeol7jo3b7l" path="res://scripts/upgrade.gd" id="7_p1uip"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="8_0ci6k"]
 [ext_resource type="PackedScene" uid="uid://dxto5062v4tjt" path="res://assets/head_upgrade.glb" id="8_jdvga"]
+[ext_resource type="PackedScene" uid="uid://jbwpoysa244g" path="res://rooms/zone_0/components/zone_0_floor_1.tscn" id="8_lx82c"]
 [ext_resource type="PackedScene" uid="uid://b4ndfnys5liq3" path="res://scenes/enemies/enemy_skeleton.tscn" id="10_yxc74"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pj1qo"]
@@ -60,24 +62,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 8)
 [node name="Zone0Wall11DoorBottomRight" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="2" unique_id=140796180 instance=ExtResource("4_d6c6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -24)
 
-[node name="Zone0Ledge2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=1251203018 instance=ExtResource("5_4hb1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -4.5)
-
-[node name="Zone0Ledge4" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=1047976561 instance=ExtResource("5_4hb1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.655134, -4.5)
-
-[node name="Zone0Ledge3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=634577155 instance=ExtResource("5_4hb1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.5)
-
-[node name="Zone0Floor33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="6" unique_id=59586251 instance=ExtResource("6_nr4d3")]
+[node name="Zone0Floor33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=59586251 instance=ExtResource("6_nr4d3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
+[node name="BrickFloor9" parent="Foreground/Zone0Floor33" index="9" unique_id=1317461381]
+visible = false
+
+[node name="BrickFloor10" parent="Foreground/Zone0Floor33" index="10" unique_id=1736487720]
+visible = false
+
+[node name="BrickFloor11" parent="Foreground/Zone0Floor33" index="11" unique_id=1574699519]
+visible = false
+
+[node name="BrickFloor12" parent="Foreground/Zone0Floor33" index="12" unique_id=1867036425]
+visible = false
+
+[node name="BrickFloor13" parent="Foreground/Zone0Floor33" index="13" unique_id=1591957747]
+visible = false
+
+[node name="BrickFloor14" parent="Foreground/Zone0Floor33" index="14" unique_id=1946502266]
+visible = false
+
+[node name="Zone0Stairs" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=666074083 instance=ExtResource("6_p1uip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+
+[node name="Zone0Stairs2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=263290650 instance=ExtResource("6_p1uip")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.5, -4.5)
+
+[node name="Zone0Joint" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="6" unique_id=539399261 instance=ExtResource("7_jdvga")]
+
+[node name="Zone0Joint2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="7" unique_id=1685995990 instance=ExtResource("7_jdvga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Zone0Joint3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="8" unique_id=1809060794 instance=ExtResource("7_jdvga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Zone0Joint4" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="9" unique_id=143613673 instance=ExtResource("7_jdvga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="Zone0Joint5" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="10" unique_id=1966988783 instance=ExtResource("7_jdvga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Zone0Joint6" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="11" unique_id=195489393 instance=ExtResource("7_jdvga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Zone0Floor1" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="12" unique_id=1063615087 instance=ExtResource("8_lx82c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+
+[node name="Zone0Floor2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="13" unique_id=1140493575 instance=ExtResource("8_lx82c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+
 [node name="HeadUpgrade" type="Area3D" parent="Objects" parent_id_path=PackedInt32Array(831980504) index="0" unique_id=1659339272 node_paths=PackedStringArray("model")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80977213, -9.612144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, -2.5)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_p1uip")
 upgrade_type = 1
+upgrade_id = null
 model = NodePath("HeadModel")
 metadata/_custom_type_script = "uid://dsgeol7jo3b7l"
 
@@ -101,8 +142,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8.5)
 target_room_path = "uid://d0oekx31ig60m"
 door_id = "zone_0_room_1_left"
 target_door_id = "zone_0_room_0_right"
-exit_velocity = Vector3(0, 0, 0)
-maintain_velocity = false
 
 [node name="WallExitRight" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="1" unique_id=1176092721 instance=ExtResource("7_gyvra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -24.5)
@@ -123,5 +162,10 @@ border_left = "None"
 border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
 
+[node name="Player" parent="." index="6" unique_id=1575609299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 4.943295)
+
 [node name="EnemySkeleton" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("10_yxc74")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6.14981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -19.14981)
+
+[editable path="Foreground/Zone0Floor33"]

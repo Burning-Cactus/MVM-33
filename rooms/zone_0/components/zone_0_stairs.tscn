@@ -1,0 +1,99 @@
+[gd_scene format=4 uid="uid://bm1mp5fi38ptl"]
+
+[ext_resource type="Texture2D" uid="uid://cvlwk51aano17" path="res://assets/room/BrickStep_StepTexture.png" id="1_vfekr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
+size = Vector3(2, 0.25, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7s81i"]
+size = Vector3(2, 1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c76lv"]
+resource_name = "Material"
+albedo_texture = ExtResource("1_vfekr")
+roughness = 0.5
+texture_filter = 5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vg2am"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_f7okd"]
+resource_name = "BrickStep_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/39l5v7/MrP+/2Xm/38ys/9/mZn//zKz/38ys///mZn/f/9//5+Zmf9/mZn/n/9//39l5v7/MrP+/2Xm/38ys/9//3//n5mZ/3+Zmf+f/3///////39l5v//Zeb/f///"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_c76lv"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(2.0000002, 2, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA//8AAP///////wAA//8AAP///////////////wAA/////wAA//////////////////8AAAAA/////wAAAAD/////AAD//wAA//8AAP///////wAAAAAAAP//AAAAAAAA/7///wAA////v///AAAAAP+/AAAAAP///7///wAAAAD//////////////////wAA/////wAA/////wAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP///3//v/9//7//f/+//3//v/9//3//f/9//3//f/9//3//P/9//z//f/8//3//P/9/AAD/fwAA/38AAP9/AAD/f/+//3//v/9//7//f/+//3//f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vg2am")
+
+[node name="Zone0Stairs" type="StaticBody3D" unique_id=666074083]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=706183810]
+transform = Transform3D(1, 0, 0, 0, 0.8910065, -0.45399052, 0, 0.45399052, 0.8910065, 0, 0.389, 0.42)
+shape = SubResource("BoxShape3D_5a2or")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=117149533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.75)
+shape = SubResource("BoxShape3D_7s81i")
+
+[node name="BrickStep1" type="MeshInstance3D" parent="." unique_id=1037508364]
+transform = Transform3D(1, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0.125, 0.75)
+mesh = SubResource("ArrayMesh_f7okd")
+
+[node name="BrickStep2" type="MeshInstance3D" parent="." unique_id=2070363269]
+transform = Transform3D(1, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0.125, 0.25)
+mesh = SubResource("ArrayMesh_f7okd")
+
+[node name="BrickStep3" type="MeshInstance3D" parent="." unique_id=295738650]
+transform = Transform3D(1, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0.375, 0.25)
+mesh = SubResource("ArrayMesh_f7okd")
+
+[node name="BrickStep4" type="MeshInstance3D" parent="." unique_id=1765801858]
+transform = Transform3D(1, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0.125, -0.25)
+mesh = SubResource("ArrayMesh_f7okd")
+
+[node name="BrickStep5" type="MeshInstance3D" parent="." unique_id=1630167837]
+transform = Transform3D(1, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0.375, -0.25)
+mesh = SubResource("ArrayMesh_f7okd")
+
+[node name="BrickStep6" type="MeshInstance3D" parent="." unique_id=1740870555]
+transform = Transform3D(1, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0.625, -0.25)
+mesh = SubResource("ArrayMesh_f7okd")
+
+[node name="BrickStep7" type="MeshInstance3D" parent="." unique_id=953304985]
+transform = Transform3D(1, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0.125, -0.75)
+mesh = SubResource("ArrayMesh_f7okd")
+
+[node name="BrickStep8" type="MeshInstance3D" parent="." unique_id=886608016]
+transform = Transform3D(1, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0.375, -0.75)
+mesh = SubResource("ArrayMesh_f7okd")
+
+[node name="BrickStep9" type="MeshInstance3D" parent="." unique_id=375246071]
+transform = Transform3D(1, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0.625, -0.75)
+mesh = SubResource("ArrayMesh_f7okd")
+
+[node name="BrickStep10" type="MeshInstance3D" parent="." unique_id=193983507]
+transform = Transform3D(1, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0.875, -0.75)
+mesh = SubResource("ArrayMesh_f7okd")
