@@ -3,6 +3,8 @@ extends EnemyBase
 @export var jump_cooldown: float = 2.0
 @export var jump_velocity: Vector3 = Vector3(0, 8.0, 5.0)
 
+@onready var wall_check: RayCast3D = $WallCheck
+
 var _jump_delta: float = 0.0
 var _jump_off: bool = false
 
@@ -51,14 +53,24 @@ func _physics_process(delta):
 	handle_3d_rotation(delta)
 
 func handle_chase_turning() -> void:
-	if is_on_floor():
-		super.handle_chase_turning()
+	print(wall_check.is_colliding(), ", ", floor_check.is_colliding())
+	if not is_on_floor() or not player_ref:
+		return
+	
+	if (player_ref.global_position.y + 1.0 < global_position.y and 
+		not wall_check.is_colliding()
+	):
+		return
+		
+	super.handle_chase_turning()
 		
 func flip_direction():
 	super.flip_direction()
 	
 	var position: float = absf($CollisionShape3D.position.z)
 	$CollisionShape3D.position.z = position * direction * -1.0
+	
+	wall_check.target_position.z = absf(wall_check.target_position.z) * direction
 	
 	for child in damage_area.get_children():
 		if child is CollisionShape3D:

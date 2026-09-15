@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b17kaupjkj8vf"]
+
+[ext_resource type="Shader" uid="uid://dxc6ydkate8bj" path="res://assets/room/water_fall_plane.gdshader" id="1_qh064"]
+[ext_resource type="Texture2D" uid="uid://lxx3n31ra1pu" path="res://assets/room/water_noise.png" id="2_q8xhe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7s81i"]
+render_priority = 0
+shader = ExtResource("1_qh064")
+shader_parameter/water_color = Color(0.42704785, 0.46731132, 0, 0.8509804)
+shader_parameter/foam_color = Color(1.347661e-06, 0.66759723, 0.23503563, 1)
+shader_parameter/flow_noise = ExtResource("2_q8xhe")
+shader_parameter/flow_speed = 0.005
+shader_parameter/uv_scale = Vector2(1, 0.3)
+shader_parameter/foam_cutoff = 0.8170000388075
+shader_parameter/foam_smoothness = 0.20000000298023
+
+[sub_resource type="BoxMesh" id="BoxMesh_smehm"]
+material = SubResource("ShaderMaterial_7s81i")
+size = Vector3(1.9, 0.5, 20)
+
+[node name="Water" type="Node3D" unique_id=1520311932]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=966094952]
+mesh = SubResource("BoxMesh_smehm")

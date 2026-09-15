@@ -31,42 +31,43 @@ func _ready() -> void:
 		attack_timer.one_shot = true
 		add_child(attack_timer)
 	
-	get_parent().ready.connect(_setup_collision)
+	
+	if not has_node("CollisionShape2D"):
+		get_parent().ready.connect(_setup_collision)
 	
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 		
 func _setup_collision() -> void:
-	if not has_node("CollisionShape2D"):
-		var parent = get_parent()
+	var parent = get_parent()
+	
+	var parent_collision := parent.get_node_or_null("CollisionShape3D")
+	if parent_collision == null:
+		return
 		
-		var parent_collision := parent.get_node_or_null("CollisionShape3D")
-		if parent_collision == null:
-			return
-			
-		var collision = CollisionShape3D.new()
-		collision.position = parent_collision.position
-		collision.rotation = parent_collision.rotation
-		
-		var shape = parent_collision.shape.duplicate()
-		
-		if shape is BoxShape3D:
-			shape.size += Vector3(damage_edge * 2.0, damage_edge * 2.0, damage_edge * 2.0)
-		elif shape is CylinderShape3D:
-			shape.radius += damage_edge
-			shape.height += damage_edge * 2.0
-		elif shape is CapsuleShape3D:
-			shape.radius += damage_edge
-			shape.height += damage_edge * 2.0
-		elif shape is SphereShape3D:
-			shape.radius += damage_edge
-		else:
-			print("Unsupported shape.")
-			return
-		
-		collision.shape = shape
+	var collision = CollisionShape3D.new()
+	collision.position = parent_collision.position
+	collision.rotation = parent_collision.rotation
+	
+	var shape = parent_collision.shape.duplicate()
+	
+	if shape is BoxShape3D:
+		shape.size += Vector3(damage_edge * 2.0, damage_edge * 2.0, damage_edge * 2.0)
+	elif shape is CylinderShape3D:
+		shape.radius += damage_edge
+		shape.height += damage_edge * 2.0
+	elif shape is CapsuleShape3D:
+		shape.radius += damage_edge
+		shape.height += damage_edge * 2.0
+	elif shape is SphereShape3D:
+		shape.radius += damage_edge
+	else:
+		print("Unsupported shape.")
+		return
+	
+	collision.shape = shape
 
-		add_child(collision)
+	add_child(collision)
 		
 func _process(delta: float) -> void:
 	process_damage()
@@ -80,7 +81,6 @@ func process_damage() -> void:
 			return
 		
 		attack_timer.start(attack_cooldown)
-		
 		player_ref.receive_damage(attack_damage, global_position.z, independent, apply_knockback)
 	else:
 		player_ref.receive_damage(attack_damage, global_position.z, independent, apply_knockback)

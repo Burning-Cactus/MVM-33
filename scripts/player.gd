@@ -306,6 +306,7 @@ func receive_damage(
 	apply_knockback: bool = true
 ):
 	if independent:
+		print("Xd")
 		if get_state() == PlayerState.SLIDING:
 			if slide_check.is_colliding():
 				reverse_direction()

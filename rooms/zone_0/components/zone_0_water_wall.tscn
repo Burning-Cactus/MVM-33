@@ -1,0 +1,50 @@
+[gd_scene format=4 uid="uid://qdutsj8gisgv"]
+
+[ext_resource type="Texture2D" uid="uid://bs2ruwrv4yj8m" path="res://assets/room/BrickWaterWall_WaterWallTexture.png" id="1_kxatk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxatk"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_kxatk")
+roughness = 0.75
+texture_filter = 5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b3816"]
+_surfaces = [{
+"aabb": AABB(0.375, -0.5, -0.5, 0.125, 1, 1),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("//8AAAAAAAD///////8AAP////8AAAAA//8AAP//AAAAAP////8AAAAA//8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_66om4"]
+resource_name = "BrickWaterWall_Cube"
+_surfaces = [{
+"aabb": AABB(0.375, -0.5, -0.5, 0.125, 1, 1),
+"attribute_data": PackedByteArray("AADdGv//av4AAGr+///dGgAAAAD//3EcAABxHP//AAA="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_kxatk"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAAAA//////////////////8AAP////8AAP//////////AABU1QAA/////1TVAAD//wAAVNX///////9U1f+//3//v/9//7//f/+//3+qqqqqqqqqqqqqqqqqqqqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_b3816")
+
+[node name="Zone0WaterWall" type="Node3D" unique_id=608314478]
+
+[node name="BrickWaterWall" type="MeshInstance3D" parent="." unique_id=147057723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+mesh = SubResource("ArrayMesh_66om4")

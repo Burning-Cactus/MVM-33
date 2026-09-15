@@ -5,11 +5,25 @@
 [ext_resource type="PackedScene" uid="uid://wfas7udr17p2" path="res://rooms/zone_0/components/zone_0_ceiling_33.tscn" id="3_ggh2k"]
 [ext_resource type="PackedScene" uid="uid://cb0yn8h6tyhpf" path="res://rooms/zone_0/components/zone_0_wall_11_door_bottom.tscn" id="4_cbc86"]
 [ext_resource type="PackedScene" uid="uid://c1oiq0ahh8g30" path="res://rooms/zone_0/components/zone_0_wall_11_door_center.tscn" id="4_i3v6x"]
-[ext_resource type="PackedScene" uid="uid://bnmq3lgnmpdrh" path="res://rooms/zone_0/components/zone_0_floor_33.tscn" id="5_07khh"]
 [ext_resource type="PackedScene" uid="uid://clx1cv4h1mnit" path="res://rooms/exits/exit_left.tscn" id="6_hh2gr"]
-[ext_resource type="PackedScene" uid="uid://b8mx6h2grmqqu" path="res://rooms/zone_0/components/zone_0_ledge_2.tscn" id="7_ggh2k"]
+[ext_resource type="PackedScene" uid="uid://jbwpoysa244g" path="res://rooms/zone_0/components/zone_0_floor_1.tscn" id="7_krl0d"]
 [ext_resource type="PackedScene" uid="uid://bpgsr4m1npsrr" path="res://rooms/exits/exit_right.tscn" id="7_qxvai"]
+[ext_resource type="PackedScene" uid="uid://cur45g5shjy38" path="res://rooms/zone_0/components/zone_0_joint.tscn" id="7_unri2"]
+[ext_resource type="PackedScene" uid="uid://cj42j6mb0cjbv" path="res://scenes/platform/platform_points.tscn" id="8_07khh"]
+[ext_resource type="PackedScene" uid="uid://b17kaupjkj8vf" path="res://rooms/backgrounds/water.tscn" id="8_hh2gr"]
 [ext_resource type="Script" uid="uid://d1lwbxrwcafi0" path="res://scripts/discovery_area.gd" id="8_krl0d"]
+[ext_resource type="PackedScene" uid="uid://qdutsj8gisgv" path="res://rooms/zone_0/components/zone_0_water_wall.tscn" id="8_unri2"]
+[ext_resource type="PackedScene" uid="uid://or5fvoao6hkd" path="res://scenes/platform/platform_small_movable.tscn" id="9_hh2gr"]
+[ext_resource type="PackedScene" uid="uid://bm1mp5fi38ptl" path="res://rooms/zone_0/components/zone_0_stairs.tscn" id="11_ipf03"]
+[ext_resource type="PackedScene" uid="uid://b8mx6h2grmqqu" path="res://rooms/zone_0/components/zone_0_ledge_2.tscn" id="11_wa0pw"]
+[ext_resource type="Script" uid="uid://4yjxaeoyxcg7" path="res://scripts/damage_area.gd" id="16_unri2"]
+[ext_resource type="PackedScene" uid="uid://cbgh2uspkr1n1" path="res://scenes/enemies/enemy_jumping_spider.tscn" id="17_dvifd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_unri2"]
+size = Vector3(3, 2, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a2or"]
+size = Vector3(2, 1, 20)
 
 [node name="Zone1Room6" unique_id=323921774 instance=ExtResource("1_hgdg1")]
 
@@ -19,17 +33,391 @@ environment = ExtResource("2_i3v6x")
 [node name="Zone0Ceiling33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="0" unique_id=30100008 instance=ExtResource("3_ggh2k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -8)
 
+[node name="BrickCeiling1" parent="Foreground/Zone0Ceiling33" index="1" unique_id=348745268]
+visible = false
+
+[node name="BrickCeiling33" parent="Foreground/Zone0Ceiling33" index="33" unique_id=1482739057]
+visible = false
+
 [node name="Zone0Wall11DoorCenterLeft" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="1" unique_id=1075629948 instance=ExtResource("4_i3v6x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 8)
 
 [node name="Zone0Wall11DoorBottomRight" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="2" unique_id=908678818 instance=ExtResource("4_cbc86")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -24)
 
-[node name="Zone0Floor33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=59586251 instance=ExtResource("5_07khh")]
+[node name="Zone0Joint" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="3" unique_id=687005949 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Zone0Joint47" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=2043099917 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 8)
+
+[node name="Zone0Joint48" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="5" unique_id=680083721 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -24)
+
+[node name="Zone0Joint2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="6" unique_id=1160076586 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Zone0Joint3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="7" unique_id=1674071883 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Zone0Joint4" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="8" unique_id=1356026413 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Zone0Joint5" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="9" unique_id=997251698 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Zone0Joint6" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="10" unique_id=1585785894 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Zone0Joint7" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="11" unique_id=1634917928 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Zone0Joint8" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="12" unique_id=1544186610 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Zone0Joint9" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="13" unique_id=1197012049 instance=ExtResource("7_unri2")]
+
+[node name="Zone0Joint10" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="14" unique_id=1228662247 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Zone0Joint11" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="15" unique_id=901655271 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Zone0Joint12" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="16" unique_id=1649389239 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="Zone0Joint13" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="17" unique_id=1208259580 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Zone0Joint14" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="18" unique_id=2026927832 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Zone0Joint15" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="19" unique_id=1876204806 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Zone0Joint16" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="20" unique_id=384815911 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="Zone0Joint17" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="21" unique_id=1380376538 instance=ExtResource("7_unri2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
-[node name="Zone0Ledge2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="4" unique_id=1251203018 instance=ExtResource("7_ggh2k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 6.5)
+[node name="Zone0Joint18" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="22" unique_id=249424177 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Zone0Joint19" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="23" unique_id=1259374301 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Zone0Joint20" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="24" unique_id=852638541 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
+
+[node name="Zone0Joint21" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="25" unique_id=1209612693 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="Zone0Joint22" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="26" unique_id=397639734 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+
+[node name="Zone0Joint23" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="27" unique_id=1723867599 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+
+[node name="Zone0Joint32" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="28" unique_id=7955237 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -14)
+
+[node name="Zone0Joint33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="29" unique_id=343961212 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -14)
+
+[node name="Zone0Joint34" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="30" unique_id=1231760745 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -14)
+
+[node name="Zone0Joint35" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="31" unique_id=2051850321 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -15)
+
+[node name="Zone0Joint36" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="32" unique_id=1181194977 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -16)
+
+[node name="Zone0Joint37" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="33" unique_id=1682921714 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -15)
+
+[node name="Zone0Joint41" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="34" unique_id=807176257 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -15)
+
+[node name="Zone0Joint42" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="35" unique_id=1911173941 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16)
+
+[node name="Zone0Joint43" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="36" unique_id=1936490007 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -17)
+
+[node name="Zone0Joint44" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="37" unique_id=1786925859 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -18)
+
+[node name="Zone0Joint45" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="38" unique_id=1893785230 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -19)
+
+[node name="Zone0Joint46" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="39" unique_id=612063755 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -20)
+
+[node name="Zone0Joint38" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="40" unique_id=1693775816 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -16)
+
+[node name="Zone0Joint39" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="41" unique_id=540832701 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -17)
+
+[node name="Zone0Joint40" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="42" unique_id=1167671647 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -18)
+
+[node name="Zone0Joint24" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="43" unique_id=501835499 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="Zone0Joint25" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="44" unique_id=1120425154 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="Zone0Joint26" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="45" unique_id=706341047 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
+
+[node name="Zone0Joint27" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="46" unique_id=1500373611 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+
+[node name="Zone0Joint28" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="47" unique_id=1838469003 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
+
+[node name="Zone0Joint29" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="48" unique_id=1498249804 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="Zone0Joint30" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="49" unique_id=624642734 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
+
+[node name="Zone0Joint31" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="50" unique_id=404186594 instance=ExtResource("7_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22)
+
+[node name="Zone0Floor1" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="51" unique_id=1063615087 instance=ExtResource("7_krl0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 7)
+
+[node name="Zone0Floor2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="52" unique_id=725859585 instance=ExtResource("7_krl0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 6)
+
+[node name="Zone0WaterWall" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="53" unique_id=1578107258 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
+
+[node name="Zone0WaterWall2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="54" unique_id=1421252434 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
+
+[node name="Zone0WaterWall3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="55" unique_id=1458377665 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7)
+
+[node name="Zone0WaterWall4" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="56" unique_id=1525908038 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
+
+[node name="Zone0WaterWall5" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="57" unique_id=1059924108 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 5)
+
+[node name="Zone0WaterWall6" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="58" unique_id=1816339008 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4)
+
+[node name="Zone0WaterWall7" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="59" unique_id=1293813391 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 3)
+
+[node name="Zone0WaterWall8" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="60" unique_id=748796376 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2)
+
+[node name="Zone0WaterWall9" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="61" unique_id=2069673462 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 1)
+
+[node name="Zone0WaterWall10" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="62" unique_id=1890849258 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Zone0WaterWall11" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="63" unique_id=515252701 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -1)
+
+[node name="Zone0WaterWall12" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="64" unique_id=88255200 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2)
+
+[node name="Zone0WaterWall13" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="65" unique_id=1381765554 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3)
+
+[node name="Zone0WaterWall14" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="66" unique_id=220695140 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -4)
+
+[node name="Zone0WaterWall15" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="67" unique_id=452236809 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
+
+[node name="Zone0WaterWall16" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="68" unique_id=429206689 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -6)
+
+[node name="Zone0WaterWall17" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="69" unique_id=622195636 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -7)
+
+[node name="Zone0WaterWall18" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="70" unique_id=1217969356 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -8)
+
+[node name="Zone0WaterWall19" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="71" unique_id=335109688 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -9)
+
+[node name="Zone0WaterWall20" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="72" unique_id=1931157044 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -10)
+
+[node name="Zone0WaterWall21" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="73" unique_id=1465966633 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -11)
+
+[node name="Zone0WaterWall22" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="74" unique_id=528236303 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -12)
+
+[node name="Zone0WaterWall23" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="75" unique_id=1313455210 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -12)
+
+[node name="Zone0WaterWall24" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="76" unique_id=991526378 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -11)
+
+[node name="Zone0WaterWall25" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="77" unique_id=1370891079 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
+
+[node name="Zone0WaterWall26" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="78" unique_id=1970392242 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -9)
+
+[node name="Zone0WaterWall27" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="79" unique_id=1019446004 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -8)
+
+[node name="Zone0WaterWall28" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="80" unique_id=908918879 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -7)
+
+[node name="Zone0WaterWall29" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="81" unique_id=1663684656 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6)
+
+[node name="Zone0WaterWall30" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="82" unique_id=1968522583 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
+
+[node name="Zone0WaterWall31" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="83" unique_id=1910670460 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
+
+[node name="Zone0WaterWall32" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="84" unique_id=261875407 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
+
+[node name="Zone0WaterWall33" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="85" unique_id=1103338858 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
+
+[node name="Zone0WaterWall34" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="86" unique_id=358344323 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+
+[node name="Zone0WaterWall35" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="87" unique_id=9366739 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Zone0WaterWall36" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="88" unique_id=666450516 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
+
+[node name="Zone0WaterWall37" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="89" unique_id=2142216494 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+
+[node name="Zone0WaterWall38" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="90" unique_id=1925703948 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
+
+[node name="Zone0WaterWall39" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="91" unique_id=266042009 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+
+[node name="Zone0WaterWall40" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="92" unique_id=784832407 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+
+[node name="Zone0WaterWall41" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="93" unique_id=229419231 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
+
+[node name="Zone0WaterWall42" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="94" unique_id=1933987826 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+
+[node name="Zone0WaterWall43" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="95" unique_id=1456095381 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+
+[node name="Zone0WaterWall44" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="96" unique_id=2101668679 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="Zone0WaterWall45" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="97" unique_id=5513267 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+
+[node name="Zone0WaterWall46" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="98" unique_id=476229546 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+
+[node name="Zone0WaterWall47" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="99" unique_id=1405589412 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="Zone0WaterWall48" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="100" unique_id=229268858 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Zone0WaterWall49" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="101" unique_id=168804921 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="Zone0WaterWall50" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="102" unique_id=812265070 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+
+[node name="Zone0WaterWall51" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="103" unique_id=439362192 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+
+[node name="Zone0WaterWall52" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="104" unique_id=595987295 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+
+[node name="Zone0WaterWall53" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="105" unique_id=1519453955 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+
+[node name="Zone0WaterWall54" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="106" unique_id=199057815 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
+
+[node name="Zone0WaterWall55" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="107" unique_id=1884326703 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
+
+[node name="Zone0WaterWall56" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="108" unique_id=1317254875 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+
+[node name="Zone0WaterWall57" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="109" unique_id=330903509 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -9)
+
+[node name="Zone0WaterWall58" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="110" unique_id=1292323432 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10)
+
+[node name="Zone0WaterWall59" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="111" unique_id=1406478451 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -11)
+
+[node name="Zone0WaterWall60" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="112" unique_id=420575086 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -12)
+
+[node name="Zone0WaterWall61" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="113" unique_id=608314478 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -13)
+
+[node name="Zone0WaterWall62" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="114" unique_id=1237631982 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -13)
+
+[node name="Zone0WaterWall63" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="115" unique_id=184158206 instance=ExtResource("8_unri2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -13)
+
+[node name="Water" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="116" unique_id=1520311932 instance=ExtResource("8_hh2gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75, -3.5)
+
+[node name="Zone0Stairs" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="117" unique_id=666074083 instance=ExtResource("11_ipf03")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.5, -21.5)
+
+[node name="Zone0Stairs2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="118" unique_id=538264120 instance=ExtResource("11_ipf03")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.5, -19.5)
+
+[node name="Zone0Stairs3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="119" unique_id=1037433734 instance=ExtResource("11_ipf03")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2.5, -17.5)
+
+[node name="Zone0Stairs4" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="120" unique_id=867556484 instance=ExtResource("11_ipf03")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3.5, -15.5)
+
+[node name="Zone0Floor3" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="121" unique_id=20513401 instance=ExtResource("7_krl0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -14)
+
+[node name="Zone0Floor4" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="122" unique_id=938206264 instance=ExtResource("7_krl0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
+
+[node name="Zone0Floor5" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="123" unique_id=864565069 instance=ExtResource("7_krl0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+
+[node name="Zone0Ledge2" parent="Foreground" parent_id_path=PackedInt32Array(920222622) index="124" unique_id=1251203018 instance=ExtResource("11_wa0pw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25, -22.5)
+
+[node name="PlatformPoints" parent="Objects" parent_id_path=PackedInt32Array(831980504) index="0" unique_id=1838435198 instance=ExtResource("8_07khh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 3)
+points = Array[Vector3]([Vector3(0, -0.45, 0), Vector3(0, -0.45, -14)])
+radius = 1.5
+speed = 1.0
+platform_scene = ExtResource("9_hh2gr")
+platform_count = 10
+is_moving = true
 
 [node name="WallExitLeft" parent="Exits" parent_id_path=PackedInt32Array(1706594599) index="0" unique_id=1621660744 instance=ExtResource("6_hh2gr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 8.5)
@@ -55,3 +443,36 @@ room_coordinates = Vector2i(8, -2)
 border_left = "None"
 border_right = "Door"
 metadata/_custom_type_script = "uid://d1lwbxrwcafi0"
+
+[node name="Player" parent="." index="6" unique_id=1575609299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 6.5)
+
+[node name="EnemyJumpingSpider" parent="Enemies" parent_id_path=PackedInt32Array(90746970) index="0" unique_id=445466315 instance=ExtResource("17_dvifd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25, -22.5)
+
+[node name="DamageAreaDeath" type="Area3D" parent="." index="8" unique_id=1057512902]
+script = ExtResource("16_unri2")
+attack_damage = 99999
+independent = true
+apply_knockback = false
+damage_edge = 0.0
+metadata/_custom_type_script = "uid://4yjxaeoyxcg7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreaDeath" index="0" unique_id=992394181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+shape = SubResource("BoxShape3D_unri2")
+
+[node name="DamageAreaTouch" type="Area3D" parent="." index="9" unique_id=1541382455]
+script = ExtResource("16_unri2")
+attack_damage = 10
+attack_cooldown = 2.0
+independent = true
+apply_knockback = false
+damage_edge = 0.0
+metadata/_custom_type_script = "uid://4yjxaeoyxcg7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreaTouch" index="0" unique_id=1497311292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -4)
+shape = SubResource("BoxShape3D_5a2or")
+
+[editable path="Foreground/Zone0Ceiling33"]
